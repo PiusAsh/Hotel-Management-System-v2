@@ -1,0 +1,185 @@
+.applyBtn {
+    background-color: #fdc800;
+    color: #002147 !important;
+    font-size: 13px;
+    font-weight: 800;
+    height: 38px;
+    text-align: center;
+    font-family: 'Roboto',
+        sans-serif;
+}
+
+
+.schMoto {
+    font-size: 56px;
+    color: white;
+    font-weight: 600;
+    text-align: left;
+
+}
+
+.heroBtn {
+
+    font-size: 14px !important;
+    color: white !important;
+    background-color: #002147 !important;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-weight: 700;
+    text-decoration: none !important;
+    text-align: left;
+    align-items: left;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    
+    
+}
+.secBtn {
+
+    font-size: 15px !important;
+    color: black !important;
+    background-color: #fdc800 !important;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-weight: 700;
+    text-decoration: none !important;
+    text-align: left;
+   
+    
+   
+    
+    
+}
+.carousel-caption{
+    position: absolute;
+    top: 120px;
+    display: flex;
+    justify-content: start;
+    width: 700px;
+    
+}
+
+.schDes{
+    
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+    width: 500px;
+    text-align: left;
+}
+.topRow{
+    background-color: #062242;
+    align-items: center;
+    padding: 15px;
+    
+
+    
+}
+.wel{
+    font-size: 43px;
+    font-weight: 700;
+    color: #002147;
+}
+.wel1{
+    font-size: 30px;
+    font-weight: 700;
+    color: #002147;
+    font-family: 'Roboto',
+    sans-serif;
+}
+.videoHead{
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'Roboto',
+    sans-serif;
+}
+
+.mainSkill{
+    position: absolute;
+    top: 80%;
+left: 10%;
+    z-index: 5;
+}
+
+/* #carouselDarkVariant{
+position: relative;
+} */
+
+.topList{
+    color: white;
+    font-size: 22px;
+    font-size: 500;
+}
+
+.toptop{
+    align-items: center;
+}
+.fa-solid{
+    color: #fdc800;
+    font-size: 30px;
+}
+.fCol{
+    
+    border-right: 2px dotted white;
+    
+}
+
+
+
+@media (max-width: 967px) {
+    .nav-item{
+        background-color: whitesmoke;
+    }
+
+    .nav-link {
+        font-size: 15px;
+        color: #002147 !important;
+        font-weight: 600;
+        font-family: 'Roboto',
+            sans-serif;
+        margin-left: 30px;
+    }
+}
+
+.welcomeImage{
+    height: 350px;
+    width: 70%;
+    position: absolute;
+    left: 30%;
+}
+.footer{
+    background-color: #062242;
+}
+
+.copy{
+    text-decoration: none;
+}
+.footerLink{
+    text-decoration: none;
+}
+
+.videoSection{
+    background-color: #112A48;
+    height: 50vh;
+    width: 100%;
+    text-align: center;
+    
+}
+
+.circle{
+    width: 52px;
+    background-color: white;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 70%;
+    position: absolute;
+    left: 48%;
+}
