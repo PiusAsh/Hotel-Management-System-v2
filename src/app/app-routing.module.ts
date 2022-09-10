@@ -15,6 +15,7 @@ import { AddRoomsComponent } from './Admin_dashboard/add-rooms/add-rooms.compone
 import { RegisteredUsersComponent } from './Admin_dashboard/registered-users/registered-users.component';
 import { BookedRoomsComponent } from './Admin_dashboard/booked-rooms/booked-rooms.component';
 import { UserRegistrationComponent } from './AUTH/user-registration/user-registration.component';
+import { RoomListComponent } from './Admin_dashboard/room-list/room-list.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'room-list', component: RoomListComponent
   },
   {
     path: 'admin', component: AdminDashboardComponent

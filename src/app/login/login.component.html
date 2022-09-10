@@ -18,7 +18,7 @@
             <input type="text" class="form-control" formControlName="email" placeholder="Email address">
             <span class="text-danger"
             *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')">
-            email is
+            Email is
             required</span>
         <span class="text-danger" *ngIf="loginForm.controls['email'].invalid && loginForm.hasError('pattern','email')">Enter a valid email address</span>
         </div>

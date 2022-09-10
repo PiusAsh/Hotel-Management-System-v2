@@ -32,6 +32,8 @@
           <!-- Main -->
       
           <main class="py-6 ">
+
+            
             <div class="container">
 
               <div class="row">
@@ -41,12 +43,15 @@
                     <form>
                       <div class="form mb-3">
 
-                          <input type="text" class="form-control" placeholder="Room Name">
+                          <input type="text" formControlName="roomName" class="form-control" placeholder="Room Name">
+                          <span class="text-danger"
+                          *ngIf="roomForm.controls['roomName'].dirty && roomForm.hasError('required', 'roomName')">Room Name is
+                          required</span>
                       </div>
                       
 
                       <div class="form mb-3">
-                        <select name="Select Room Type" class="form-control py-1">
+                        <select name="Select Room Type" formControlName="roomType" class="form-control py-1">
                           <option>Select Room Type</option>
                           <option value="Single">Single</option>
                           <option value="Double">Double</option>
@@ -55,24 +60,35 @@
                           <option value="King">King</option>
                           <option value="Queen">Queen</option>
                         </select>
+                        <span class="text-danger"
+                        *ngIf="roomForm.controls['roomType'].dirty && roomForm.hasError('required', 'roomType')">Room Type is
+                        required</span>
                         
                       </div>
 
                       <div class="form mb-3">
-                        <input type="number" class="form-control" placeholder="Price">
+                        <input type="number" formControlName="roomPrice" class="form-control" placeholder="Price">
+                        <span class="text-danger"
+                        *ngIf="roomForm.controls['roomPrice'].dirty && roomForm.hasError('required', 'roomPrice')">Price is
+                        required</span>
                     </div>
                       <div class="form mb-3">
                         <span >Room Thumbnail</span>
-                        <input type="file" class="form-control" placeholder="Image">
+                        <input type="file" formControlName="roomImg" class="form-control" placeholder="Image">
+                        <span class="text-danger"
+                        *ngIf="roomForm.controls['roomImg'].dirty && roomForm.hasError('required', 'roomImg')">Thumbnail can't be empty</span>
                     </div>
 
                       <div class="form mb-3">
-                        <textarea class="form-control" placeholder="Room Description" cols="30" rows="10"></textarea>
+                        <textarea class="form-control" formControlName="roomDes" placeholder="Room Description" cols="30" rows="10"></textarea>
+                        <span class="text-danger"
+                        *ngIf="roomForm.controls['roomDes'].dirty && roomForm.hasError('required', 'roomDes')">Description is
+                        required</span>
                           
                       </div>
                       
                       <div class="login-button">
-                          <button class="btn btn-success w-100">Add</button>
+                          <button [disabled]="!roomForm.invalid" class="btn btn-success w-100">Add</button>
                       </div>
                       
                     </form>
@@ -86,5 +102,8 @@
           </main>
         </div>
       </div>
+      
+
+
       
     

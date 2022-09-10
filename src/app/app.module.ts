@@ -25,6 +25,7 @@ import { BookedRoomsComponent } from './Admin_dashboard/booked-rooms/booked-room
 import { RegisteredUsersComponent } from './Admin_dashboard/registered-users/registered-users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegistrationComponent } from './AUTH/user-registration/user-registration.component';
+import { RoomListComponent } from './Admin_dashboard/room-list/room-list.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UserRegistrationComponent } from './AUTH/user-registration/user-registr
     AddRoomsComponent,
     BookedRoomsComponent,
     RegisteredUsersComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    RoomListComponent
   ],
   imports: [
     BrowserModule,
