@@ -1,0 +1,116 @@
+<section style="background-color:#112A48;">
+    <div class="container">
+    
+        <div class="card">
+            <div class="d-flex justify-content-center">
+                <img src="/assets/images/LOGO (1).jpg" alt="" style="width: 190px;"><br>
+                <!-- <h4>Signin</h4> -->
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <!-- <img src="/assets/images/LOGO (1).jpg" alt="" style="width: 190px;"><br> -->
+                <!-- <h4>Signin</h4> -->
+            </div>
+            
+            
+            <form [formGroup]="registerForm" (click)="register()">
+                <div class="row">
+                <p class="text-center text-info h6" *ngIf="!registerForm.valid">Please fill in all information</p>
+                <p class="text-center text-info h6" *ngIf="registerForm.valid">Nice One! Click on the Register button to proceed</p>
+
+                            <!-- FIRST NAME  -->
+          
+                <div class="col-sm-12 col-lg-6 col-md-6 "><div class="form">
+
+                    <input type="text" autocomplete="chrome-off" class="form-control" formControlName="firstName" placeholder="First Name">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['firstName'].dirty && registerForm.hasError('required', 'firstName')">
+                    First Name is
+                    required</span>
+                </div></div>
+                <div class="col-sm-12 col-lg-6 col-md-6 "> <div class="form">
+
+                    <input type="text" autocomplete="chrome-off" class="form-control" formControlName="lastName" placeholder="Last Name">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')">Last Name is
+                    required</span>
+                </div></div>
+
+
+
+                <div class="col-sm-12 col-lg-6 col-md-6"><div class="form">
+
+                    <input type="text" autocomplete="chrome-off" class="form-control" formControlName="email" placeholder="Email address">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
+                    Email is
+                    required</span>
+                <span class="text-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.hasError('pattern','email')">Enter a valid email address</span>
+                </div></div>
+                <div class="col-sm-12 col-lg-6 col-md-6"> <div class="form">
+
+                    <input autocomplete="chrome-off" ngModel maxlength="11" type="number" class="form-control" formControlName="phoneNo" placeholder="Phone Number">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Phone Number is
+                    required</span>
+
+                </div></div>
+                <div class="col-sm-12 col-lg-12 col-md-12"><div class="form">
+
+                    <input autocomplete="chrome-off" type="text" class="form-control" formControlName="address" placeholder="Address">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['address'].dirty && registerForm.hasError('required', 'address')">
+                    Address is
+                    required</span>
+                </div></div>
+
+                <div class="col-sm-12 col-lg-6 col-md-6"><div class="form">
+
+                    <input autocomplete="chrome-off" type="text" class="form-control" formControlName="state" placeholder="State">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['state'].dirty && registerForm.hasError('required', 'state')">
+                    State is
+                    required</span>
+
+                </div></div>
+                <div class="col-sm-12 col-lg-6 col-md-6"> <div class="form">
+
+                    <input autocomplete="chrome-off" type="text" class="form-control" formControlName="country" placeholder="Country">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['country'].dirty && registerForm.hasError('required', 'country')">Country is
+                    required</span>
+
+                </div></div>
+                <div class="col-sm-12 col-lg-6 col-md-6"><div class="form">
+
+                    <input autocomplete="chrome-off" type="password" class="form-control" formControlName="password" placeholder="Password">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+                    Password is
+                    required</span>
+
+                </div></div>
+                <div class="col-sm-12 col-lg-6 col-md-6"> <div class="form">
+
+                    <input autocomplete="chrome-off" type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required', 'confirmPassword')">Confirm your password</span>
+
+                </div></div>
+            
+            
+            
+           
+            
+            <div class="login-button">
+                <button class="btn btn-success w-100" [disabled]="!registerForm.valid">Register</button>
+            </div>
+        </div>
+        </form>
+            <p class="already mt-2 d-flex justify-content-center align-items-center">Have an account? <span><a routerLink="/login" class="ms-2 text-decoration-none">Login</a></span></p>
+            <p class="already  d-flex justify-content-center align-items-center"> <span><a routerLink="/"lass="ms-2 text-decoration-none">Back to home</a></span></p>
+            <!-- <label class="h6 d-flex justify-content-between align-items-center"><span>Already have an account?</span><a href="#" class="text-decoration-none mt-1">Back to home</a></label>
+             -->
+            
+        </div>
+    </div></section>

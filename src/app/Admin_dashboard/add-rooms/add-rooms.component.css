@@ -1,20 +1,6 @@
 
 
-.container{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
 
-.card{
-    width:360px;
-    height:510px;
-    background-color:#fff;
-    border-radius:10px;
-    border:none;
-    padding:20px;
-}
 
 .text-danger {
     font-weight: 500;
@@ -35,8 +21,34 @@
     border:2px solid #eee;
     transition:all 0.9s;
 }
+.form textarea{
+    height:75px;
+    border:2px solid #eee;
+    transition:all 0.9s;
+}
+/* .form select{
+    height:45px;
+    width: 409px;
+    border:2px solid #eee;
+    transition:all 0.9s;
+    
+} */
 
+
+
+.form textarea:focus{
+    box-shadow:none;
+    border:2px solid #112A48;
+}
+.form select:focus{
+    box-shadow:none;
+    border:2px solid #112A48;
+}
 .form input:focus{
+    box-shadow:none;
+    border:2px solid #112A48;
+}
+.form select:focus{
     box-shadow:none;
     border:2px solid #112A48;
 }
@@ -54,11 +66,4 @@
 .btn-success{
     background-color: #112A48!important;
     border: none;
-}
-.text-decoration{
-    color: #112A48 !important;
-}
-
-.already{
-    font-size: 14px;
 }

@@ -7,23 +7,31 @@
     align-items:center;
 }
 
+@media (max-width: 769px) {
+
+    .card{
+        width:500px;
+        height: 820px !important;; 
+        background-color:#fff;
+        border-radius:10px;
+        border:none;
+        padding:20px;
+    }
+    
+  }
+
 .card{
-    width:360px;
-    height:510px;
+    width:500px;
+    height:580px; 
     background-color:#fff;
     border-radius:10px;
     border:none;
     padding:20px;
 }
 
-.text-danger {
-    font-weight: 500;
-    font-size: 14px;
-    
- 
-  }
 .form{
     margin-top:15px;
+    
 }
 
 .form label{
@@ -44,7 +52,7 @@
 
 
 .login-button{
-    margin-top:15px;
+    margin-top:20px;
 }
 
 .login-button button{
@@ -62,3 +70,27 @@
 .already{
     font-size: 14px;
 }
+
+
+.text-danger {
+    font-weight: 500!important;
+    font-size: 14px!important;
+    
+ 
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+

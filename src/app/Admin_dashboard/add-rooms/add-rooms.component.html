@@ -1,0 +1,90 @@
+
+
+
+    <!-- Dashboard -->
+    <div class="d-flex flex-column flex-lg-row">
+        <!-- Vertical Navbar -->
+        <app-admin-side-bar></app-admin-side-bar>
+      
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+          <!-- Header -->
+          <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+              <div class="mb-npx">
+                <div class="row align-items-center">
+                  <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <!-- Title -->
+                    <h1 class="h3 mb-0 ls-tight py-5 ">Add room</h1>
+                    
+                  </div>
+                  <!-- Actions -->
+                  <div class="col-sm-6 col-12 text-sm-end">
+
+                  </div>
+                </div>
+             
+
+              </div>
+            </div>
+          </header>
+      
+          <!-- Main -->
+      
+          <main class="py-6 ">
+            <div class="container">
+
+              <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6"><div class="container mt-2">
+                  <div class="container py-5">
+                    <form>
+                      <div class="form mb-3">
+
+                          <input type="text" class="form-control" placeholder="Room Name">
+                      </div>
+                      
+
+                      <div class="form mb-3">
+                        <select name="Select Room Type" class="form-control py-1">
+                          <option>Select Room Type</option>
+                          <option value="Single">Single</option>
+                          <option value="Double">Double</option>
+                          <option value="Triple">Triple</option>
+                          <option value="Quad">Quad</option>
+                          <option value="King">King</option>
+                          <option value="Queen">Queen</option>
+                        </select>
+                        
+                      </div>
+
+                      <div class="form mb-3">
+                        <input type="number" class="form-control" placeholder="Price">
+                    </div>
+                      <div class="form mb-3">
+                        <span >Room Thumbnail</span>
+                        <input type="file" class="form-control" placeholder="Image">
+                    </div>
+
+                      <div class="form mb-3">
+                        <textarea class="form-control" placeholder="Room Description" cols="30" rows="10"></textarea>
+                          
+                      </div>
+                      
+                      <div class="login-button">
+                          <button class="btn btn-success w-100">Add</button>
+                      </div>
+                      
+                    </form>
+                  </div>
+              </div></div>
+                <div class="col-lg-2"></div>
+              </div>
+              
+            
+            </div>
+          </main>
+        </div>
+      </div>
+      
+    
