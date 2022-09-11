@@ -16,6 +16,9 @@ import { RegisteredUsersComponent } from './Admin_dashboard/registered-users/reg
 import { BookedRoomsComponent } from './Admin_dashboard/booked-rooms/booked-rooms.component';
 import { UserRegistrationComponent } from './AUTH/user-registration/user-registration.component';
 import { RoomListComponent } from './Admin_dashboard/room-list/room-list.component';
+import { UserDashboardComponent } from './USER_COMPONENT/user-dashboard/user-dashboard.component';
+import { UserSidebarComponent } from './USER_COMPONENT/user-sidebar/user-sidebar.component';
+import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
 
 const routes: Routes = [
   {
@@ -59,7 +62,16 @@ const routes: Routes = [
     path: 'sidebar', component: AdminSideBarComponent
   },
   {
+    path: 'account-details', component: UserAccountDetailsComponent
+  },
+  {
     path: 'test', component: TestimonialComponent
+  },
+  {
+    path: 'user', component: UserDashboardComponent
+  },
+  {
+    path: 'user-bar', component: UserSidebarComponent
   },
   {
     path: 'analytics', component: AnalyticsComponent

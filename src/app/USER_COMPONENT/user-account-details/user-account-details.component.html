@@ -1,0 +1,126 @@
+
+
+
+    <!-- Dashboard -->
+    <div class="d-flex flex-column flex-lg-row">
+        <!-- Vertical Navbar -->
+<app-user-sidebar></app-user-sidebar>
+      
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+          <!-- Header -->
+          <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+              <div class="mb-npx">
+                <div class="row align-items-center">
+                  <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <!-- Title -->
+                    <h1 class="h3 mb-0 ls-tight py-5">Account Details</h1>
+                  </div>
+                  <!-- Actions -->
+                  <div class="col-sm-6 col-12 text-sm-end">
+    
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+          </header>
+      
+          <!-- Main -->
+      
+          <main class="py-6">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8 py-3">
+
+                        <form>
+    
+                <div class="row mt-5">
+                  <div class="col-lg-4">
+                                  <span class="label">First Name</span>
+                                  <input type="text" autocomplete="chrome-off" class="form-control" formControlName="firstName" placeholder="First Name">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                                  <span class="label">Last Name</span>
+                                  <input type="text" autocomplete="chrome-off" class="form-control" formControlName="lastName" placeholder="Last Name">
+                  </div>
+                </div>
+                
+                
+                <div class="row mt-2">
+                  <div class="col-lg-4">
+                                  <span class="label">Phone Number</span>
+                                  <input autocomplete="chrome-off" ngModel maxlength="11" type="number" class="form-control" formControlName="phoneNo" placeholder="Phone Number">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                                  <span class="label">Email Address</span>
+                                  <input type="text" autocomplete="chrome-off" class="form-control" formControlName="email" placeholder="Email address">
+                  </div>
+                </div>
+                
+                <div class="row mt-2">
+                  <div class="col-lg-4">
+                                  <span class="label">Date of Birth</span>
+                     <input type="date" 
+                       class="form-control shadow-sm d-flex align-items-center" id="exampleInputPassword1">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                                  <span class="label">Gender</span>
+                              <select class="form-select form-control flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
+                                <option selected hidden>Gender</option>
+                                <option class="valAmount" value="Male">Male</option>
+                                <option class="valAmount" value="Female">Female</option>
+                              </select>
+                  </div>
+                </div>
+                
+                <div class="row mt-2">
+                  <div class="col-lg-9">
+                                  <span class="label">Address</span>
+                                  <input autocomplete="chrome-off" type="text" class="form-control" formControlName="address" placeholder="Address">
+                  </div>
+                </div>
+                
+                <div class="row mt-2">
+                  <div class="col-lg-4">
+                    <span class="label">State</span>
+                    <input autocomplete="chrome-off" type="text" class="form-control" formControlName="state" placeholder="State">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                    <span class="label">Country</span>
+                    <input autocomplete="chrome-off" type="text" class="form-control" formControlName="country" placeholder="Country">
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-lg-9">
+                
+                    <div class="col-12 p-0">
+                      <div class="btn btn-success w-100">Edit Info</div>
+                    </div>
+                  </div>
+                
+                </div>
+                
+                
+                        </form>
+                    </div>
+                    <div class="col-lg-2"></div>
+                  </div>
+            
+            </div>
+          </main>
+        </div>
+      </div>
+      
+    
+    
+    
+    

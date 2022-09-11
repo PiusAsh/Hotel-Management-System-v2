@@ -38,19 +38,23 @@
 
               <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-6"><div class="container mt-2">
-                  <div class="container py-5">
+                <div class="col-lg-6"><div class="container ">
+                  <div class="container">
                     <form>
-                      <div class="form mb-3">
+                      <div class="form mb-2">
+                        <span >Room Name</span>
+                        <div class="">
 
                           <input type="text" formControlName="roomName" class="form-control" placeholder="Room Name">
                           <span class="text-danger"
                           *ngIf="roomForm.controls['roomName'].dirty && roomForm.hasError('required', 'roomName')">Room Name is
                           required</span>
+                        </div>
                       </div>
                       
 
-                      <div class="form mb-3">
+                      <div class="form mb-2">
+                        <span >Room Type</span>
                         <select name="Select Room Type" formControlName="roomType" class="form-control py-1">
                           <option>Select Room Type</option>
                           <option value="Single">Single</option>
@@ -66,20 +70,22 @@
                         
                       </div>
 
-                      <div class="form mb-3">
+                      <div class="form mb-2">
+                        <span >Room Price</span>
                         <input type="number" formControlName="roomPrice" class="form-control" placeholder="Price">
                         <span class="text-danger"
                         *ngIf="roomForm.controls['roomPrice'].dirty && roomForm.hasError('required', 'roomPrice')">Price is
                         required</span>
                     </div>
-                      <div class="form mb-3">
+                      <div class="form">
                         <span >Room Thumbnail</span>
                         <input type="file" formControlName="roomImg" class="form-control" placeholder="Image">
                         <span class="text-danger"
                         *ngIf="roomForm.controls['roomImg'].dirty && roomForm.hasError('required', 'roomImg')">Thumbnail can't be empty</span>
                     </div>
 
-                      <div class="form mb-3">
+                      <div class="form ">
+                        <span >Room Description</span>
                         <textarea class="form-control" formControlName="roomDes" placeholder="Room Description" cols="30" rows="10"></textarea>
                         <span class="text-danger"
                         *ngIf="roomForm.controls['roomDes'].dirty && roomForm.hasError('required', 'roomDes')">Description is

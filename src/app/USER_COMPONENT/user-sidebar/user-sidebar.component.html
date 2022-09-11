@@ -1,1 +1,116 @@
-<p>user-sidebar works!</p>
+<!-- Vertical Navbar -->
+<nav
+class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light border-bottom border-bottom-lg-0 border-end-lg" style=" background-color: #112A48;"
+id="navbarVertical" 
+>
+<div class="container-fluid">
+  <!-- Toggler -->
+  <button
+    class="navbar-toggler ms-n2"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarCollapse"
+    aria-controls="sidebarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Brand -->
+  <a class="navbar-brand py-lg-3 mb-lg-3 px-lg-6 me-0" href="#">
+    <img
+      src="/assets/images/LOGO (2).png"
+      alt="..." style="height: 130px;"
+    />
+  </a>
+  <!-- User menu (mobile) -->
+  <div class="navbar-user d-lg-none d-sm-none">
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <!-- Toggle -->
+      <a
+        href="#"
+        id="sidebarAvatar"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <div class="avatar-parent-child">
+          <img
+            alt="Image Placeholder"
+            src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+            class="avatar avatar- rounded-circle"
+          />
+          <span class="avatar-child avatar-badge bg-success"></span>
+        </div>
+      </a>
+      <!-- Menu -->
+      <div
+        class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="sidebarAvatar"
+      >
+        <a href="#" class="dropdown-item">Profile</a>
+        <a href="#" class="dropdown-item">Settings</a>
+        <a href="#" class="dropdown-item">Billing</a>
+        <hr class="dropdown-divider" />
+        <a href="#" class="dropdown-item">Logout</a>
+      </div>
+    </div>
+  </div>
+  <!-- Collapse -->
+  <div class="collapse navbar-collapse" id="sidebarCollapse">
+    <!-- Navigation -->
+    <ul class="navbar-nav mt-3">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/user">
+          <i class="bi bi-house"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/user-booking">
+          <i class="bi bi-bar-chart"></i>Booking
+        </a>
+      </li>
+
+    </ul>
+    <!-- Divider -->
+    <hr class="navbar-divider my-5 opacity-20" />
+    <!-- Navigation -->
+
+    <!-- Push content down -->
+    <div class=""></div>
+    <!-- User (md) -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/account-details">
+          <i class="bi bi-person-square"></i> Account Details
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" data-toggle="modal" data-target="#exampleModalCenter">
+          <i class="bi bi-box-arrow-left"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+
+
+<!-- Logout Modal -->
+<div class="modal fade shadow justify-content-center" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center"><i class="bi bi-question-circle-fill"></i></div>
+        <h4 class="modal-title text-center" id="exampleModalCenterTitle">Are you sure you want to log out?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" >Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

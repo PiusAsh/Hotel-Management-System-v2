@@ -1,0 +1,45 @@
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+#navbarVertical{
+    background-color: #112A48;
+}
+
+/* .nav-link{
+    color: white!important;
+} */
+
+.nav-item:hover, .nav-link:hover{
+background-color: white!important;
+color: #112A48!important;
+}
+.nav-link{
+    cursor: pointer;
+}
+
+.bi-question-circle-fill{
+    font-size: 50px;
+    color: #112A48;
+    
+}
+
+/* .modal-content{
+    border: 2px solid #112A48!important;
+} */
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
+}
+.btn-primary{
+    background-color: #112A48;
+    border: none;
+}
+.btn-primary:active{
+    background-color: #112A48;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: #112A48;
+    border: none;
+}
