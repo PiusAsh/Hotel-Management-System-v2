@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from "@angular/common/http"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegistrationComponent } from './AUTH/user-registration/user-registration.component';
 import { RoomListComponent } from './Admin_dashboard/room-list/room-list.component';
 import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
+import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +55,14 @@ import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-detai
     RegisteredUsersComponent,
     UserRegistrationComponent,
     RoomListComponent,
-    UserAccountDetailsComponent
+    UserAccountDetailsComponent,
+    ViewRoomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

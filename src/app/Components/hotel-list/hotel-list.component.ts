@@ -1,4 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { RoomService } from 'src/app/Services/room.service';
+import { IRoom } from 'src/app/Shared/IRoom';
 
 @Component({
   selector: 'app-hotel-list',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hotel-list.component.css']
 })
 export class HotelListComponent implements OnInit {
-
-  constructor() { }
+rooms: IRoom[] = [];
+  constructor(private roomService : RoomService) {
+    this.rooms = roomService.getAll();
+   }
 
   ngOnInit(): void {
   }

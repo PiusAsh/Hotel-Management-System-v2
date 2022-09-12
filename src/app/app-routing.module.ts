@@ -19,6 +19,8 @@ import { RoomListComponent } from './Admin_dashboard/room-list/room-list.compone
 import { UserDashboardComponent } from './USER_COMPONENT/user-dashboard/user-dashboard.component';
 import { UserSidebarComponent } from './USER_COMPONENT/user-sidebar/user-sidebar.component';
 import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
+import { HotelListComponent } from './Components/hotel-list/hotel-list.component';
+import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.component';
 
 const routes: Routes = [
   {
@@ -46,10 +48,16 @@ const routes: Routes = [
     path: 'rooms', component: HotelRoomsComponent
   },
   {
+    path: 'room', component: HotelListComponent
+  },
+  {
     path: 'reg-users', component: RegisteredUsersComponent
   },
   {
     path: 'bookings', component: BookedRoomsComponent
+  },
+  {
+    path: 'room/:id', component: ViewRoomComponent
   },
   
   {

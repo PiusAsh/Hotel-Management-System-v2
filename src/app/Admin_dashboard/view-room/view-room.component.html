@@ -1,0 +1,18 @@
+<app-navbar class=""></app-navbar>
+<div class="py-5 bg-light">
+    <div class="text-center py-5">
+        <p><a class="homeLink me-1" routerLink="/">Home</a>><span class="ms-1">Cart</span></p>
+        <h2 class="fw-bold">Cart</h2>
+    </div>
+
+</div>
+    <div class="container py-5">
+        <h1>{{room.roomName}}</h1>
+<img [src]="room.roomImage" [alt]="room.roomName">
+<h2>{{room.roomType}}</h2>
+<h2>{{room.roomDescription}}</h2>
+<h2>{{room.roomPrice | currency}}</h2>
+
+        </div>
+        <app-footer></app-footer>
+    
