@@ -1,9 +1,69 @@
 .container{
-    
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* text-align: center; */
 }
 .homeLink{
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     color: #112A48;
+}
+@media only screen and (min-width: 768px) {
+    .image img{
+        border-radius: 6px;
+        width: 350px;
+        height: 350px;
+    }
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {    .image img{
+    border-radius: 6px;
+    width: 350px;
+    height: 350px;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .image img{
+        border-radius: 6px;
+        width: 350px;
+        height: 350px;
+    }
+    
+}
+.image img{
+    border-radius: 6px;
+    
+}
+
+.price{
+    font-size: 25px;
+    font-weight: 600;
+}
+.name{
+    font-size: 23px;
+    font-weight: 500;
+}
+.title{
+    font-weight: 500;
+}
+.des{
+    font-size: 16px;
+    /* width: 400px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+
+}
+.cart, .price{
+    color: #112A48;
+}
+.btn-secondary{
+    background-color: #112A48;
+    border: none;
+    border-radius: 6px;
 }

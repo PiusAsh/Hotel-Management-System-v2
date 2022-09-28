@@ -14,6 +14,7 @@
           </div>
           <form [formGroup]="registerForm" (click)="submit()">
             <p class="text-center text-info h6" *ngIf="!registerForm.valid">Please fill in all information</p>
+            <p class="text-center text-success h6" *ngIf="registerForm.valid">Nice One! Please click on register</p>
             <!-- first name and last name input -->
             <div class="row mb-2">
               <div class="col-sm-12 col-lg-6 col-md-6 mb-2">
@@ -29,6 +30,11 @@
               <div class="col-sm-12 col-lg-6 col-md-6">
                 <div class="form-outline">
                   <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+
+                                    <span class="text-danger"
+                  *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')">Last
+                  Name is
+                  required</span>
                 </div>
               </div>
             </div>
@@ -48,6 +54,10 @@
               <div class="col-sm-12 col-lg-6 col-md-6">
                 <div class="form-outline">
                   <input type="text" class="form-control" formControlName="phoneNo" placeholder="Phone Number">
+                  <span class="text-danger"
+                  *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Last
+                  Name is
+                  required</span>
                 </div>
               </div>
             </div>

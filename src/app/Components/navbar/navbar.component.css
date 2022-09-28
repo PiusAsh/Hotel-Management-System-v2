@@ -12,6 +12,8 @@
     text-decoration: none!important;
     list-style: none;
     color: white ;
+    align-items: center;
+    align-content: center;
 }
 .topDiv{
     justify-content: end;
@@ -28,7 +30,8 @@
 
     font-size: 14px !important;
     color: white !important;
-    background-color: #112A48 !important;
+    /* background-color: #112A48 !important; */
+    background-color: #D9A000;
     padding-left: 11px;
     padding-right: 11px;
     padding-top: 12px;

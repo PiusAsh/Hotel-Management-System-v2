@@ -1,18 +1,43 @@
 <app-navbar class=""></app-navbar>
 <div class="py-5 bg-light">
-    <div class="text-center py-5">
-        <p><a class="homeLink me-1" routerLink="/">Home</a>><span class="ms-1">Cart</span></p>
-        <h2 class="fw-bold">Cart</h2>
+    <div class="text-center">
+        <p><a class="homeLink me-1" routerLink="/">Home</a>> <span class="ms-1"><a class="homeLink me-1" routerLink="/room">Rooms</a>> </span><span><a class="homeLink me-1" routerLink="/">{{room.roomName}}</a></span></p>
+        <h2 class="divider"></h2>
     </div>
-
 </div>
-    <div class="container py-5">
-        <h1>{{room.roomName}}</h1>
-<img [src]="room.roomImage" [alt]="room.roomName">
-<h2>{{room.roomType}}</h2>
-<h2>{{room.roomDescription}}</h2>
-<h2>{{room.roomPrice | currency}}</h2>
+<div class="container py-5 mt-4">
+    <div class="image">
+        <img class="shadow" [src]="room.roomImage" [alt]="room.roomName"> 
+    </div>
+    
+<div class="itens py-5 ms-5">
+    <p class="title">Name: <span class="name fw-bold">{{room.roomName}}</span></p>
+    <!-- <button class="btn btn-info">{{room.roomType}}</button> -->
+    <p class="title">Type: <span class="type mb-2 fw-bold">{{room.roomType}}</span></p>
+    <p class="title">Price: <span class="price">{{room.roomPrice | currency:"₦"}}</span></p>
+    <p class="des mb-4">{{room.roomDescription}}</p>
+     <button class="btn btn-secondary w-100 py-2 fw-bold">BOOK NOW</button>
+     
+     <hr class="navbar-divider">
+     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, voluptate?</p>
+     <hr class="navbar-divider">
+</div>
+</div>
+<!-- <div class="col-lg-2"></div>
+<div class="col-lg-8 container py-3">
+    <div class="container py-5 px-5">
+    <div class="image  me-5">
+        <img class="shadow" [src]="room.roomImage" [alt]="room.roomName"> 
+    </div>
+    <div class="items py-5">
+        <p class="">Price: <span class="price">{{room.roomPrice | currency:"₦"}}</span></p>
+        <p class="">Name: <span class="name fw-bold">{{room.roomName}}</span></p>
+        <p class="">Type: <span class="type mb-2 fw-bold">{{room.roomType}}</span></p>
+        <p class="des mb-4">{{room.roomDescription}}</p>
+         <button class="btn btn-secondary w-100 py-2 fw-bold">BOOK NOW</button>
+    </div>
+</div></div>
+<div class="col-lg-2"></div> -->
 
-        </div>
-        <app-footer></app-footer>
+<app-footer></app-footer>
     
