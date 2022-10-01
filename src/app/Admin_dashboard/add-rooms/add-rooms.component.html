@@ -1,115 +1,150 @@
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row">
+  <!-- Vertical Navbar -->
+  <app-admin-side-bar></app-admin-side-bar>
 
-
-
-    <!-- Dashboard -->
-    <div class="d-flex flex-column flex-lg-row">
-        <!-- Vertical Navbar -->
-        <app-admin-side-bar></app-admin-side-bar>
-      
-        <!-- Main content -->
-        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
-          <!-- Header -->
-          <header class="bg-surface-primary border-bottom pt-6">
-            <div class="container-fluid">
-              <div class="mb-npx">
-                <div class="row align-items-center">
-                  <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                    <!-- Title -->
-                    <h1 class="h3 mb-0 ls-tight py-5 ">Add room</h1>
-                    
-                  </div>
-                  <!-- Actions -->
-                  <div class="col-sm-6 col-12 text-sm-end">
-
-                  </div>
-                </div>
-             
-
-              </div>
+  <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <!-- Header -->
+    <header class="bg-surface-primary border-bottom pt-6">
+      <div class="container-fluid">
+        <div class="mb-npx">
+          <div class="row align-items-center">
+            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+              <!-- Title -->
+              <h1 class="h3 mb-0 ls-tight py-5">Add room</h1>
             </div>
-          </header>
-      
-          <!-- Main -->
-      
-          <main class="py-6 ">
-
-            
-            <div class="container">
-
-              <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-6"><div class="container ">
-                  <div class="container">
-                    <form>
-                      <div class="form mb-2">
-                        <span >Room Name</span>
-                        <div class="">
-
-                          <input type="text" formControlName="roomName" class="form-control" placeholder="Room Name">
-                          <span class="text-danger"
-                          *ngIf="roomForm.controls['roomName'].dirty && roomForm.hasError('required', 'roomName')">Room Name is
-                          required</span>
-                        </div>
-                      </div>
-                      
-
-                      <div class="form mb-2">
-                        <span >Room Type</span>
-                        <select name="Select Room Type" formControlName="roomType" class="form-control py-1">
-                          <option>Select Room Type</option>
-                          <option value="Single">Single</option>
-                          <option value="Double">Double</option>
-                          <option value="Triple">Triple</option>
-                          <option value="Quad">Quad</option>
-                          <option value="King">King</option>
-                          <option value="Queen">Queen</option>
-                        </select>
-                        <span class="text-danger"
-                        *ngIf="roomForm.controls['roomType'].dirty && roomForm.hasError('required', 'roomType')">Room Type is
-                        required</span>
-                        
-                      </div>
-
-                      <div class="form mb-2">
-                        <span >Room Price</span>
-                        <input type="number" formControlName="roomPrice" class="form-control" placeholder="Price">
-                        <span class="text-danger"
-                        *ngIf="roomForm.controls['roomPrice'].dirty && roomForm.hasError('required', 'roomPrice')">Price is
-                        required</span>
-                    </div>
-                      <div class="form">
-                        <span >Room Thumbnail</span>
-                        <input type="file" formControlName="roomImg" class="form-control" placeholder="Image">
-                        <span class="text-danger"
-                        *ngIf="roomForm.controls['roomImg'].dirty && roomForm.hasError('required', 'roomImg')">Thumbnail can't be empty</span>
-                    </div>
-
-                      <div class="form ">
-                        <span >Room Description</span>
-                        <textarea class="form-control" formControlName="roomDes" placeholder="Room Description" cols="30" rows="10"></textarea>
-                        <span class="text-danger"
-                        *ngIf="roomForm.controls['roomDes'].dirty && roomForm.hasError('required', 'roomDes')">Description is
-                        required</span>
-                          
-                      </div>
-                      
-                      <div class="login-button">
-                          <button [disabled]="!roomForm.invalid" class="btn btn-success w-100">Add</button>
-                      </div>
-                      
-                    </form>
-                  </div>
-              </div></div>
-                <div class="col-lg-2"></div>
-              </div>
-              
-            
-            </div>
-          </main>
+            <!-- Actions -->
+            <div class="col-sm-6 col-12 text-sm-end"></div>
+          </div>
         </div>
       </div>
-      
+    </header>
 
+    <!-- Main -->
 
-      
-    
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-6">
+            <div class="container">
+              <div class="container">
+                <form  [formGroup]="roomForm" (ngSubmit)="AddRooms()">
+                  <div class="form mb-2">
+                    <span>Room Name</span>
+                    <div class="">
+                      <input
+                        type="text"
+                        formControlName="roomName"
+                        class="form-control"
+                        placeholder="Room Name"
+                      />
+                      <span
+                        class="text-danger"
+                        *ngIf="
+                          roomForm.controls['roomName'].dirty &&
+                          roomForm.hasError('required', 'roomName')
+                        "
+                        >Room Name is required</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form mb-2">
+                    <span>Room Type</span>
+                    <select
+                      name="Select Room Type"
+                      formControlName="roomType"
+                      class="form-control py-1"
+                    >
+                      <option>Select Room Type</option>
+                      <option value="Single">Single</option>
+                      <option value="Double">Double</option>
+                      <option value="Triple">Triple</option>
+                      <option value="Quad">Quad</option>
+                      <option value="King">King</option>
+                      <option value="Queen">Queen</option>
+                    </select>
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        roomForm.controls['roomType'].dirty &&
+                        roomForm.hasError('required', 'roomType')
+                      "
+                      >Room Type is required</span
+                    >
+                  </div>
+
+                  <div class="form mb-2">
+                    <span>Room Price</span>
+                    <input
+                      type="number"
+                      formControlName="roomPrice"
+                      class="form-control"
+                      placeholder="Price"
+                    />
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        roomForm.controls['roomPrice'].dirty &&
+                        roomForm.hasError('required', 'roomPrice')
+                      "
+                      >Price is required</span
+                    >
+                  </div>
+                  <div class="form">
+                    <span>Room Thumbnail</span>
+                    <input
+                      type="file"
+                      formControlName="roomImg"
+                      class="form-control"
+                      placeholder="Image" id="image_file"
+                    />
+                    <!-- <span
+                      class="text-danger"
+                      *ngIf="
+                        roomForm.controls['roomImg'].dirty &&
+                        roomForm.hasError('required', 'roomImg')
+                      "
+                      >Thumbnail can't be empty</span
+                    > -->
+                  </div>
+
+                  <div class="form">
+                    <span>Room Description</span>
+                    <textarea
+                      class="form-control"
+                      formControlName="roomDes"
+                      placeholder="Room Description"
+                      cols="30"
+                      rows="10"
+                    ></textarea>
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        roomForm.controls['roomDes'].dirty &&
+                        roomForm.hasError('required', 'roomDes')
+                      "
+                      >Description is required</span
+                    >
+                  </div>
+
+                  <div class="login-button">
+                    <button
+
+                      class="btn btn-success w-100"
+                    >
+                      Add
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

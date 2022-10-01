@@ -7,7 +7,7 @@
 </div>
 <div class="container py-5 mt-4">
     <div class="image">
-        <img class="shadow" [src]="room.roomImage" [alt]="room.roomName"> 
+        <img class="shadow" [src]="room.roomImg" [alt]="room.roomName"> 
     </div>
     
 <div class="itens py-5 ms-5">
@@ -15,7 +15,7 @@
     <!-- <button class="btn btn-info">{{room.roomType}}</button> -->
     <p class="title">Type: <span class="type mb-2 fw-bold">{{room.roomType}}</span></p>
     <p class="title">Price: <span class="price">{{room.roomPrice | currency:"₦"}}</span></p>
-    <p class="des mb-4">{{room.roomDescription}}</p>
+    <p class="des mb-4">{{room.roomDes}}</p>
      <button class="btn btn-secondary w-100 py-2 fw-bold">BOOK NOW</button>
      
      <hr class="navbar-divider">

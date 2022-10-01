@@ -1,0 +1,10 @@
+{
+  "/countSum": {
+    "target": "https://localhost:44370/api",
+    "secure": true,
+    "pathRewrite": {
+      "^/countSum": ""
+    },
+    "changeOrigin": true
+  }
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import Swal from 'sweetalert2';
 import { User } from '../Models/user';
 import { UserService } from '../Services/user.service';
 
@@ -14,7 +15,19 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   IsSubmitted = false;
 
-  user: User[] = [];
+  user: User = {
+    Id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: 0,
+    address: '',
+    state: '',
+    country: '',
+    password: '',
+    dateOfBirth: '',
+    gender: ''
+  };
   constructor(
     private formBuilder: FormBuilder,
     private toast: NgToastService,
@@ -23,11 +36,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.http.Userlogin().subscribe((res: any) => {
-    //   console.log(res);
-    //   this.user = res;
-    // });
-
     this.loginForm = this.formBuilder.group({
       email: [
         '',
@@ -41,7 +49,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  Userlogin() {
-    console.log(this.loginForm.value);
+  Login() {
+    this.http.LoginUser(this.user).subscribe({
+      next: (res) => {
+        this.user = res;
+        console.log(res);
+        this.route.navigate(['user']);
+      },
+    });
   }
 }

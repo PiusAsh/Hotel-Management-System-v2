@@ -60,6 +60,15 @@ function activaTab(tab){
 };</script>
 
 
+<!-- IMAGE TO URL  -->
+<script>document.querySelector('#image_file').onchange = function(){
+  var reader = new FileReader();
+  reader.onloadend = function () {
+    document.querySelector('textarea').value = reader.result;
+  }
+  reader.readAsDataURL(this.files[0]);
+};</script>
+<!-- END OF IMAGE TO URL  -->
 
 
 <!-- BAR CHART -->

@@ -5,17 +5,20 @@
         <p class="text-center mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, odit. <br> Non quisquam eos debitis dolores.</p>
     </div>  
 </div>
+
+                 
 <div class="rooms container mb-5">
             <div class="card shadow me-4 mb-3" *ngFor="let room of rooms">
-                <div> <img [src]="room.roomImage" [alt]="room.roomName" class="card-img-top"> </div>
+                <div > <img src="assets/images/{{ room.roomImg }}"
+                  [alt]="room.roomName" class="card-img-top"> </div>
                 <p class="rating">5.0</p>
                 <div class="card-body">
                     <h5 class="card-title">{{room.roomName}}</h5>
-                    <p class="card-text"><i class="fa fa-map-marker marker"></i> {{room.roomDescription}}</p>
+                    <p class="card-text"><i class="fa fa-map-marker marker"></i> {{room.roomDes}}</p>
                     <p class="card-text"><i class="fa fa-star star-rating"></i><i class="fa fa-star star-rating"></i><i class="fa fa-star star-rating"></i><i class="fa fa-star star-rating"></i></p>
                     <div class="add">
                         <p class="card-text price">{{room.roomPrice | currency}}</p>
-                        <a class="text-decoration-none" routerLink="/room/{{room.roomName}}"><p class="book">Book Now</p></a>
+                        <a class="text-decoration-none" routerLink="/room/{{room.id}}"><p class="book">Book Now</p></a>
                     </div>
                 </div>
             </div>

@@ -9,32 +9,26 @@ import { User } from '../Models/user';
 })
 export class UserService {
   baseApiUrl: string = environment.baseApiUrl;
+
+  MyHeader = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+      'Access-Control-Allow-Headers': 'application/json',
+      'Access-Control-Allow-Origin': this.baseApiUrl,
+    },
+  };
+
   constructor(private http: HttpClient) {}
 
-  // login(username: string, password: string): Observable<any> {
-  //   return this.http.post(this.baseApiUrl + 'signin', {
-  //     username,
-  //     password,
-  //   });
-  // }
-
-  // GET BANK TRANSACTIONS METHOD
-  // LoginUser(): any {
-  //   return this.http
-  //     .post(`${this.baseApiUrl}/Auth/Login`, JSON.stringify(any))
-  //     .pipe(
-  //       map((data) => {
-  //         console.log(data);
-  //         return data;
-  //       })
-  //     );
-  Userlogin() {
-    this.http.get<any>(this.baseApiUrl).subscribe(
-      (res) => {
-
-      }
-    );
+  LoginUser(login: User): Observable<User> {
+    return this.http.post<User>(this.baseApiUrl + '/Auth/Login', login);
   }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseApiUrl + '/Auth/RegisteredUsers');
   }
+  
+}
   
 
