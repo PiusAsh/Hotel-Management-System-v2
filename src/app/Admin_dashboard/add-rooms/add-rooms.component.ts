@@ -48,7 +48,7 @@ export class AddRoomsComponent implements OnInit {
     console.log(this.rooms.roomImg);
     this.rooms.roomImg = this.rooms.roomImg
       .slice(this.rooms.roomImg.indexOf('fakepath'))
-      .replace('fakepath\\', '');
+      .replace('fakepath\\', 'assets/images/');
 
     console.log(this.rooms.roomImg);
     this.http.AddRooms(this.rooms).subscribe((res: any) => {

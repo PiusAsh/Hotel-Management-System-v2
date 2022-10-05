@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import Swal from 'sweetalert2';
-import { User } from '../Models/user';
+import { LoginResponse, User } from '../Models/user';
 import { UserService } from '../Services/user.service';
 
 @Component({
@@ -13,20 +13,24 @@ import { UserService } from '../Services/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  IsSubmitted = false;
+  // IsSubmitted = false;
 
   user: User = {
-    Id: 0,
+    id: 0,
     firstName: '',
     lastName: '',
     email: '',
-    phoneNo: 0,
+    phoneNo: '',
     address: '',
     state: '',
     country: '',
     password: '',
     dateOfBirth: '',
-    gender: ''
+    gender: '',
+  };
+  loginResponse: LoginResponse = {
+    Message: '',
+    userData: '',
   };
   constructor(
     private formBuilder: FormBuilder,
@@ -50,12 +54,26 @@ export class LoginComponent implements OnInit {
   }
 
   Login() {
-    this.http.LoginUser(this.user).subscribe({
-      next: (res) => {
-        this.user = res;
-        console.log(res);
-        this.route.navigate(['user']);
-      },
+    this.user = this.loginForm.value;
+    this.http.LoginUser(this.user).subscribe((res: any) => {
+      this.loginResponse = res;
+      // localStorage.setItem('user', JSON.stringify(this.user));
+      console.log('******return1', res);
+      //this.loginForm.reset();
+      // this.route.navigate(['user/:id']);
+      this.route.navigate([`user/${this.loginResponse.userData}`]);
     });
   }
+
+  // Login() {
+  //   setTimeout(() => {
+  //     console.log(this.user);
+  //     this.http.LoginUser(this.user).subscribe({
+  //       next: (response) => {
+  //       alert(response.id)
+  //       this.route.navigate([`user/${response.id}`])
+  //       },
+  //     });
+  //   }, 1500);
+  // }
 }

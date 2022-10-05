@@ -31,6 +31,108 @@
     background-color: #fff;
     background-clip: border-box;
     border: none;
+    border-radius: .25rem;
+    /* width: 250px; */
+}
+
+.card-title {
+    
+    font-style: normal;
+    font-weight: 500;
+    color:#D9A000;
+}
+
+.card-text {
+
+    font-style: normal;
+    font-weight: 100;
+    font-size: 13px
+}
+
+.marker {
+    color: red
+}
+
+.star-rating {
+    color: #f7b944
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.book{
+    background-color: #D9A000;
+    color: black;
+    font-weight: 500;
+    padding: 6px;
+}
+.exp{
+    background-color: #D9A000;
+    color: black;
+    font-weight: 500;
+    padding: 11px;
+    text-decoration: none;
+}
+.add{
+    display: flex;
+    justify-content: space-between;
+}
+.rooms{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .card{
+        width: 250px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {    .card{
+    width: 250px;
+}}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {    .card{
+    width: 250px;
+}}
+
+
+.rating {
+    position: relative;
+    display: flex;
+    width: 2.875rem;
+    height: 2.875rem;
+    margin-top: -1.75rem;
+    margin-left: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    border: .25rem solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #D9A000;
+}
+
+.image {
+    max-width: 100%
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none;
     border-radius: .25rem
 }
 

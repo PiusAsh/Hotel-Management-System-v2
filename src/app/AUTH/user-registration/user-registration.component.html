@@ -13,10 +13,10 @@
             </div>
             
             
-            <form [formGroup]="registerForm" (click)="register()">
+            <form [formGroup]="registerForm" (ngSubmit)="Register()">
                 <div class="row">
-                <p class="text-center text-info h6" *ngIf="!registerForm.valid">Please fill in all information</p>
-                <p class="text-center text-info h6" *ngIf="registerForm.valid">Nice One! Click on the Register button to proceed</p>
+                <!-- <p class="text-center text-info h6" *ngIf="!registerForm.valid">Please fill in all information</p>
+                <p class="text-center text-info h6" *ngIf="registerForm.valid">Nice One! Click on the Register button to proceed</p> -->
 
                             <!-- FIRST NAME  -->
           
@@ -40,7 +40,7 @@
 
                 <div class="col-sm-12 col-lg-6 col-md-6"><div class="form">
 
-                    <input type="text" autocomplete="chrome-off" class="form-control" formControlName="email" placeholder="Email address">
+                    <input type="email" required="email" autocomplete="chrome-off" class="form-control" formControlName="email" placeholder="Email address">
                     <span class="text-danger"
                     *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
                     Email is
@@ -49,7 +49,7 @@
                 </div></div>
                 <div class="col-sm-12 col-lg-6 col-md-6"> <div class="form">
 
-                    <input autocomplete="chrome-off" ngModel maxlength="11" type="number" class="form-control" formControlName="phoneNo" placeholder="Phone Number">
+                    <input autocomplete="chrome-off" type="text" class="form-control" formControlName="phoneNo" placeholder="Phone Number">
                     <span class="text-danger"
                     *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Phone Number is
                     required</span>
@@ -97,6 +97,9 @@
                     *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required', 'confirmPassword')">Confirm your password</span>
 
                 </div></div>
+            <!-- <div class="login-button">
+                <button class="btn btn-success w-100">Register</button>
+            </div> -->
             <div class="login-button">
                 <button class="btn btn-success w-100" [disabled]="!registerForm.valid">Register</button>
             </div>

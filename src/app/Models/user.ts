@@ -1,9 +1,9 @@
 export interface User {
-  Id: number;
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
-  phoneNo: number;
+  phoneNo: string;
   address: string;
   state: string;
   country: string;
@@ -11,3 +11,8 @@ export interface User {
   dateOfBirth: string;
   gender: string;
 }
+
+export interface LoginResponse {
+    Message :string;
+    userData: string
+  }

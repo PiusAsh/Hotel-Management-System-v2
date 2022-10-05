@@ -30,6 +30,8 @@ import { UserRegistrationComponent } from './AUTH/user-registration/user-registr
 import { RoomListComponent } from './Admin_dashboard/room-list/room-list.component';
 import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
 import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.component';
+import { ViewUserComponent } from './Components/view-user/view-user.component';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.compone
     RoomListComponent,
     UserAccountDetailsComponent,
     ViewRoomComponent,
+    ViewUserComponent,
   ],
   imports: [
     BrowserModule,

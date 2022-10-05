@@ -21,72 +21,98 @@ import { UserSidebarComponent } from './USER_COMPONENT/user-sidebar/user-sidebar
 import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
 import { HotelListComponent } from './Components/hotel-list/hotel-list.component';
 import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.component';
+import { ViewUserComponent } from './Components/view-user/view-user.component';
 
 const routes: Routes = [
   {
-    path: 'register', component: UserRegistrationComponent
+    path: 'register',
+    component: UserRegistrationComponent,
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: 'room-list', component: RoomListComponent
+    path: 'room-list',
+    component: RoomListComponent,
   },
   {
-    path: 'admin', component: AdminDashboardComponent
+    path: 'admin',
+    component: AdminDashboardComponent,
   },
   {
-    path: '', component: HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
-    path: 'edit', component: EditUserComponent
+    path: 'edit',
+    component: EditUserComponent,
   },
   {
-    path: 'receipt', component: ReceiptComponent
+    path: 'receipt',
+    component: ReceiptComponent,
   },
   {
-    path: 'rooms', component: HotelRoomsComponent
+    path: 'rooms',
+    component: HotelRoomsComponent,
   },
   {
-    path: 'room', component: HotelListComponent
+    path: 'room',
+    component: HotelListComponent,
   },
   {
-    path: 'reg-users', component: RegisteredUsersComponent
+    path: 'reg-users',
+    component: RegisteredUsersComponent,
   },
   {
-    path: 'bookings', component: BookedRoomsComponent
+    path: 'bookings',
+    component: BookedRoomsComponent,
   },
   {
-    path: 'room/:id', component: ViewRoomComponent
-  },
-  
-  {
-    path: 'add', component: AddRoomsComponent
+    path: 'view-user/:id',
+    component: ViewUserComponent,
   },
   {
-    path: 'testing', component: TestingComponent
+    path: 'room/:id',
+    component: ViewRoomComponent,
+  },
+
+  {
+    path: 'add',
+    component: AddRoomsComponent,
   },
   {
-    path: 'sidebar', component: AdminSideBarComponent
+    path: 'testing',
+    component: TestingComponent,
   },
   {
-    path: 'account-details', component: UserAccountDetailsComponent
+    path: 'sidebar',
+    component: AdminSideBarComponent,
   },
   {
-    path: 'test', component: TestimonialComponent
+    path: 'account-details',
+    component: UserAccountDetailsComponent,
   },
   {
-    path: 'user', component: UserDashboardComponent
+    path: 'test',
+    component: TestimonialComponent,
   },
   {
-    path: 'user-bar', component: UserSidebarComponent
+    path: 'user/:id',
+    component: UserDashboardComponent,
   },
   {
-    path: 'analytics', component: AnalyticsComponent
+    path: 'user-bar',
+    component: UserSidebarComponent,
   },
   {
-    path: 'signup', component: RegisterComponent
-  }
+    path: 'analytics',
+    component: AnalyticsComponent,
+  },
+  {
+    path: 'signup',
+    component: RegisterComponent,
+  },
 ];
 
 @NgModule({

@@ -11,7 +11,7 @@
             <!-- <img src="/assets/images/LOGO (1).jpg" alt="" style="width: 190px;"><br> -->
             <!-- <h4>Signin</h4> -->
         </div>
-        <form [formGroup]="loginForm" (click)="Login()">
+        <form [formGroup]="loginForm" (ngSubmit)="Login()">
             <p class="text-center text-info h6" *ngIf="!loginForm.valid">Please fill in all information</p>
         <div class="form">
             <label>Email Address</label>

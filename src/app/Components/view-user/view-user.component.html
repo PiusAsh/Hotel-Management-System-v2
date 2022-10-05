@@ -1,0 +1,259 @@
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row">
+  <!-- Vertical Navbar -->
+
+  <app-admin-side-bar></app-admin-side-bar>
+
+  <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <!-- Header -->
+    <header class="bg-surface-primary border-bottom pt-6">
+      <div class="container-fluid">
+        <div class="mb-npx">
+          <div class="row align-items-center">
+            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+              <h1 class="h4 mb-0 ls-tight py-5">
+                {{ user.lastName }}'s Profile
+              </h1>
+            </div>
+
+            <div class="col-sm-6 col-12 text-sm-end"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+
+    <main class="py-6">
+      <div class="container">
+        <div class="main-body">
+          <!-- Breadcrumb -->
+          <!-- <nav aria-label="breadcrumb" class="main-breadcrumb p-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a routerLink="/admin">Overview </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a routerLink="/reg-users">User</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                User Profile
+              </li>
+            </ol>
+          </nav> -->
+          <!-- /Breadcrumb -->
+
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-1">
+              <div class="card">
+                <div class="card-body">
+                  <div
+                    class="d-flex flex-column align-items-center text-center"
+                  >
+                  <i class="bi bi-person-circle"></i>
+                    <!-- <img
+                      src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                      alt="Admin"
+                      class="rounded-circle"
+                      width="150"
+                    /> -->
+                    <div class="">
+                      <h5>{{user.firstName}} {{user.lastName}}</h5>
+                      <!-- <p class="text-secondary mb-1">Full Stack Developer</p> -->
+                      <p class="text-muted font-size-sm mb-1">
+                        {{user.state}}, {{user.country}}
+                      </p>
+
+                      <button class="btn-sm btn-outline-primary"><a href="tel:{{user.phoneNo}}">Call </a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Recent Booking</h6>
+                    <span class="text-secondary">Arsenal</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Checkout Time</h6>
+                    <span class="text-secondary">20-07-2022</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Total Booking</h6>
+                    <span class="text-secondary">5 Times</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">First Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.firstName}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.lastName}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.email}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone Number</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.phoneNo}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Gender</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.gender}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">State</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.state}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Country</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.country}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.address}}
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-8 py-3">
+
+                        <form (ngSubmit)="updateUser()">
+    
+                <div class="row mt-5">
+                  <div class="col-lg-4">
+                                  <span class="label">First Name</span>
+                                  <input type="text" autocomplete="chrome-off"  [(ngModel)]="user.firstName" class="form-control" formControlName="firstName" placeholder="First Name">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                                  <span class="label">Last Name</span>
+                                  <input type="text" autocomplete="chrome-off"   [(ngModel)]="user.lastName" class="form-control" formControlName="lastName" placeholder="Last Name">
+                  </div>
+                </div>
+                
+                
+                <div class="row mt-2">
+                  <div class="col-lg-4">
+                                  <span class="label">Phone Number</span>
+                                  <input autocomplete="chrome-off"   [(ngModel)]="user.phoneNo" type="number" class="form-control" formControlName="phoneNo" placeholder="Phone Number">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                                  <span class="label">Email Address</span>
+                                  <input type="text" autocomplete="chrome-off"   [(ngModel)]="user.email" class="form-control" formControlName="email" placeholder="Email address">
+                  </div>
+                </div>
+                
+                <div class="row mt-2">
+                  <div class="col-lg-4">
+                                  <span class="label">Date of Birth</span>
+                     <input type="date"
+                        class="form-control  shadow-sm d-flex align-items-center" id="exampleInputPassword1" >
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                                  <span class="label">Gender</span>
+                              <select class="form-select form-control flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
+                                <option selected hidden>Gender</option>
+                                <option class="valAmount" value="Male">Male</option>
+                                <option class="valAmount" value="Female">Female</option>
+                              </select>
+                  </div>
+                </div>
+                
+                <div class="row mt-2">
+                  <div class="col-lg-9">
+                                  <span class="label">Address</span>
+                                  <input autocomplete="chrome-off"    [(ngModel)]="user.address" type="text" class="form-control" formControlName="address" placeholder="Address">
+                  </div>
+                </div>
+                
+                <div class="row mt-2">
+                  <div class="col-lg-4">
+                    <span class="label">State</span>
+                    <input autocomplete="chrome-off" type="text"    [(ngModel)]="user.state" class="form-control" formControlName="state" placeholder="State">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-4">
+                    <span class="label">Country</span>
+                    <input autocomplete="chrome-off" type="text"    [(ngModel)]="user.country" class="form-control" formControlName="country" placeholder="Country">
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-lg-9">
+                
+                    <div class="col-12 p-0">
+                      <div class="btn btn-success w-100">Edit Info</div>
+                    </div>
+                  </div>
+                
+                </div>
+                
+                
+                        </form>
+                    </div>
+                    <div class="col-lg-2"></div>
+                  </div>
+            
+            </div> -->
+    </main>
+  </div>
+</div>

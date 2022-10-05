@@ -9,7 +9,7 @@
                  
 <div class="rooms container mb-5">
             <div class="card shadow me-4 mb-3" *ngFor="let room of rooms">
-                <div > <img src="assets/images/{{ room.roomImg }}"
+                <div > <img src="{{room.roomImg}}"
                   [alt]="room.roomName" class="card-img-top"> </div>
                 <p class="rating">5.0</p>
                 <div class="card-body">
@@ -17,7 +17,7 @@
                     <p class="card-text"><i class="fa fa-map-marker marker"></i> {{room.roomDes}}</p>
                     <p class="card-text"><i class="fa fa-star star-rating"></i><i class="fa fa-star star-rating"></i><i class="fa fa-star star-rating"></i><i class="fa fa-star star-rating"></i></p>
                     <div class="add">
-                        <p class="card-text price">{{room.roomPrice | currency}}</p>
+                        <p class="card-text price">{{room.roomPrice | currency: '₦'}}</p>
                         <a class="text-decoration-none" routerLink="/room/{{room.id}}"><p class="book">Book Now</p></a>
                     </div>
                 </div>

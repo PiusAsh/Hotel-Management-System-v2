@@ -13,34 +13,45 @@ import { IRoom } from '../Shared/IRoom';
 })
 export class RoomService {
   baseApiUrl: string = environment.baseApiUrl;
+  room: Room = {
+    roomName: '',
+    roomPrice: '',
+    roomDes: '',
+    id: 0,
+    roomImg: '',
+    roomType: '',
+  };
   constructor(private http: HttpClient) {}
-  getAll(): IRoom[] {
-    return sampleRoom;
-  }
-// room: Room = {
-//   roomName: '',
-//   roomPrice: '',
-//   roomDes: '',
-//   id: 0,
-//   roomImg: '',
-//   roomType: ''
-// };
-  GetRoomById(id: any): Observable<any> {
-    return this.http.get<any>(this.baseApiUrl + '/HotelRoom/GetRoomById' + id);
-  }
-
-
-  // getRoomById(roomName: any): IRoom {
-  //   return (
-  //     this.getAll().find((room) => room.roomName == roomName) ?? new IRoom()
-  //   );
+  // getAll():   Room[]{
+  //   return this.room;
+  // }
+  // getAll():   IRoom[] {
+  //   return sampleRoom;
   // }
 
-  getAllRooms(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseApiUrl + '/HotelRoom/GetAllRooms');
+  GetRoomById(id: any): Observable<any> {
+    return this.http.get<any>(
+      this.baseApiUrl + '/HotelRoom/GetRoomById?Id=' + id
+    );
+  }
+
+  getAllRooms(): Observable<Room[]> {
+    return this.http.get<Room[]>(this.baseApiUrl + '/HotelRoom/GetAllRooms');
   }
 
   AddRooms(room: Room): Observable<any> {
     return this.http.post<any>(this.baseApiUrl + '/HotelRoom/AddRoom', room);
+  }
+  DeleteRoom(id: string): Observable<Room> {
+    return this.http.delete<Room>(
+      this.baseApiUrl + '/HotelRoom/DeleteRoom' + id
+    );
+  }
+
+  updateRoom(id: string, update: Room): Observable<Room> {
+    return this.http.put<Room>(
+      this.baseApiUrl + '/HotelRoom/UpdateRoom' + id,
+      update
+    );
   }
 }
