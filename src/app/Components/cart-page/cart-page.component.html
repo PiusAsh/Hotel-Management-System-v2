@@ -1,9 +1,11 @@
 <app-navbar></app-navbar>
-<div class=" bg-light text-center">
+<!-- <div class=" bg-light text-center">
     <div class=" container text-center p-4">
         <p class="homeLink text-center px-5">Cart Page</p>
     </div>
-</div>
+</div> -->
+
+
 <!-- <p *ngFor="let cartItem of cart.items">
 
     <img [src]="cartItem.room.roomImg" alt="">
@@ -17,7 +19,9 @@
 
 
 <div *ngIf="cart && cart.items.length" class="container py-5">
-
+<div class="container">
+    <p class="cart">Cart</p>
+</div>
     <ul class="shadow-sm">
         <li *ngFor="let cartItem of cart.items">
             <div>

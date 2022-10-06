@@ -1,0 +1,27 @@
+<table class="shadow-sm">
+    <tr><td colspan="5">
+<h3>Order Items:</h3>
+    </td></tr>
+    <tr *ngFor="let item of order.items">
+        <td>
+        <a routerLink="/room/{{item.room.id}}">
+            <img [src]="item.room.roomImg" alt="{{item.room.roomName}}">
+        </a></td>
+        <td>
+            {{item.room.roomName}}
+        </td>
+        <td>{{item.room.roomPrice | currency: '₦'}}</td>
+        <td>
+           {{item.days}} 
+        </td>
+        <td>
+            {{item.price | currency: '₦'}}
+        </td>
+    </tr>
+    <tr>
+        <td class="colso" colspan="4"></td>
+        <td><strong>
+            {{order.totalPrice | currency: '₦'}}
+        </strong></td>
+    </tr>
+</table>

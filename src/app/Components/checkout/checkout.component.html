@@ -1,1 +1,74 @@
-<p>checkout works!</p>
+<app-navbar class=""></app-navbar>
+<app-not-found class="py-5"
+    [visible]="!order || !order.items.length"
+    notFoundMessage ="Checkout Page is empty"
+    resetLink="Go To HomePage">
+
+</app-not-found>
+
+<div *ngIf="order && order.items.length" class="container py-5">
+  <div class="row py-3">
+      <p class="checkout">Checkout</p>
+    <div class="col-lg-5">
+ <form>
+    <span class="label">Name</span>
+<input class="form-control mb-2" type="text" label="Name" readonly value="Pius Ashogbon">
+<span class="label">Email Address</span>
+<input class="form-control mb-2" type="text" label="Name" readonly value="Pius1ash@gmail.com">
+<span class="label">Phone Number</span>
+<input class="form-control" type="text" label="Name" readonly value="0904567890">
+<span class="label">Address</span>
+<input class="form-control" type="text" label="Name" readonly value="Plot J1B, Gateway Sparklight Estate">
+        </form>
+        
+            <!-- <form>
+                                <div class="row mt-2">
+                  <div class="col-lg-9">
+                                  <span class="label">Address</span>
+                                  <input autocomplete="chrome-off" type="text" class="form-control" formControlName="address" placeholder="Address">
+                  </div>
+                </div>
+                
+            </form> -->
+            
+                <!-- <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Recent Booking</h6>
+                    <span class="text-secondary">Arsenal</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Checkout Time</h6>
+                    <span class="text-secondary">20-07-2022</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Total Booking</h6>
+                    <span class="text-secondary">5 Times</span>
+                  </li>
+                </ul> -->
+            
+    </div>
+    <div class="col-lg-7">
+      <app-order-item-list [order]="order"></app-order-item-list>
+      <button (click)="createOrder()" class="btn btn-primary w-100 text-center py-2 mt-3">PROCEED TO PAYMENT</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container py-5">
+    <div class="content">
+        <form>
+<input type="text" label="Name" value="Pius Ashogbon">
+<input type="text" label="Name" value="Pius1ash@gmail.com">
+<input type="text" label="Name" value="0904567890">
+        </form>
+        <app-order-item-list [order]="order"></app-order-item-list>
+    </div>
+</div> -->
+
+<app-footer></app-footer>

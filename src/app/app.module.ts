@@ -34,6 +34,7 @@ import { ViewUserComponent } from './Components/view-user/view-user.component';
 import { CartPageComponent } from './Components/cart-page/cart-page.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
+import { OrderItemListComponent } from './Components/order-item-list/order-item-list.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { CheckoutComponent } from './Components/checkout/checkout.component';
     CartPageComponent,
     NotFoundComponent,
     CheckoutComponent,
+    OrderItemListComponent,
   ],
   imports: [
     BrowserModule,

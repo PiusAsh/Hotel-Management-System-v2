@@ -5,6 +5,13 @@
     /* margin: 1.5rem; */
     margin-top: 0.5rem;
 }
+
+.cart{
+
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+}
 ul{
     display: flex;
     flex-direction: column;

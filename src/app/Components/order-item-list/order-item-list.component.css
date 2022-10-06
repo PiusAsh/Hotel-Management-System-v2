@@ -1,0 +1,39 @@
+table{
+    width: 100%;
+    border: 1px solid #eeeeee;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    /* padding: 3rem 3rem; */
+}
+
+h3{
+    margin-top: 0.5rem;
+    margin-left: 3.3rem;
+    text-align: left!important;
+    color: black;
+}
+td img{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 100rem;
+        margin-left: 2rem;
+
+}
+td strong{
+    margin-bottom: 15px;
+}
+
+/* .shadow-sm{
+    padding: 10px!important;
+} */
+strong{
+    font-size: 20px;
+}
+strong::before{
+    content: "Total Price:";
+    font-size: 17px;
+    font-weight: 500;
+    color: grey;
+}
