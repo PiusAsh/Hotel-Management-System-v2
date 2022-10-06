@@ -1,11 +1,18 @@
 <app-navbar class=""></app-navbar>
-<div class="py-4 bg-light">
+
+    <app-not-found class="py-5"
+    [visible]="!room"
+    notFoundMessage ="Oops! Page doesn't exist"
+    resetLink="Go To HomePage">
+
+</app-not-found>
+<div *ngIf="room" class="py-4 bg-light">
     <div class="text-center">
         <p><a class="homeLink me-1" routerLink="/">Home</a>> <span class="ms-1"><a class="homeLink me-1" routerLink="/rooms">Rooms</a>> </span><span><a class="homeLink me-1" routerLink="/">{{room.roomName}}</a></span></p>
         <h2 class="divider"></h2>
     </div>
 </div>
-<div class="container py-5 mt-4">
+<div *ngIf="room.id" class="container py-5 mt-4">
     <div class="image">
         <img class="shadow" [src]="room.roomImg" [alt]="room.roomName"> 
     </div>
@@ -16,7 +23,7 @@
     <p class="title">Type: <span class="type mb-2 fw-bold">{{room.roomType}}</span></p>
     <p class="title">Price: <span class="price">{{room.roomPrice | currency:"₦"}}</span></p>
     <p class="des mb-4">{{room.roomDes}}</p>
-     <button class="btn btn-secondary w-100 py-2 fw-bold">BOOK NOW</button>
+     <button (click)="addToCart()" class="btn btn-secondary w-100 py-2 fw-bold">ADD TO CART</button>
      
      <hr class="navbar-divider">
      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, voluptate?</p>

@@ -13,7 +13,7 @@ import { UserService } from '../Services/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  // IsSubmitted = false;
+  IsSubmitted = false;
 
   user: User = {
     id: 0,
@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
 
   Login() {
     this.user = this.loginForm.value;
+    this.IsSubmitted = true;
     this.http.LoginUser(this.user).subscribe((res: any) => {
       this.loginResponse = res;
       // localStorage.setItem('user', JSON.stringify(this.user));

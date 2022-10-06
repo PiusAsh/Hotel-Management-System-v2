@@ -31,6 +31,9 @@ import { RoomListComponent } from './Admin_dashboard/room-list/room-list.compone
 import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
 import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.component';
 import { ViewUserComponent } from './Components/view-user/view-user.component';
+import { CartPageComponent } from './Components/cart-page/cart-page.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { CheckoutComponent } from './Components/checkout/checkout.component';
 
 
 @NgModule({
@@ -61,6 +64,9 @@ import { ViewUserComponent } from './Components/view-user/view-user.component';
     UserAccountDetailsComponent,
     ViewRoomComponent,
     ViewUserComponent,
+    CartPageComponent,
+    NotFoundComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

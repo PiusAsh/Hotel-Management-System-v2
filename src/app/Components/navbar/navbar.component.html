@@ -14,7 +14,11 @@
     </li> <li class="topLi  me-3">|</li>
     <li class=" topLi">
       <a class="top-link text-left me-5" routerLink="/login">Login</a>
-    </li></ul></div></div>
+    </li>
+    <li class=" topLi">
+      <a  *ngIf="cartQuantity" class="top-link text-left me-5" routerLink="/login">Cart <span class="cartNo"><a routerLink="/cart-page">{{cartQuantity}}</a></span></a>
+    </li>
+  </ul></div></div>
  
 <nav class="navbar navbar-expand-lg shadow-sm navbar-light bg-white">
     <div class="container-fluid ">

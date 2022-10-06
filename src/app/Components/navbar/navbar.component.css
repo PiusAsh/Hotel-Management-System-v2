@@ -25,6 +25,13 @@
 }
   }
 
+  .cartNo a{
+    color: #112A48;
+    background-color: white;
+    padding: 8px;
+    border-radius: 100%;
+  }
+
 
 .navBtn {
 

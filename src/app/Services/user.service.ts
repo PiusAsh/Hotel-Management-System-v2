@@ -40,6 +40,10 @@ export class UserService {
       update
     );
   }
+// CHECKOUT FUNCTION FOR CURRENT USER
+// public get currentUser():User{
+//   return 
+// }
 
   getUserById(id: any): Observable<User>{
     return this.http

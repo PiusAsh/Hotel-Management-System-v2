@@ -16,7 +16,7 @@ export class AddRoomsComponent implements OnInit {
 
   rooms: Room = {
     roomName: '',
-    roomPrice: '',
+    roomPrice: 0,
     roomDes: '',
     id: 0,
     roomImg: '',

@@ -15,7 +15,7 @@ export class RoomService {
   baseApiUrl: string = environment.baseApiUrl;
   room: Room = {
     roomName: '',
-    roomPrice: '',
+    roomPrice: 0,
     roomDes: '',
     id: 0,
     roomImg: '',

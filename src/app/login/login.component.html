@@ -1,46 +1,100 @@
-<section style="background-color:#112A48;">
-<div class="container">
-
+<section style="background-color: #112a48">
+  <div class="container">
     <div class="card">
-        <div class="d-flex justify-content-center">
-            <img src="/assets/images/LOGO (1).jpg" alt="" style="width: 190px;"><br>
-            <!-- <h4>Signin</h4> -->
-        </div>
-        
-        <div class="d-flex justify-content-center">
-            <!-- <img src="/assets/images/LOGO (1).jpg" alt="" style="width: 190px;"><br> -->
-            <!-- <h4>Signin</h4> -->
-        </div>
-        <form [formGroup]="loginForm" (ngSubmit)="Login()">
-            <p class="text-center text-info h6" *ngIf="!loginForm.valid">Please fill in all information</p>
+      <div class="d-flex justify-content-center">
+        <img
+          src="/assets/images/LOGO (1).jpg"
+          alt=""
+          style="width: 190px"
+        /><br />
+        <!-- <h4>Signin</h4> -->
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <!-- <img src="/assets/images/LOGO (1).jpg" alt="" style="width: 190px;"><br> -->
+        <!-- <h4>Signin</h4> -->
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="Login()">
+        <p class="text-center text-info h6" *ngIf="!loginForm.valid">
+          Please fill in all information
+        </p>
         <div class="form">
-            <label>Email Address</label>
-            <input type="text" class="form-control" formControlName="email" placeholder="Email address">
-            <span class="text-danger"
-            *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')">
-            Email is
-            required</span>
-        <span class="text-danger" *ngIf="loginForm.controls['email'].invalid && loginForm.hasError('pattern','email')">Enter a valid email address</span>
+          <label>Email Address</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email address"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.controls['email'].dirty &&
+              loginForm.hasError('required', 'email')
+            "
+          >
+            Email is required</span
+          >
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.controls['email'].invalid &&
+              loginForm.hasError('pattern', 'email')
+            "
+            >Enter a valid email address</span
+          >
         </div>
-        
-        
+
         <div class="form">
-            <label class="d-flex justify-content-between align-items-center"><span>Password</span><a href="#" class="text-decoration-none"></a></label>
-            <input type="text" class="form-control" formControlName="password" placeholder="Password">
-            <span class="text-danger"
-            *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">Password is
-            required</span>
-            <label class="d-flex justify-content-between align-items-center"><span></span><a href="#" class="text-decoration-none fw-light mt-1">Forgot Password?</a></label>
+          <label class="d-flex justify-content-between align-items-center"
+            ><span>Password</span><a href="#" class="text-decoration-none"></a
+          ></label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              loginForm.controls['password'].dirty &&
+              loginForm.hasError('required', 'password')
+            "
+            >Password is required</span
+          >
+          <label class="d-flex justify-content-between align-items-center"
+            ><span></span
+            ><a href="#" class="text-decoration-none fw-light mt-1"
+              >Forgot Password?</a
+            ></label
+          >
         </div>
-        
+
         <div class="login-button">
-            <button class="btn btn-success w-100" [disabled]="!loginForm.valid">Sign In</button>
+          <button class="btn btn-success w-100" [disabled]="!loginForm.valid">
+            Sign In
+          </button>
+          <!-- <button class="btn btn-success w-100" [disabled]="!loginForm.valid">Sign In</button> -->
         </div>
-    </form>
-        <p class="already mt-2 d-flex justify-content-center align-items-center">Don't have an account? <span><a routerLink="/register" class="ms-2 text-decoration-none">Register Now</a></span></p>
-        <p class="already  d-flex justify-content-center align-items-center"> <span><a routerLink="/"lass="ms-2 text-decoration-none">Back to home</a></span></p>
-        <!-- <label class="h6 d-flex justify-content-between align-items-center"><span>Already have an account?</span><a href="#" class="text-decoration-none mt-1">Back to home</a></label>
+      </form>
+      <p class="already mt-2 d-flex justify-content-center align-items-center">
+        Don't have an account?
+        <span
+          ><a routerLink="/register" class="ms-2 text-decoration-none"
+            >Register Now</a
+          ></span
+        >
+      </p>
+      <p class="already d-flex justify-content-center align-items-center">
+        <span
+          ><a routerLink="/" lass="ms-2 text-decoration-none"
+            >Back to home</a
+          ></span
+        >
+      </p>
+      <!-- <label class="h6 d-flex justify-content-between align-items-center"><span>Already have an account?</span><a href="#" class="text-decoration-none mt-1">Back to home</a></label>
          -->
-        
     </div>
-</div></section>
+  </div>
+</section>

@@ -22,6 +22,8 @@ import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-detai
 import { HotelListComponent } from './Components/hotel-list/hotel-list.component';
 import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.component';
 import { ViewUserComponent } from './Components/view-user/view-user.component';
+import { CartPageComponent } from './Components/cart-page/cart-page.component';
+import { CheckoutComponent } from './Components/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -110,8 +112,16 @@ const routes: Routes = [
     component: AnalyticsComponent,
   },
   {
+    path: 'cart-page',
+    component: CartPageComponent,
+  },
+  {
     path: 'signup',
     component: RegisterComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
   },
 ];
 
