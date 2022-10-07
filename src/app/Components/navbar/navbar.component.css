@@ -3,6 +3,12 @@
     display: flex;
     
 }
+.user:hover{
+    background-color: white;
+    padding: 9px;
+    color: #112A48!important;
+    cursor: pointer;
+}
 .top-link, .topLi{
     text-decoration: none!important;
     list-style: none;
@@ -28,6 +34,13 @@
   .cartNo a{
     color: #112A48;
     background-color: white;
+    padding: 8px;
+    border-radius: 200px;
+    font-weight: 700;
+  }
+  .cartNo a:hover{
+    background-color: #112A48!important;
+    color: white;
     padding: 8px;
     border-radius: 100%;
   }
@@ -55,4 +68,47 @@
     color: #112A48!important;
     font-weight: 500;
 
+}
+
+.bi-question-circle-fill{
+    font-size: 70px;
+    color: #112A48;
+    
+}
+
+/* .modal-content{
+    border: 2px solid #112A48!important;
+} */
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
+}
+.btn-primary{
+    background-color: #112A48;
+    border: none;
+    font-size: 20px;
+}
+.btn-secondary{
+    border: none;
+    font-size: 20px;
+}
+.btn-primary:active{
+    background-color: #112A48;
+    border: none;
+    font-size: 20px;
+}
+.btn-primary:hover{
+    background-color: #112A48;
+    border: none;
+    font-size: 20px;
+}
+
+/* .modal{
+    height: 700px;
+} */
+
+.modal-title{
+    font-size: 20px;
+    font-weight: 600;
 }

@@ -24,11 +24,19 @@ import { ViewRoomComponent } from './Admin_dashboard/view-room/view-room.compone
 import { ViewUserComponent } from './Components/view-user/view-user.component';
 import { CartPageComponent } from './Components/cart-page/cart-page.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: 'register',
     component: UserRegistrationComponent,
+  },
+  // { path: '404', component: NotFoundComponent },
+  //   { path: '**', redirectTo: '404' },
+  {
+    path: 'nav',
+    component: NavbarComponent,
   },
   {
     path: 'login',
@@ -46,6 +54,8 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
+  //   { path: '404', component: NotFoundComponent },
+  // { path: '**', component: NotFoundComponent },
   {
     path: 'edit',
     component: EditUserComponent,
@@ -127,6 +137,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

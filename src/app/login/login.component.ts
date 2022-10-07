@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
     Message: '',
     userData: '',
   };
+
+
   constructor(
     private formBuilder: FormBuilder,
     private toast: NgToastService,
@@ -58,23 +60,12 @@ export class LoginComponent implements OnInit {
     this.IsSubmitted = true;
     this.http.LoginUser(this.user).subscribe((res: any) => {
       this.loginResponse = res;
-      // localStorage.setItem('user', JSON.stringify(this.user));
       console.log('******return1', res);
       //this.loginForm.reset();
-      // this.route.navigate(['user/:id']);
       this.route.navigate([`user/${this.loginResponse.userData}`]);
+      // this.route.navigate([`user/${this.loginResponse.userData}`]);
     });
   }
 
-  // Login() {
-  //   setTimeout(() => {
-  //     console.log(this.user);
-  //     this.http.LoginUser(this.user).subscribe({
-  //       next: (response) => {
-  //       alert(response.id)
-  //       this.route.navigate([`user/${response.id}`])
-  //       },
-  //     });
-  //   }, 1500);
-  // }
+
 }

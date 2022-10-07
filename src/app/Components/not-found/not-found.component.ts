@@ -13,7 +13,7 @@ notFoundMessage = "Oops! Nothing Found";
 @Input()
 resetLinkText = "Go To HomePage";
 @Input()
-resetLink = "/";
+resetLink = " ";
   constructor() { }
 
   ngOnInit(): void {

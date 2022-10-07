@@ -9,6 +9,7 @@ export class Order{
     email!: string;
     phone!: string;
     paymentId!: string;
-    bookedDate!: string;
+    startDate!: string;
+    endDate!: string;
     status!: string;
 }

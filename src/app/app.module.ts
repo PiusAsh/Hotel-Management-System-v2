@@ -35,6 +35,7 @@ import { CartPageComponent } from './Components/cart-page/cart-page.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { OrderItemListComponent } from './Components/order-item-list/order-item-list.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { OrderItemListComponent } from './Components/order-item-list/order-item-
     ReactiveFormsModule,
     HttpClientModule,
     NgToastModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

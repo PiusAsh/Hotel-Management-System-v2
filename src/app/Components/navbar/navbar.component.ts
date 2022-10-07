@@ -1,20 +1,59 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-cartQuantity = 0;
-  constructor(private cartService : CartService) {
+  cartQuantity = 0;
+  globaluser: any;
+  resp: any;
+  user: User = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: '',
+    address: '',
+    state: '',
+    country: '',
+    password: '',
+    dateOfBirth: '',
+    gender: '',
+  };
+  constructor(
+    private cartService: CartService,
+    private userService: UserService
+  ) {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
-    })
-   }
+    });
 
-  ngOnInit(): void {
+    userService.userObservable.subscribe((newUser) => {
+      this.globaluser = newUser;
+
+      this.userService.getUserById(this.globaluser.userData).subscribe({
+        next: (res) => {
+          this.resp = res;
+          console.log('Checking current user', this.resp.firstName);
+          console.log('Checkin--- user', newUser);
+        },
+      });
+    });
   }
 
+  ngOnInit(): void {}
+
+  logout() {
+    this.userService.logout();
+    // this.cartQuantity = 0;
+  }
+
+  get isAuth() {
+    return this.resp;
+  }
 }

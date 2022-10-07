@@ -3,6 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from '../Models/cart';
 import { CartItem } from '../Models/CartItem';
 import { Room } from '../Models/room';
+import { UserService } from './user.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,7 @@ export class CartService {
   // I USED NUMBER INSTEAD OF A STRING
   removeFromCart(roomId: number): void{
     this.cart.items = this.cart.items.filter(item => item.room.id != roomId);
+    // this.userService.logout();
     this.setCartToLocalStorage();
   }
 
