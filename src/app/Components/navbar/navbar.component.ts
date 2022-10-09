@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit {
   };
   constructor(
     private cartService: CartService,
-    private userService: UserService
+    private userService: UserService, private route: Router
   ) {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
@@ -50,6 +51,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.userService.logout();
+    this.route.navigate(['login']);
     // this.cartQuantity = 0;
   }
 

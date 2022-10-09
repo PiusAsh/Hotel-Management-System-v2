@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginResponse, User } from 'src/app/Models/user';
+import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -22,35 +23,44 @@ export class UserDashboardComponent implements OnInit {
     dateOfBirth: '',
     gender: '',
   };
-  
-  constructor(private userService: UserService, private route: Router, private activatedRoute: ActivatedRoute) {}
+
+  constructor(
+    private userService: UserService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute, private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         const id: any = params.get('id');
-        if(id){
+        if (id) {
           this.userService.getUserById(id).subscribe({
             next: (res) => {
               this.user = res;
-              console.log("res %%%%%%%%%", res)
-              this.route.navigate([`user/${res.id}`])
+              console.log('res %%%%%%%%%', res);
+              this.route.navigate([`user/${res.id}`]);
             },
-          })
+          });
         }
-      }
+      },
     });
   }
 
-  getUserId(id: any){
+  logout() {
+    this.userService.logout();
+    this.route.navigate(['login']);
+    // this.cartQuantity = 0;
+  }
+
+  getUserId(id: any) {
     this.userService.getUserById(id).subscribe({
-      next: (res) =>{
+      next: (res) => {
         this.route.navigate([`user/${res.id}`]);
         // this.route.navigate([`user`]);
         console.log(res);
-        
-      }
+      },
     });
-     console.log(this.user);
+    console.log(this.user);
   }
 }

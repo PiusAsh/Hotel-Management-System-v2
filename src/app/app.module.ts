@@ -25,7 +25,7 @@ import { UserSidebarComponent } from './USER_COMPONENT/user-sidebar/user-sidebar
 import { AddRoomsComponent } from './Admin_dashboard/add-rooms/add-rooms.component';
 import { BookedRoomsComponent } from './Admin_dashboard/booked-rooms/booked-rooms.component';
 import { RegisteredUsersComponent } from './Admin_dashboard/registered-users/registered-users.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRegistrationComponent } from './AUTH/user-registration/user-registration.component';
 import { RoomListComponent } from './Admin_dashboard/room-list/room-list.component';
 import { UserAccountDetailsComponent } from './USER_COMPONENT/user-account-details/user-account-details.component';
@@ -75,6 +75,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     NgToastModule,
     BrowserAnimationsModule,

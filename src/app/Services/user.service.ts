@@ -52,6 +52,7 @@ export class UserService {
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(this.UserKey);
+    this.cartService.clearCart();
     this.router.navigate(['login'])
     // window.location.reload();
   }
@@ -86,6 +87,8 @@ export class UserService {
   public get currentUser():User{
     return this.userSubject.value;
   }
+
+  
 
   getUserById(id: any): Observable<User> {
     return this.http

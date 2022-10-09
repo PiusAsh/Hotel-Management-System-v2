@@ -44,6 +44,11 @@ export class UserSidebarComponent implements OnInit {
       },
     });
   }
+  logout() {
+    this.userService.logout();
+    this.route.navigate(['login']);
+    // this.cartQuantity = 0;
+  }
 
   getUserId(id: any) {
     this.userService.getUserById(id).subscribe({

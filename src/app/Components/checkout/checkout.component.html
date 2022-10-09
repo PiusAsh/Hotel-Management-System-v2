@@ -1,27 +1,48 @@
 <app-navbar class=""></app-navbar>
-<app-not-found class="py-5"
-    [visible]="!order || !order.items.length"
-    notFoundMessage ="Checkout Page is empty"
-    resetLink="Go To HomePage">
-
+<app-not-found
+  class="py-5"
+  [visible]="!order || !order.items.length"
+  notFoundMessage="Checkout Page is empty"
+  resetLink="Go To HomePage"
+>
 </app-not-found>
+<!-- <div class="container">
+  <div class="content">
+    <form [formGroup]="checkoutForm">
+      <text-input [control]="checkoutFrom.controls.name"></text-input>
+    </form>
+  </div>
+</div> -->
 
 <div *ngIf="order && order.items.length" class="container py-5">
   <div class="row py-3">
-      <p class="checkout">Checkout</p>
+    <p class="checkout">Checkout</p>
     <div class="col-lg-5">
- <form>
-    <span class="label">Name</span>
-<input class="form-control mb-2" type="text" label="Name" readonly value="Pius Ashogbon">
-<span class="label">Email Address</span>
-<input class="form-control mb-2" type="text" label="Name" readonly value="Pius1ash@gmail.com">
-<span class="label">Phone Number</span>
-<input class="form-control" type="text" label="Name" readonly value="0904567890">
-<span class="label">Address</span>
-<input class="form-control" type="text" label="Name" readonly value="Plot J1B, Gateway Sparklight Estate">
-        </form>
-        
-            <!-- <form>
+      <form [formGroup]="checkoutForm">
+        <span class="label">First Name</span>
+        <input
+          class="form-control mb-2"
+          id="firstName"
+          formControlName="firstName" 
+          type="text"
+          label="Name"
+        />
+        <span class="label">Last Name</span>
+        <input
+          class="form-control mb-2" formControlName="lastName"
+          id="lastName"
+          type="text"
+          label="Name"
+        />
+        <span class="label">Email Address</span>
+        <input class="form-control mb-2" formControlName="email"  type="text" label="Name" />
+        <!-- <span class="label">Phone Number</span>
+        <input class="form-control" type="text" formControlName="phoneNo" label="Name" /> -->
+        <span class="label">Address</span>
+        <input class="form-control" type="text" formControlName="address"  label="Name" />
+      </form>
+
+      <!-- <form>
                                 <div class="row mt-2">
                   <div class="col-lg-9">
                                   <span class="label">Address</span>
@@ -30,8 +51,8 @@
                 </div>
                 
             </form> -->
-            
-                <!-- <ul class="list-group list-group-flush">
+
+      <!-- <ul class="list-group list-group-flush">
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
                   >
@@ -51,11 +72,15 @@
                     <span class="text-secondary">5 Times</span>
                   </li>
                 </ul> -->
-            
     </div>
     <div class="col-lg-7">
       <app-order-item-list [order]="order"></app-order-item-list>
-      <button (click)="createOrder()" class="btn btn-primary w-100 text-center py-2 mt-3">PROCEED TO PAYMENT</button>
+      <button
+        (click)="createOrder()"
+        class="btn btn-primary w-100 text-center py-2 mt-3"
+      >
+        PROCEED TO PAYMENT
+      </button>
     </div>
   </div>
 </div>
