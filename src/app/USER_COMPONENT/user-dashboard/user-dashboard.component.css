@@ -13,3 +13,125 @@
 background-color: white!important;
 color: #112A48!important;
 }
+
+#navbarVertical{
+    background-color: #112A48;
+}
+
+/* .nav-link{
+    color: white!important;
+} */
+
+.logout{
+    cursor: pointer;
+}
+
+
+.nav-item:hover, .nav-link:hover{
+background-color: white!important;
+color: #112A48!important;
+}
+.active{
+    cursor: pointer;
+    /* background-color: white!important; */
+color: #112A48!important;
+}
+
+.bi-question-circle-fill{
+    font-size: 50px;
+    color: #112A48;
+    
+}
+
+/* .modal-content{
+    border: 2px solid #112A48!important;
+} */
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
+}
+.btn-primary{
+    background-color: #112A48;
+    border: none;
+}
+.btn-primary:active{
+    background-color: #112A48;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: #112A48;
+    border: none;
+}
+
+/* ACCOUNT DETAILS CSS */
+
+
+
+
+
+
+
+
+
+
+.label{
+    font-weight:500;
+    font-size:15px;
+}
+.form-control{
+    height:45px !important;
+    border:2px solid #eee;
+    transition:all 0.9s !important;
+}
+
+.form-control:focus{
+    box-shadow:none !important;
+    border:2px solid #112A48 !important;
+}
+
+
+
+.login-button{
+    margin-top:20px;
+}
+
+.login-button button{
+    height:45px;
+}
+
+.btn-success{
+    background-color: #112A48!important;
+    border: none;
+}
+.text-decoration{
+    color: #112A48 !important;
+}
+
+.already{
+    font-size: 14px;
+}
+
+
+.text-danger {
+    font-weight: 500!important;
+    font-size: 14px!important;
+    
+ 
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+

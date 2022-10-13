@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { LoginResponse, User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -27,7 +28,8 @@ export class UserDashboardComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: Router,
-    private activatedRoute: ActivatedRoute, private cartService: CartService
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService, private toast: NgToastService
   ) {}
 
   ngOnInit(): void {
@@ -62,5 +64,22 @@ export class UserDashboardComponent implements OnInit {
       },
     });
     console.log(this.user);
+  }
+
+  updateUser() {
+    this.userService.updateUser(this.user.id, this.user).subscribe({
+      next: (response) => {
+        console.log(response, 'CHECKING RESPONSE-----');
+        this.toast.success({detail: "Updated Successfully", summary: "Profile Info Updated", duration: 5000})
+      },
+      error: (errors) =>{
+        console.log(errors, 'CHECKING ERRORS-----');
+this.toast.error({
+  detail: 'Oops! An error occurred',
+  summary: 'Please try again later',
+  duration: 5000,
+});
+      }
+    });
   }
 }

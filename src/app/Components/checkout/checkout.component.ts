@@ -4,6 +4,9 @@ import { Order } from 'src/app/Models/order';
 import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
+import { PaystackOptions } from 'angular4-paystack';
+import { OrderService } from 'src/app/Services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -11,6 +14,9 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
+  // PAYSTACK TESTING
+
+  // END OF PAYSTACK TESTING
   order: Order = new Order();
   checkoutForm!: FormGroup;
   globaluser: any;
@@ -37,18 +43,42 @@ export class CheckoutComponent implements OnInit {
     gender: '',
   };
 
+  reference = '';
+  title = '';
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private cartService: CartService
+    private cartService: CartService,
+    private orderService: OrderService,
+    private route: Router
   ) {
     const cart = cartService.getCart();
     this.order.items = cart.items;
     this.order.totalPrice = cart.totalPrice;
   }
 
-  ngOnInit(): void {
+  // PAYSTACK METHOD
 
+  options: PaystackOptions = {
+    amount: 50000,
+    email: 'user@mail.com',
+    ref: `${Math.ceil(Math.random() * 10e10)}`,
+  };
+
+  paymentInit() {
+    console.log('Payment initialized');
+  }
+
+  paymentDone(ref: any) {
+    this.title = 'Payment successfull';
+    console.log(this.title, ref);
+  }
+
+  paymentCancel() {
+    console.log('payment failed');
+  } //END OF PAYSTACK METHOD
+
+  ngOnInit(): void {
     let { firstName, lastName, address, email, phoneNo } =
       this.userService.currentUser;
     this.checkoutForm = this.formBuilder.group({
@@ -62,39 +92,15 @@ export class CheckoutComponent implements OnInit {
       // address: [address, Validators.required],
       // email: [email, Validators.required],
       // phoneNo: [phoneNo, Validators.required],
-      
     });
+    this.uselocal = localStorage.getItem('User');
+    this.login = JSON.parse(this.uselocal);
 
-    this.userService.getUserById(this.globaluser.userData).subscribe({
+    this.userService.getUserById(this.login.userData).subscribe({
       next: (res) => {
         this.resp = res;
         console.log('Checking current add------ user', this.resp);
-      },
-    });
 
-            // this.order.address = this.res.address;
-            // this.order.email = this.res.email;
-            // this.order.firstName = this.res.firstName;
-            // this.order.lastName = this.res.lastName;
-            // this.order.phone = this.res.phoneNo;
-  }
-
-  get checkout() {
-    return this.checkoutForm.controls;
-  }
-
-  
-
-  createOrder() {
-    if (this.checkoutForm.valid) {
-      // this.order.name = this.checkoutForm.controls.firstName.value;
-      // this.order.email = this.checkoutForm.controls.email.value;
-      // this.order.address = this.checkoutForm.controls.address.value;
-      // this.order.phone = this.checkoutForm.controls.phoneNo.value;
-      this.uselocal = localStorage.getItem('User');
-      this.login = JSON.parse(this.uselocal);
-
-      this.userService.getUserById(this.login.userData).subscribe((res) => {
         this.res = res;
 
         console.log('re', this.res);
@@ -105,8 +111,27 @@ export class CheckoutComponent implements OnInit {
           lastName: this.res.lastName,
           phone: this.res.phoneNo,
         });
+      },
+    });
 
-      });
+    // this.order.address = this.res.address;
+    // this.order.email = this.res.email;
+    // this.order.firstName = this.res.firstName;
+    // this.order.lastName = this.res.lastName;
+    // this.order.phone = this.res.phoneNo;
+  }
+
+  get checkout() {
+    return this.checkoutForm.controls;
+  }
+
+  createOrder() {
+    if (this.checkoutForm.valid) {
+      // this.order.name = this.checkoutForm.controls.firstName.value;
+      // this.order.email = this.checkoutForm.controls.email.value;
+      // this.order.address = this.checkoutForm.controls.address.value;
+      // this.order.phone = this.checkoutForm.controls.phoneNo.value;
+
       this.order.address = this.res.address;
       this.order.email = this.res.email;
       this.order.firstName = this.res.firstName;
@@ -114,12 +139,16 @@ export class CheckoutComponent implements OnInit {
       this.order.phone = this.res.phoneNo;
 
       console.log('CHECKING CHECKOUT PAGE', this.order);
-      // // console.log('CHECKING CHECKOUT PAGE', this.order);
-      // console.log('CHECKING CHECKOUT form', this.checkoutForm);
+      // this.orderService.createOrder(this.order).subscribe({
+      //   next: () =>{
+      //     this.route.navigateByUrl('/payment')
+      //   },
+      //   error: (errors) => {
+      //     alert(errors.error);
+      //   }
+      // })
     }
-    // alert('Please fill the inputs');
+    //alert('Please fill the inputs');
     return;
   }
-
-  
 }

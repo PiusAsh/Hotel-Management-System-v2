@@ -19,8 +19,12 @@
 .image {
     max-width: 100%
 }
+.card:hover{
+    transform: scale(1.03);
+}
 
 .card {
+    transition: transform 500ms ease-in-out;
     position: relative;
     display: -ms-flexbox;
     display: flex;

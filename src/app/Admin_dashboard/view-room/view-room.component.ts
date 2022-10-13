@@ -2,8 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Room } from 'src/app/Models/room';
+import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { RoomService } from 'src/app/Services/room.service';
+import { UserService } from 'src/app/Services/user.service';
 import { IRoom } from 'src/app/Shared/IRoom';
 
 @Component({
@@ -27,7 +29,9 @@ export class ViewRoomComponent implements OnInit {
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private roomService: RoomService,
-    private route: Router, private cartService: CartService
+    private route: Router,
+    private cartService: CartService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -57,9 +61,8 @@ export class ViewRoomComponent implements OnInit {
     console.log(this.room);
   }
 
-  addToCart(){
+  addToCart() {
     this.cartService.addToCart(this.room);
-    this.route.navigateByUrl('/cart-page')
+    this.route.navigateByUrl('/cart-page');
   }
 }
-

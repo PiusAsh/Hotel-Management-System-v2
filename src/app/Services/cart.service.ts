@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from '../Models/cart';
 import { CartItem } from '../Models/CartItem';
@@ -13,14 +14,19 @@ export class CartService {
   private cart: Cart = this.getCartFromLocalStorage();
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
-  constructor() {}
+  constructor(private toast: NgToastService) {}
 
   addToCart(room: Room): void {
     let cartItem = this.cart.items.find((item) => item.room.id === room.id);
     if (cartItem) return;
-
+this.toast.error({
+  detail: 'Unable to add to Cart',
+  summary: 'An error occurred',
+  duration: 4000,
+});
     this.cart.items.push(new CartItem(room));
     this.setCartToLocalStorage();
+    this.toast.success({detail: "Added to Cart", summary: "Room added successfully", duration: 4000})
   }
 
   // I USED NUMBER INSTEAD OF A STRING

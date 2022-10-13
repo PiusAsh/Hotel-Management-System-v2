@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUserLogin } from '../Models/ILogin';
@@ -22,7 +23,7 @@ export class UserService {
   );
   public  userObservable!: Observable<User>;
 
-  constructor(private http: HttpClient, private cartService: CartService, private router: Router) {
+  constructor(private http: HttpClient, private cartService: CartService, private router: Router, private toast: NgToastService) {
     this.userObservable = this.userSubject.asObservable();
   }
 
@@ -38,12 +39,21 @@ export class UserService {
           this.getUserById(this.globalUser.userData).subscribe({
             next: (res) => {
               this.userDetails = res;
-              alert(`Hey ${this.userDetails.firstName}, Welcome to Ash Hotel`);
+              this.toast.success({
+                detail: `Hey, ${this.userDetails.firstName}`,
+                summary: "You're now logged in...",
+                duration: 70000,
+              });
+              // alert(`Hey ${this.userDetails.firstName}, Welcome to Ash Hotel`);
             },
           });
         },
         error: (errorRes) => {
-          alert('An error occurred');
+          this.toast.error({
+            detail: 'Invalid Credentials',
+            summary: 'Username or Password does not exist',
+            duration: 7000,
+          });
         },
       })
     );
@@ -54,6 +64,7 @@ export class UserService {
     localStorage.removeItem(this.UserKey);
     this.cartService.clearCart();
     this.router.navigate(['login'])
+    this.toast.info({detail: "You've been logged out", summary: "Please login to continue"})
     // window.location.reload();
   }
 
@@ -79,7 +90,7 @@ export class UserService {
 
   updateUser(id: any, update: User): Observable<User> {
     return this.http.put<User>(
-      this.baseApiUrl + '/Auth/UpdateUser/' + id,
+      this.baseApiUrl + '/Auth/UpdateUser/?Id=' + id,
       update
     );
   }

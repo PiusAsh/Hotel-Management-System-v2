@@ -74,7 +74,15 @@ export class UserRegistrationComponent implements OnInit {
       console.log('******return1', res);
       // this.route.navigate(['user/:id']);
        this.route.navigate(['login']);
-    });
+    },
+    );
+  }
+
+  register(){
+    this.user = this.registerForm.value;
+    this.http.register(this.user).subscribe({
+
+    })
   }
 }
 

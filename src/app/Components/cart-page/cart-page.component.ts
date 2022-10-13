@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Cart } from 'src/app/Models/cart';
 import { CartItem } from 'src/app/Models/CartItem';
 import { User } from 'src/app/Models/user';
@@ -32,7 +33,7 @@ export class CartPageComponent implements OnInit {
     private cartService: CartService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService, private toast: NgToastService
   ) {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
@@ -69,10 +70,15 @@ export class CartPageComponent implements OnInit {
 
   removeFromCart(cartItem: CartItem) {
     this.cartService.removeFromCart(cartItem.room.id);
+    this.toast.success({detail: "Cart Update", summary: "Room has been removed successfully", duration: 3000})
   }
 
   changeDays(cartItem: CartItem, daysInString: string) {
     const days = parseInt(daysInString);
     this.cartService.changeDays(cartItem.room.id, days);
+    this.toast.success({
+      detail: 'Duration Update',
+      summary: 'Count changed', duration: 3000,
+    });
   }
 }

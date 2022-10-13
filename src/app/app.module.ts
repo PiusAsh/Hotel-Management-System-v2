@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from "@angular/common/http"
+import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"
 import { NgToastModule } from 'ng-angular-popup';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,10 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { OrderItemListComponent } from './Components/order-item-list/order-item-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { Angular4PaystackModule } from 'angular4-paystack';
+import { NgxPrintElementModule } from 'ngx-print-element';
+import { NgxPrintModule } from 'ngx-print';
+import { AuthInterceptor } from './AUTH/auth.interceptor';
 
 
 @NgModule({
@@ -79,8 +83,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     NgToastModule,
     BrowserAnimationsModule,
+    NgxPrintElementModule,
+    Angular4PaystackModule.forRoot(
+      'pk_test_c613fc7d428a64fd1e5daea22f8380551b28c78e'
+    ),
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
