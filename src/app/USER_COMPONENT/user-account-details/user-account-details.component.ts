@@ -24,6 +24,7 @@ export class UserAccountDetailsComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
 
   

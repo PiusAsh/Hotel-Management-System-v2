@@ -24,6 +24,7 @@ export class UserRegistrationComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
 
   loginResponse: LoginResponse = {

@@ -21,6 +21,7 @@ export class ViewUserComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
   constructor(
     private userService: UserService,

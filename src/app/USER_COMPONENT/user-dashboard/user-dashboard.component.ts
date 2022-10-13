@@ -23,6 +23,7 @@ export class UserDashboardComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
 
   constructor(
@@ -81,5 +82,9 @@ this.toast.error({
 });
       }
     });
+  }
+
+ get isAuth(){
+    return this.user;
   }
 }

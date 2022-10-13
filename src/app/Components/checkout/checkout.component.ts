@@ -41,6 +41,7 @@ export class CheckoutComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
 
   reference = '';

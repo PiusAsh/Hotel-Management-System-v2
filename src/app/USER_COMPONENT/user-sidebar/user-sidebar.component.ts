@@ -21,6 +21,7 @@ export class UserSidebarComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
   constructor(
     private userService: UserService,

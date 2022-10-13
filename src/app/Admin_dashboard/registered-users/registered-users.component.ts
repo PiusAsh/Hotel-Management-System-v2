@@ -20,7 +20,8 @@ export class RegisteredUsersComponent implements OnInit {
     country: '',
     password: '',
     dateOfBirth: '',
-    gender: ''
+    gender: '',
+    isAdmin: false
   };
 
   users: User[] = [];

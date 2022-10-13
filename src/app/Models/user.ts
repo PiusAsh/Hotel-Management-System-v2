@@ -1,5 +1,6 @@
 export class User {
   id!: number;
+  isAdmin!: boolean;
   firstName!: string;
   lastName!: string;
   email!: string;

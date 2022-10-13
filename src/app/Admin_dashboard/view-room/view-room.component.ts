@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Room } from 'src/app/Models/room';
 import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
@@ -23,6 +24,22 @@ export class ViewRoomComponent implements OnInit {
     roomType: '',
   };
 
+  globaluser: any;
+  resp: any;
+  user: User = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: '',
+    address: '',
+    state: '',
+    country: '',
+    password: '',
+    dateOfBirth: '',
+    gender: '',
+    isAdmin: false
+  };
   // room: Room[] = [];
   // room!: Room;
   constructor(
@@ -31,8 +48,23 @@ export class ViewRoomComponent implements OnInit {
     private roomService: RoomService,
     private route: Router,
     private cartService: CartService,
-    private userService: UserService
-  ) {}
+    private userService: UserService, private toast: NgToastService
+  ) {
+    userService.userObservable.subscribe((newUser) => {
+      this.globaluser = newUser;
+
+      this.userService.getUserById(this.globaluser.userData).subscribe({
+        next: (res) => {
+          this.resp = res;
+          console.log(
+            'Checking current  that added to cart',
+            this.resp.firstName
+          );
+          console.log('Checkin--- user that added item to cart', newUser);
+        },
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
@@ -62,7 +94,17 @@ export class ViewRoomComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.room);
-    this.route.navigateByUrl('/cart-page');
+    if(this.isAuth){
+
+      this.cartService.addToCart(this.room);
+      this.route.navigateByUrl('/cart-page');
+    }else{
+      this.toast.error({detail: "You're not logged in..", summary: "Please login to proceed", duration: 4000})
+      this.route.navigateByUrl('/login');
+    }
+  }
+
+  get isAuth() {
+    return this.resp;
   }
 }

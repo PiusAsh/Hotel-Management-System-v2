@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
   constructor(
     private cartService: CartService,

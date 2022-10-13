@@ -39,10 +39,17 @@ export class UserService {
           this.getUserById(this.globalUser.userData).subscribe({
             next: (res) => {
               this.userDetails = res;
+              console.log("tttttttttttttt",this.userDetails.isAdmin);
+              if (this.userDetails.isAdmin === true) {
+              
+                this.router.navigate([`admin/${this.userDetails.firstName}`]);
+              } else {
+                this.router.navigate([`user/${this.userDetails.id}`]);
+              }
               this.toast.success({
                 detail: `Hey, ${this.userDetails.firstName}`,
                 summary: "You're now logged in...",
-                duration: 70000,
+                duration: 4000,
               });
               // alert(`Hey ${this.userDetails.firstName}, Welcome to Ash Hotel`);
             },

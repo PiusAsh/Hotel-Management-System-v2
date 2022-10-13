@@ -1,28 +1,98 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Room } from 'src/app/Models/room';
 import { User } from 'src/app/Models/user';
+import { CartService } from 'src/app/Services/cart.service';
 import { RoomService } from 'src/app/Services/room.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-user: User[] = [];
-rooms: Room[] = [];
-  constructor(private http: UserService, private roomService: RoomService) { }
+  user: User[] = [];
+  rooms: Room[] = [];
+  userDetails: User = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: '',
+    address: '',
+    state: '',
+    country: '',
+    password: '',
+    dateOfBirth: '',
+    gender: '',
+    isAdmin: false
+  };
+  constructor(
+    private http: UserService,
+    private roomService: RoomService,
+    private userService: UserService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService,
+    private toast: NgToastService
+  ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        const id: any = params.get('id');
+        if (id) {
+          this.userService.getUserById(id).subscribe({
+            next: (res) => {
+              this.userDetails = res;
+              console.log('res %%%%%%%%%', res);
+              this.route.navigate([`user/${res.id}`]);
+            },
+          });
+        }
+      },
+    });
     this.http.getAllUsers().subscribe((data: any) => {
       this.user = Array.from(Object.keys(data), (k) => data[k]);
     });
 
     this.roomService.getAllRooms().subscribe((res: any) => {
       this.rooms = res;
-    })
-
+    });
   }
 
+  getUserId(id: any) {
+    this.userService.getUserById(id).subscribe({
+      next: (res) => {
+        this.route.navigate([`user/${res.id}`]);
+        // this.route.navigate([`user`]);
+        console.log(res);
+      },
+    });
+    console.log(this.user);
+  }
+  updateUser() {
+    this.userService
+      .updateUser(this.userDetails.id, this.userDetails)
+      .subscribe({
+        next: (response) => {
+          console.log(response, 'CHECKING RESPONSE-----');
+          this.toast.success({
+            detail: 'Updated Successfully',
+            summary: 'Profile Info Updated',
+            duration: 5000,
+          });
+        },
+        error: (errors) => {
+          console.log(errors, 'CHECKING ERRORS-----');
+          this.toast.error({
+            detail: 'Oops! An error occurred',
+            summary: 'Please try again later',
+            duration: 5000,
+          });
+        },
+      });
+  }
 }

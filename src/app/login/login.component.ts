@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
+    isAdmin: false
   };
   loginResponse: LoginResponse = {
     Message: '',
@@ -62,8 +63,13 @@ export class LoginComponent implements OnInit {
       this.loginResponse = res;
       console.log('******return1', res);
       //this.loginForm.reset();
-      this.route.navigate([`user/${this.loginResponse.userData}`]);
-      // this.route.navigate([`user/${this.loginResponse.userData}`]);
+      // if(this.user.isAdmin == true){
+      //   this.route.navigate([`admin/${this.loginResponse.userData}`]);
+      // }else{
+
+      //   this.route.navigate([`user/${this.loginResponse.userData}`]);
+      // }
+      // this.route.navigate([`user/${this.loginResponse.userData}`]); 
     });
   }
 
