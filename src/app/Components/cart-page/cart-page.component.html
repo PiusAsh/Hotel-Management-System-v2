@@ -20,7 +20,7 @@
 
 <div *ngIf="cart && cart.items.length" class="container py-5">
 <div class="container">
-    <p class="cart">Cart</p>
+    <p class="cart">Book a room</p>
 </div>
     <ul class="shadow-sm">
         <li *ngFor="let cartItem of cart.items">
@@ -30,7 +30,7 @@
             <div>
                 <a class="text-black" routerLink="/room{{cartItem.room.id}}">{{cartItem.room.roomName}}</a>
             </div>
-            <div>
+            <!-- <div>
                <select #daysSelect [value]="cartItem.days" (change)="changeDays(cartItem, daysSelect.value)">
                 <option>1</option>
                 <option>2</option>
@@ -40,21 +40,27 @@
                 <option>6</option>
                 <option>7</option>
                </select> 
-            </div>
+            </div> -->
             <div>{{cartItem.price | currency: '₦'}}</div>
             <div>
                 <button (click)="removeFromCart(cartItem)" class="remove-button">Remove</button>
             </div>
 
             <div class="date">
+                <form [formGroup]="form">
                 <div class="d-flex">
-                    <p>Book Date</p>
-                            <input class="form-control mb-2"  type="date" label="Name" />
+                    <p>Booking Date</p>
+                        <input class="form-control mb-2" 
+                        (change)="startDt(this.form.value.startDate)" formControlName="startDate" type="date"
+                        label="Name" />
                 </div>
                 <div class="d-flex">
                   <p>CheckOut Date</p>
-                  <input class="form-control mb-2"  type="date" label="Name" />
+                  <input class="form-control mb-2" #daysSelect [value]="cartItem.days"
+                    formControlName="checkoutDate"
+                    (change)="changeDays(cartItem)" type="date" label="Name" />
                 </div>
+            </form>
             </div>
         </li>
     </ul>

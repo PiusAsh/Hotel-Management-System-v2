@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Cart } from 'src/app/Models/cart';
@@ -29,56 +30,82 @@ export class CartPageComponent implements OnInit {
   //   gender: '',
   // };
 
+  public startDate!: AbstractControl;
+  public checkoutDate!: AbstractControl;
+
+  public form!: FormGroup;
   constructor(
     private cartService: CartService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService, private toast: NgToastService
+    public fb: FormBuilder,
+    private userService: UserService,
+    private toast: NgToastService
   ) {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
     });
+
+    this.form = this.fb.group({
+      startDate: [''],
+      checkoutDate: [''],
+    });
   }
 
   ngOnInit(): void {
-    // this.activatedRoute.paramMap.subscribe({
-    //   next: (params) => {
-    //     const id: any = params.get('id');
-    //     if (id) {
-    //       this.userService.getUserById(id).subscribe({
-    //         next: (res) => {
-    //           this.user = res;
-    //           console.log('%%%%%%%%%', res);
-    //           this.route.navigate([`user/${res.id}`]);
-    //         },
-    //       });
-    //     }
-    //   },
-    // });
+    let dt = new Date();
+
+    this.form.patchValue({
+      startDate: this.format(dt),
+    });
+    // console.log('checking start date', gd);
   }
 
-  // getUserId(id: any) {
-  //   this.userService.getUserById(id).subscribe({
-  //     next: (res) => {
-  //       this.route.navigate([`user/${res.id}`]);
-  //       this.route.navigate([`user`]);
-  //       console.log(res);
-  //     },
-  //   });
-  //   console.log(this.user);
-  // }
+  startDt(value: any) {
+    let dt = new Date();
+    let dt2 = new Date(value);
+
+    if (dt2 < dt) {
+      this.form.patchValue({
+        startDate: this.format(dt),
+      });
+      alert("Start date cannot be less than today's date");
+    }
+  }
+
+  format(dateValue: any) {
+    let month = '' + (dateValue.getMonth() + 1);
+    let day = '' + dateValue.getDate();
+    const year = dateValue.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    return `${year}-${month}-${day}`;
+  }
 
   removeFromCart(cartItem: CartItem) {
     this.cartService.removeFromCart(cartItem.room.id);
-    this.toast.success({detail: "Cart Update", summary: "Room has been removed successfully", duration: 3000})
+    this.toast.success({
+      detail: 'Cart Update',
+      summary: 'Room has been removed successfully',
+      duration: 3000,
+    });
   }
 
-  changeDays(cartItem: CartItem, daysInString: string) {
-    const days = parseInt(daysInString);
-    this.cartService.changeDays(cartItem.room.id, days);
+  changeDays(cartItem: CartItem) {
+    const days = this.form.value.startDate.substring(8);
+
+    const days2 = this.form.value.checkoutDate.substring(8)
+    
+    let difference = days2 - days;
+
+    // let TotalDays = (days - days2) / (1000 * 3600 * 24);
+    alert(difference);
+
+    this.cartService.changeDays(cartItem.room.id, difference);
     this.toast.success({
       detail: 'Duration Update',
-      summary: 'Count changed', duration: 3000,
+      summary: 'Count changed',
+      duration: 3000,
     });
   }
 }

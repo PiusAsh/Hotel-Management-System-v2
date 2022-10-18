@@ -29,10 +29,9 @@ this.toast.error({
     this.toast.success({detail: "Added to Cart", summary: "Room added successfully", duration: 4000})
   }
 
-  // I USED NUMBER INSTEAD OF A STRING
+ 
   removeFromCart(roomId: number): void {
     this.cart.items = this.cart.items.filter((item) => item.room.id != roomId);
-    // this.userService.logout();
     this.setCartToLocalStorage();
   }
 
