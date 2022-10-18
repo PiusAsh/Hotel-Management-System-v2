@@ -48,7 +48,7 @@ export class AdminDashboardComponent implements OnInit {
             next: (res) => {
               this.userDetails = res;
               console.log('res %%%%%%%%%', res);
-              this.route.navigate([`user/${res.id}`]);
+              this.route.navigate([`admin/${res.id}`]);
             },
           });
         }
@@ -66,7 +66,7 @@ export class AdminDashboardComponent implements OnInit {
   getUserId(id: any) {
     this.userService.getUserById(id).subscribe({
       next: (res) => {
-        this.route.navigate([`user/${res.id}`]);
+        this.route.navigate([`admin/${res.id}`]);
         // this.route.navigate([`user`]);
         console.log(res);
       },
@@ -95,4 +95,6 @@ export class AdminDashboardComponent implements OnInit {
         },
       });
   }
+
+
 }

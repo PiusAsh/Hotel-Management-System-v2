@@ -47,7 +47,7 @@ const routes: Routes = [
     component: RoomListComponent,
   },
   {
-    path: 'admin/:firstName',
+    path: 'admin/:id',
     component: AdminDashboardComponent,
   },
   {

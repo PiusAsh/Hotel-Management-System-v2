@@ -60,7 +60,8 @@ this.toast.error({
 
   private setCartToLocalStorage(): void {
     this.cart.totalPrice = this.cart.items.reduce(
-      (prevSum, currentItem) => prevSum + currentItem.price,
+      (prevSum, currentItem) =>
+        parseFloat(prevSum.toString()) + parseFloat(currentItem.price.toString()),
       0
     );
     this.cart.totalCount = this.cart.items.reduce(

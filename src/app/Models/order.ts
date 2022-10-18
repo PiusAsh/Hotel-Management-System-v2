@@ -10,7 +10,7 @@ export class Order{
     email!: string;
     phone!: string;
     paymentId!: string;
-    startDate!: string;
-    endDate!: string;
+    bookDate!: string;
+    checkoutDate!: string;
     status!: string;
 }

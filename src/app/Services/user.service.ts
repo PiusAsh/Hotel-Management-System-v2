@@ -41,8 +41,8 @@ export class UserService {
               this.userDetails = res;
               console.log("tttttttttttttt",this.userDetails.isAdmin);
               if (this.userDetails.isAdmin === true) {
-              
-                this.router.navigate([`admin/${this.userDetails.firstName}`]);
+console.log("CHECKING ADMIN", this.userDetails.isAdmin);
+                this.router.navigate([`admin/${this.userDetails.id}`]);
               } else {
                 this.router.navigate([`user/${this.userDetails.id}`]);
               }
