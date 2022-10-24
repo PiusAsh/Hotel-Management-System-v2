@@ -10,6 +10,6 @@ export class OrderService {
   baseApiUrl: string = environment.baseApiUrl;
   constructor(private http: HttpClient) {}
   createOrder(order: Order) {
-    return this.http.post<Order>(this.baseApiUrl + '/Order/CreateOrder', order);
+    return this.http.post<Order>(this.baseApiUrl + '/Order/AddOrder', order);
   }
 }

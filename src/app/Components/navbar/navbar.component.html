@@ -24,7 +24,10 @@
     <li class=" topLi">
       <a *ngIf="!isAuth" class="top-link text-left me-5 user" routerLink="/login">Login</a>
     </li>
-    <li class=" topLi">
+    <li class=" topLi" *ngIf="resp.isAdmin === true">
+      <a  *ngIf="isAuth" class="top-link user text-left me-3" routerLink="/admin/{{this.resp.id}}">Hey, {{this.resp.firstName}} </a>
+    </li>
+    <li class=" topLi" *ngIf="resp.isAdmin === false">
       <a  *ngIf="isAuth" class="top-link user text-left me-3" routerLink="/user/{{this.resp.id}}">Hey, {{this.resp.firstName}} </a>
     </li>
     <li class=" topLi">

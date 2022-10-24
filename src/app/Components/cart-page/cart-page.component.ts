@@ -58,6 +58,7 @@ export class CartPageComponent implements OnInit {
     this.form.patchValue({
       startDate: this.format(dt),
     });
+
     // console.log('checking start date', gd);
   }
 
@@ -69,7 +70,12 @@ export class CartPageComponent implements OnInit {
       this.form.patchValue({
         startDate: this.format(dt),
       });
-      alert("Start date cannot be less than today's date");
+      this.toast.info({
+        detail: 'Invalid Date',
+        summary: "Start date cannot be less than today's date",
+        duration: 3000,
+      });
+      // alert("Start date cannot be less than today's date");
     }
   }
 

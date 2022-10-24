@@ -8,3 +8,69 @@ table td{
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 } */
+
+.form {
+  margin-top: 15px;
+
+}
+
+.form label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.form input {
+  height: 45px;
+  border: 2px solid #eee;
+  transition: all 0.9s;
+}
+
+.form input:focus {
+  box-shadow: none;
+  border: 2px solid #112A48;
+}
+
+
+
+.login-button {
+  margin-top: 20px;
+}
+
+.login-button button {
+  height: 45px;
+}
+
+.btn-success {
+  background-color: #112A48 !important;
+  border: none;
+}
+
+.text-decoration {
+  color: #112A48 !important;
+}
+
+.already {
+  font-size: 14px;
+}
+
+.bi-lock-fill {
+  font-size: 20px;
+}
+
+.text-danger {
+  font-weight: 500 !important;
+  font-size: 14px !important;
+
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

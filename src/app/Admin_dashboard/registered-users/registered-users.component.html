@@ -24,16 +24,167 @@
                   <span class="pe-2"> <i class="bi bi-pencil"></i> </span>
                   <span>User Role</span>
                 </a>
-                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                <p class="btn d-inline-flex btn-sm btn-primary mx-1">
                   <span class="pe-2"> <i class="bi bi-plus"></i> </span>
-                  <span>Add User</span>
-                </a>
+                  <span class="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Admin</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </header>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+      data-whatever="@mdo">Open modal for @mdo</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+      data-whatever="@fat">Open modal for @fat</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+      data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+<form [formGroup]="registerForm" (ngSubmit)="Register()">
+  <div class="row">
+    <!-- <p class="text-center text-info h6 fw-bold" *ngIf="!registerForm.valid">Please fill in all information</p>
+    <p class="text-center text-info h6 fw-bold" *ngIf="registerForm.valid">Nice One! Click on the Register button to
+      proceed</p> -->
+
+    <!-- FIRST NAME  -->
+
+    <div class="col-sm-12 col-lg-6 col-md-6 ">
+      <div class="form">
+
+        <input type="text" autocomplete="chrome-off" class="form-control" formControlName="firstName"
+          placeholder="First Name">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['firstName'].dirty && registerForm.hasError('required', 'firstName')">
+          First Name is
+          required</span>
+
+          
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6 ">
+      <div class="form">
+
+        <input type="text" autocomplete="chrome-off" class="form-control" formControlName="lastName"
+          placeholder="Last Name">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')">Last Name is
+          required</span>
+      </div>
+    </div>
+
+
+
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="form">
+
+        <input type="email" required="email" autocomplete="chrome-off" class="form-control" formControlName="email"
+          placeholder="Email address">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
+          Email is
+          required</span>
+        <span class="text-danger"
+          *ngIf="registerForm.controls['email'].invalid && registerForm.hasError('pattern','email')">Enter a valid email
+          address</span>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="form">
+
+        <input autocomplete="chrome-off" type="text" class="form-control" formControlName="phoneNo"
+          placeholder="Phone Number">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Phone Number is
+          required</span>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-12 col-md-12">
+      <div class="form">
+
+        <input autocomplete="chrome-off" type="text" class="form-control" formControlName="address"
+          placeholder="Address">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['address'].dirty && registerForm.hasError('required', 'address')">
+          Address is
+          required</span>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="form">
+
+        <input autocomplete="chrome-off" type="text" class="form-control" formControlName="state" placeholder="State">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['state'].dirty && registerForm.hasError('required', 'state')">
+          State is
+          required</span>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="form">
+
+        <input autocomplete="chrome-off" type="text" class="form-control" formControlName="country"
+          placeholder="Country">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['country'].dirty && registerForm.hasError('required', 'country')">Country is
+          required</span>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="form">
+
+        <input autocomplete="chrome-off" type="password" class="form-control" formControlName="password"
+          placeholder="Password">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+          Password is
+          required</span>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6">
+      <div class="form">
+
+        <input autocomplete="chrome-off" type="password" class="form-control" formControlName="confirmPassword"
+          placeholder="Confirm Password">
+        <span class="text-danger"
+          *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required', 'confirmPassword')">Confirm
+          your password</span>
+
+      </div>
+    </div>
+    
+    <!-- <div class="login-button">
+                <button class="btn btn-success w-100">Register</button>
+            </div> -->
+    <div class="login-button">
+      <button class="btn btn-success w-100"  [disabled]="!registerForm.valid">Register</button>
+    </div>
+  </div>
+</form>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Send message</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
 
     <!-- Main -->
 
@@ -46,14 +197,15 @@
               <thead class="thead-light fw-bold">
                 <tr>
                   <th class="fw-bold" scope="col">User ID</th>
-                  <th class="fw-bold" scope="col">First Name</th>
+                  <th class="fw-bold" scope="col">Full Name</th>
                   <th class="fw-bold" scope="col">Phone Number</th>
                   <th class="fw-bold" scope="col">Email Address</th>
-                  <th class="fw-bold" scope="col">Gender</th>
+                  <!-- <th class="fw-bold" scope="col">Gender</th> -->
 
                   <!-- <th class="fw-bold" scope="col">Date of birth</th> -->
                   <th class="fw-bold" scope="col">State</th>
                   <th class="fw-bold" scope="col">Country</th>
+                  <th class="fw-bold" scope="col">Role</th>
                   <th></th>
                 </tr>
               </thead>
@@ -65,6 +217,7 @@
                   <td>
                     <p class="text-heading font-semibold">
                       {{ user.firstName }}
+                      {{ user.lastName }}
                     </p>
                   </td>
                   <td>{{ user.phoneNo }}</td>
@@ -73,7 +226,7 @@
                       {{ user.email }}
                     </p>
                   </td>
-                  <td>{{ user.gender }}</td>
+                  <!-- <td>{{ user.gender }}</td> -->
                   <!-- <td>
                     <span class="badge badge-lg badge-dot">
                       {{ user.dateOfBirth | date: 'mediumDate'}}
@@ -81,6 +234,7 @@
                   </td> -->
                   <td>{{ user.state }}</td>
                   <td>{{ user.country }}</td>
+                  <td>{{ user.isAdmin }}</td>
                   <td class="text-end">
                     <a [routerLink]="['/view-user', user.id]" class="btn btn-sm btn-neutral">View Info</a>
                     <!-- <button (click)="deleteUser(user.id)"

@@ -128,28 +128,27 @@ export class CheckoutComponent implements OnInit {
 
   createOrder() {
     if (this.checkoutForm.valid) {
-      // this.order.name = this.checkoutForm.controls.firstName.value;
-      // this.order.email = this.checkoutForm.controls.email.value;
-      // this.order.address = this.checkoutForm.controls.address.value;
-      // this.order.phone = this.checkoutForm.controls.phoneNo.value;
+      // this.user = this.res,
+      // this.order.id
+      // this.order.bookDate
+      // this.order.checkoutDate
+      // this.order.address = this.res.address;
 
-      this.order.address = this.res.address;
       this.order.email = this.res.email;
       this.order.firstName = this.res.firstName;
       this.order.lastName = this.res.lastName;
       this.order.phone = this.res.phoneNo;
+      this.order.address = this.res.address;
+     
+
 
       console.log('CHECKING CHECKOUT PAGE', this.order);
-      // this.orderService.createOrder(this.order).subscribe({
-      //   next: () =>{
-      //     this.route.navigateByUrl('/payment')
-      //   },
-      //   error: (errors) => {
-      //     alert(errors.error);
-      //   }
-      // })
+      this.orderService.createOrder(this.order).subscribe(res =>{
+        this.order = res;
+        console.log("ORDER SERVICE",this.order);
+      })
     }
-    //alert('Please fill the inputs');
+
     return;
   }
 }

@@ -9,6 +9,7 @@
         </a></td>
         <td>
             {{item.room.roomName}}
+
         </td>
         <td>{{item.room.roomPrice | currency: '₦'}}</td>
         <td>
@@ -19,14 +20,14 @@
         </td>
         <td>
           <div class="date">
-            <div class="d-flex">
+            <!-- <div class="d-flex">
               <p>Book Date</p>
-              <input class="form-control mb-2" type="date" label="Name" />
+              <input class="form-control mb-2" type="date" value="{{item.checkoutDate}}" />
             </div>
             <div class="d-flex">
               <p>CheckOut Date</p>
-              <input class="form-control mb-2" type="date" label="Name" />
-            </div>
+              <input class="form-control mb-2" type="date" value="{{item.bookDate}}" />
+            </div> -->
           </div>
         </td>
     </tr>
