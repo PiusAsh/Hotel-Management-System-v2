@@ -29,10 +29,9 @@ this.toast.error({
     this.toast.success({detail: "Added to Cart", summary: "Room added successfully", duration: 4000})
   }
 
-  // I USED NUMBER INSTEAD OF A STRING
+ 
   removeFromCart(roomId: number): void {
     this.cart.items = this.cart.items.filter((item) => item.room.id != roomId);
-    // this.userService.logout();
     this.setCartToLocalStorage();
   }
 
@@ -60,7 +59,8 @@ this.toast.error({
 
   private setCartToLocalStorage(): void {
     this.cart.totalPrice = this.cart.items.reduce(
-      (prevSum, currentItem) => prevSum + currentItem.price,
+      (prevSum, currentItem) =>
+        parseFloat(prevSum.toString()) + parseFloat(currentItem.price.toString()),
       0
     );
     this.cart.totalCount = this.cart.items.reduce(

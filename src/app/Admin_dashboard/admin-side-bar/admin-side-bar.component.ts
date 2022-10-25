@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from 'src/app/Models/user';
-import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./admin-side-bar.component.css'],
 })
 export class AdminSideBarComponent implements OnInit {
-  user: User = {
+  userDetails: User = {
     id: 0,
     firstName: '',
     lastName: '',
@@ -25,30 +24,39 @@ export class AdminSideBarComponent implements OnInit {
     gender: '',
     isAdmin: false,
   };
+  res: any;
+  userId: any;
   constructor(
     private userService: UserService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private cartService: CartService,
     private toast: NgToastService
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.userDetails.id;
+     console.log("GETTING USER ID",this.userId)
+
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         const id: any = params.get('id');
         if (id) {
           this.userService.getUserById(id).subscribe({
             next: (res) => {
-              this.user = res;
+              this.userDetails = res;
               console.log('res %%%%%%%%%', res);
-              this.route.navigate([`admin/${res.id}`]);
+              console.log(' CHECKING THE ID', res.id);
+              // this.route.navigate([`admin/${res.id}`]);
             },
           });
         }
       },
     });
   }
+
+  //  get userId(){
+  //                 return this.res.id;
+  //   }
 
   getUserId(id: any) {
     this.userService.getUserById(id).subscribe({
@@ -58,10 +66,10 @@ export class AdminSideBarComponent implements OnInit {
         console.log(res);
       },
     });
-    console.log(this.user);
   }
 
-  /*this.userService.logout();
-this.route.navigate(['login']);*/
-  // this.cartQuantity = 0;
+  logout() {
+    this.userService.logout();
+    this.route.navigate(['login']);
+  }
 }

@@ -73,7 +73,7 @@ export class UserDashboardComponent implements OnInit {
   updateUser() {
     this.userService.updateUser(this.user.id, this.user).subscribe({
       next: (response) => {
-        console.log(response, 'CHECKING RESPONSE-----');
+        console.log(response, 'CHECKING RESPONSE--ffgg---');
         this.toast.success({detail: "Updated Successfully", summary: "Profile Info Updated", duration: 5000})
       },
       error: (errors) =>{

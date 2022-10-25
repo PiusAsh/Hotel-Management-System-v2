@@ -1,4 +1,6 @@
 import { CartItem } from "./CartItem";
+import { Room } from "./room";
+import { User } from "./user";
 
 export class Order{
     id!: number;

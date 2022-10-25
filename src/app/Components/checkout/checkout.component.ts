@@ -139,6 +139,9 @@ export class CheckoutComponent implements OnInit {
       this.order.firstName = this.res.firstName;
       this.order.lastName = this.res.lastName;
       this.order.phone = this.res.phoneNo;
+      this.order.address = this.res.address;
+     
+
 
       console.log('CHECKING CHECKOUT PAGE', this.order);
       this.orderService.createOrder(this.order).subscribe({
@@ -150,7 +153,7 @@ export class CheckoutComponent implements OnInit {
         },
       });
     }
-    //alert('Please fill the inputs');
+
     return;
   }
 }

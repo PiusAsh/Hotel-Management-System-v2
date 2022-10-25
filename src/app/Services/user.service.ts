@@ -48,9 +48,12 @@ export class UserService {
           this.getUserById(this.globalUser.userData).subscribe({
             next: (res) => {
               this.userDetails = res;
-              console.log('****', this.userDetails);
-
+              console.log("tttttttttttttt",this.userDetails.isAdmin);
+              if(this.userDetails){
+                
+              }
               if (this.userDetails.isAdmin === true) {
+console.log("CHECKING ADMIN", this.userDetails.isAdmin);
                 this.router.navigate([`admin/${this.userDetails.id}`]);
               } else {
                 this.router.navigate([`user/${this.userDetails.id}`]);
@@ -60,14 +63,15 @@ export class UserService {
                 summary: "You're now logged in...",
                 duration: 4000,
               });
-              // alert(`Hey ${this.userDetails.firstName}, Welcome to Ash Hotel`);
+             
             },
+
           });
         },
         error: (errorRes) => {
           this.toast.error({
-            detail: 'Invalid Credentials',
-            summary: 'Username or Password does not exist',
+            detail: 'Something went wrong',
+            summary: 'Please check your details and internet',
             duration: 7000,
           });
         },
@@ -91,7 +95,7 @@ export class UserService {
     return this.http.post<User>(this.baseApiUrl + '/Auth/Register', register);
   }
 
-  register(user: User) {
+  register(user: any) {
     return this.http.post(`${this.baseApiUrl}/Auth/Register`, user);
   }
 
