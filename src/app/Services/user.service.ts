@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -21,9 +25,14 @@ export class UserService {
   private userSubject = new BehaviorSubject<User>(
     this.getUserFromLocalStorage()
   );
-  public  userObservable!: Observable<User>;
+  public userObservable!: Observable<User>;
 
-  constructor(private http: HttpClient, private cartService: CartService, private router: Router, private toast: NgToastService) {
+  constructor(
+    private http: HttpClient,
+    private cartService: CartService,
+    private router: Router,
+    private toast: NgToastService
+  ) {
     this.userObservable = this.userSubject.asObservable();
   }
 
@@ -39,10 +48,10 @@ export class UserService {
           this.getUserById(this.globalUser.userData).subscribe({
             next: (res) => {
               this.userDetails = res;
-              console.log("tttttttttttttt",this.userDetails.isAdmin);
+              console.log('****', this.userDetails);
+
               if (this.userDetails.isAdmin === true) {
-              
-                this.router.navigate([`admin/${this.userDetails.firstName}`]);
+                this.router.navigate([`admin/${this.userDetails.id}`]);
               } else {
                 this.router.navigate([`user/${this.userDetails.id}`]);
               }
@@ -70,8 +79,11 @@ export class UserService {
     this.userSubject.next(new User());
     localStorage.removeItem(this.UserKey);
     this.cartService.clearCart();
-    this.router.navigate(['login'])
-    this.toast.info({detail: "You've been logged out", summary: "Please login to continue"})
+    this.router.navigate(['login']);
+    this.toast.info({
+      detail: "You've been logged out",
+      summary: 'Please login to continue',
+    });
     // window.location.reload();
   }
 
@@ -102,11 +114,9 @@ export class UserService {
     );
   }
   // CHECKOUT FUNCTION FOR CURRENT USER
-  public get currentUser():User{
+  public get currentUser(): User {
     return this.userSubject.value;
   }
-
-  
 
   getUserById(id: any): Observable<User> {
     return this.http
@@ -114,8 +124,8 @@ export class UserService {
       .pipe(
         map((data) => {
           return data;
-        }),
-        tap((res) => console.log(JSON.stringify(res)))
+        })
+        //tap((res) => console.log(JSON.stringify(res)))
       );
   }
 
@@ -128,5 +138,3 @@ export class UserService {
     return new User();
   }
 }
-  
-

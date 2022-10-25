@@ -34,6 +34,8 @@ export class UserDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         const id: any = params.get('id');
@@ -50,6 +52,7 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
+  
   logout() {
     this.userService.logout();
     this.route.navigate(['login']);

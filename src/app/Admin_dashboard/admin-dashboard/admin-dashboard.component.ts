@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { Order } from 'src/app/Models/order';
 import { Room } from 'src/app/Models/room';
 import { User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
+import { OrderService } from 'src/app/Services/order.service';
 import { RoomService } from 'src/app/Services/room.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -15,6 +17,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class AdminDashboardComponent implements OnInit {
   user: User[] = [];
   rooms: Room[] = [];
+  orders: any;
   userDetails: User = {
     id: 0,
     firstName: '',
@@ -27,8 +30,9 @@ export class AdminDashboardComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
-    isAdmin: false
+    isAdmin: false,
   };
+  public loginame: string = '';
   constructor(
     private http: UserService,
     private roomService: RoomService,
@@ -36,19 +40,24 @@ export class AdminDashboardComponent implements OnInit {
     private route: Router,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
+    
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
-        const id: any = params.get('id');
+        let id = params.get('id');
         if (id) {
-          this.userService.getUserById(id).subscribe({
+          let num = parseInt(id);
+          this.userService.getUserById(num).subscribe({
             next: (res) => {
               this.userDetails = res;
+
+              this.loginame = this.userDetails.firstName;
               console.log('res %%%%%%%%%', res);
-              this.route.navigate([`user/${res.id}`]);
+              //  this.route.navigate([`admin/${res.id}`]);
             },
           });
         }
@@ -61,12 +70,20 @@ export class AdminDashboardComponent implements OnInit {
     this.roomService.getAllRooms().subscribe((res: any) => {
       this.rooms = res;
     });
+   
+
+    this.orderService.getAllOrders().subscribe((data: any) => {
+      this.orders = data;
+      console.log("CHECKING Orders 000000", this.orders);
+      console.log('CHECKING Orders firstNmae 000000', this.orders.endDate);
+    });
+    
   }
 
   getUserId(id: any) {
     this.userService.getUserById(id).subscribe({
       next: (res) => {
-        this.route.navigate([`user/${res.id}`]);
+        // this.route.navigate([`admin/${res.id}`]);
         // this.route.navigate([`user`]);
         console.log(res);
       },

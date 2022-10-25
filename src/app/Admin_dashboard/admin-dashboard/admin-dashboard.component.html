@@ -12,16 +12,15 @@
           <div class="row align-items-center">
             <div class="col-sm-6 col-12 mb-5 mb-sm-0">
               <!-- Title -->
-              <h1 class="h3 mb-0 ls-tight">Welcome, Admin</h1>
+              <h1 class="h3 mb-0 ls-tight">Welcome, {{ loginame }}</h1>
             </div>
             <!-- Actions -->
-            <div class="col-sm-6 col-12 text-sm-end">
-            </div>
+            <div class="col-sm-6 col-12 text-sm-end"></div>
           </div>
           <!-- Nav -->
-          <ul class="nav nav-tabs mt-4  overflow-x border-0">
+          <ul class="nav nav-tabs mt-4 overflow-x border-0">
             <li class="nav-item">
-              <a href="#" class="nav-link  active">Overview</a>
+              <a href="#" class="nav-link active">Overview</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link font-regular">Registered Users</a>
@@ -52,7 +51,7 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Booking</span
                     >
-                    <span class="h3 font-bold mb-0">40</span>
+                    <span class="h3 font-bold mb-0">{{ orders.length }}</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -68,9 +67,7 @@
                   >
                     <i class="bi bi-arrow-up me-1"></i>100%
                   </span>
-                  <span class="text-nowrap text-xs text-muted"
-                    >Till Date</span
-                  >
+                  <span class="text-nowrap text-xs text-muted">Till Date</span>
                 </div>
               </div>
             </div>
@@ -95,14 +92,12 @@
                   </div>
                 </div>
                 <div class="mt-2 mb-0 text-sm">
- <span
+                  <span
                     class="badge badge-pill bg-soft-danger text-danger me-2"
                   >
                     <i class="bi bi-arrow-down me-1"></i>100%
                   </span>
-                  <span class="text-nowrap text-xs text-muted"
-                    >Till Date</span
-                  >
+                  <span class="text-nowrap text-xs text-muted">Till Date</span>
                 </div>
               </div>
             </div>
@@ -116,16 +111,14 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Registered Users</span
                     >
-                    <span class="h3 font-bold mb-0">{{user.length}}</span>
+                    <span class="h3 font-bold mb-0">{{ user.length }}</span>
                   </div>
                   <div class="col-auto">
-
                     <div
-                      class=" icon-shape bg-primary text-white text-lg rounded-circle"
+                      class="icon-shape bg-primary text-white text-lg rounded-circle"
                     >
                       <i class="bi bi-people"></i>
                     </div>
-
                   </div>
                 </div>
                 <div class="mt-2 mb-0 text-sm">
@@ -134,9 +127,7 @@
                   >
                     <i class="bi bi-arrow-down me-1"></i>100%
                   </span>
-                  <span class="text-nowrap text-xs text-muted"
-                    >Till Date</span
-                  >
+                  <span class="text-nowrap text-xs text-muted">Till Date</span>
                 </div>
               </div>
             </div>
@@ -150,7 +141,7 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Rooms</span
                     >
-                    <span class="h3 font-bold mb-0">{{rooms.length}}</span>
+                    <span class="h3 font-bold mb-0">{{ rooms.length }}</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -166,9 +157,7 @@
                   >
                     <i class="bi bi-arrow-up me-1"></i>100%
                   </span>
-                  <span class="text-nowrap text-xs text-muted"
-                    >Till Date</span
-                  >
+                  <span class="text-nowrap text-xs text-muted">Till Date</span>
                 </div>
               </div>
             </div>
@@ -176,63 +165,63 @@
         </div>
 
         <!-- TABLE STARTS HERE -->
-        <div class="card shadow border-0 mb-7">
+        <div class="card shadow border-0">
           <div class="card-header"><h5 class="mb-0">Recent Booking</h5></div>
           <div class="table-responsive">
-            <table class="table table-hover overflow-x dataTable" id="example1">
+            <table class="table table-hover overflow-x" id="example1">
               <thead class="thead-light fw-bold">
                 <tr>
-                  <th class="fw-bold" scope="col">Name</th>
-                  <th class="fw-bold" scope="col">Date</th>
-                  <th class="fw-bold" scope="col">Company</th>
-                  <th class="fw-bold"  scope="col">Offer</th>
-                  
-                  <th class="fw-bold" scope="col">Meeting</th>
+                                    <th class="fw-bold" scope="col">Payment ID</th>
+                  <th class="fw-bold" scope="col">USER</th>
+                  <th class="fw-bold" scope="col">USER CONTACT</th>
+                  <!-- <th class="fw-bold" scope="col">Room ID</th> -->
+
+                  <th class="fw-bold" scope="col">Booking Date</th>
+
+
+                  <th class="" scope="col">Status</th>
                   <th></th>
                 </tr>
               </thead>
 
               <!-- TABLE BODY STARTS -->
               <tbody>
-                <tr>
+                <tr *ngFor="let order of orders">
                   <td>
-                    <img
-                      alt="..."
-                      src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                      class="avatar avatar-sm rounded-circle me-2"
-                    />
                     <a class="text-heading font-semibold" href="#">
-                      Robert Fox
+                      {{ order.payment_Id }}
                     </a>
                   </td>
-                  <td>Feb 15, 2021</td>
                   <td>
+                    <a class="text-heading font-semibold" href="#">
+                      {{ order.first_Name }} {{ order.last_Name }}
+                    </a>
+                  </td>
+                  <td>{{ order.phone }}</td>
+                  <td>{{ order.book_Date | date: "medium" }}</td>
 
-                    <a class="text-heading font-semibold" href="#">
-                      Dribbble
-                    </a>
-                  </td>
-                  <td>$3.500</td>
+
+                  
+                  <!-- <td>{{ order.items }}</td> -->
                   <td>
                     <span class="badge badge-lg badge-dot">
-                      <i class="bg-success"></i>Scheduled
+                      <!-- <i class="bg-success"></i> -->
+                      {{ order.status }}
                     </span>
                   </td>
                   <td class="text-end">
-                    <a href="#" class="btn btn-sm btn-neutral me-3">View</a>
-                    <button
+                    <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
+                    <!-- <button
                       type="button"
                       class="btn btn-sm btn-square btn-neutral text-danger-hover"
                     >
                       <i class="bi bi-trash"></i>
-                    </button>
+                    </button> -->
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>
-
         </div>
       </div>
     </main>

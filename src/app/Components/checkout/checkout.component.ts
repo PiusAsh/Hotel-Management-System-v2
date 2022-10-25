@@ -41,7 +41,7 @@ export class CheckoutComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
-    isAdmin: false
+    isAdmin: false,
   };
 
   reference = '';
@@ -132,7 +132,8 @@ export class CheckoutComponent implements OnInit {
       // this.order.email = this.checkoutForm.controls.email.value;
       // this.order.address = this.checkoutForm.controls.address.value;
       // this.order.phone = this.checkoutForm.controls.phoneNo.value;
-
+      this.order.id = this.res.id;
+      this.order.paymentId = '';
       this.order.address = this.res.address;
       this.order.email = this.res.email;
       this.order.firstName = this.res.firstName;
@@ -140,14 +141,14 @@ export class CheckoutComponent implements OnInit {
       this.order.phone = this.res.phoneNo;
 
       console.log('CHECKING CHECKOUT PAGE', this.order);
-      // this.orderService.createOrder(this.order).subscribe({
-      //   next: () =>{
-      //     this.route.navigateByUrl('/payment')
-      //   },
-      //   error: (errors) => {
-      //     alert(errors.error);
-      //   }
-      // })
+      this.orderService.createOrder(this.order).subscribe({
+        next: () => {
+          this.route.navigateByUrl('/payment');
+        },
+        error: (errors) => {
+          alert(errors.error);
+        },
+      });
     }
     //alert('Please fill the inputs');
     return;
