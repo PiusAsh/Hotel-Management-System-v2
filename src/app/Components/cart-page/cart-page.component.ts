@@ -45,11 +45,12 @@ export class CartPageComponent implements OnInit {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
     });
-
+    
     this.form = this.fb.group({
       startDate: [''],
       checkoutDate: [''],
     });
+
   }
 
   ngOnInit(): void {
@@ -72,7 +73,7 @@ export class CartPageComponent implements OnInit {
       });
       this.toast.info({
         detail: 'Invalid Date',
-        summary: "Start date cannot be less than today's date",
+        summary: "Book date cannot be less than today's date",
         duration: 3000,
       });
       // alert("Start date cannot be less than today's date");
@@ -105,7 +106,7 @@ export class CartPageComponent implements OnInit {
     let difference = days2 - days;
 
     // let TotalDays = (days - days2) / (1000 * 3600 * 24);
-    alert(difference);
+    // alert(difference);
 
     this.cartService.changeDays(cartItem.room.id, difference);
     this.toast.success({

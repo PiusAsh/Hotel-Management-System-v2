@@ -14,6 +14,7 @@ export class User {
 }
 
 export interface LoginResponse {
-    Message :string;
-    userData: string
-  }
+  Message: string;
+  userData: string;
+}
+

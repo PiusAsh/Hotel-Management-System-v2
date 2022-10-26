@@ -23,19 +23,20 @@ export class UserDashboardComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
-    isAdmin: false
+    isAdmin: false,
   };
+  recentRoom: any;
+  orderCount: any;
 
   constructor(
     private userService: UserService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private cartService: CartService, private toast: NgToastService
+    private cartService: CartService,
+    private toast: NgToastService
   ) {}
 
   ngOnInit(): void {
-
-    
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         const id: any = params.get('id');
@@ -47,12 +48,21 @@ export class UserDashboardComponent implements OnInit {
               this.route.navigate([`user/${res.id}`]);
             },
           });
+          this.userService.GetUserOrder(id).subscribe({
+            next: (res: any) => {
+              this.route.navigate([`user/${res.id}`]);
+              // this.route.navigate([`user`]);
+              console.log(res);
+              //this.userOrder = res;
+              this.recentRoom = res.recentRoom;
+              this.orderCount = res.orderCount;
+            },
+          });
         }
       },
     });
   }
 
-  
   logout() {
     this.userService.logout();
     this.route.navigate(['login']);
@@ -69,25 +79,39 @@ export class UserDashboardComponent implements OnInit {
     });
     console.log(this.user);
   }
+  getUserOrder(id: any) {
+    this.userService.GetUserOrder(id).subscribe({
+      next: (res) => {
+        this.route.navigate([`user/${res.id}`]);
+        // this.route.navigate([`user`]);
+        console.log(res);
+      },
+    });
+    console.log(this.user);
+  }
 
   updateUser() {
     this.userService.updateUser(this.user.id, this.user).subscribe({
       next: (response) => {
         console.log(response, 'CHECKING RESPONSE--ffgg---');
-        this.toast.success({detail: "Updated Successfully", summary: "Profile Info Updated", duration: 5000})
+        this.toast.success({
+          detail: 'Updated Successfully',
+          summary: 'Profile Info Updated',
+          duration: 5000,
+        });
       },
-      error: (errors) =>{
+      error: (errors) => {
         console.log(errors, 'CHECKING ERRORS-----');
-this.toast.error({
-  detail: 'Oops! An error occurred',
-  summary: 'Please try again later',
-  duration: 5000,
-});
-      }
+        this.toast.error({
+          detail: 'Oops! An error occurred',
+          summary: 'Please try again later',
+          duration: 5000,
+        });
+      },
     });
   }
 
- get isAuth(){
+  get isAuth() {
     return this.user;
   }
 }

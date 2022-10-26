@@ -18,7 +18,7 @@ export class OrderService {
     return this.http.get<Order[]>(this.baseApiUrl + '/Order/AllOrders');
   }
 
-  getOrderByUser(){
-    
-  }
+  
+
+  getOrderByUser() {}
 }
