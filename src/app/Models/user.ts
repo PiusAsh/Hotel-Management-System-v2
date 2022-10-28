@@ -11,6 +11,7 @@ export class User {
   password!: string;
   dateOfBirth!: string;
   gender!: string;
+  
 }
 
 export interface LoginResponse {
@@ -18,3 +19,8 @@ export interface LoginResponse {
   userData: string;
 }
 
+export interface UserItems {
+    message: string;
+    userData: string;
+    admin: boolean;
+  }

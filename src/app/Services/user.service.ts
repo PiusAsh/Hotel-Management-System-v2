@@ -10,7 +10,7 @@ import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUserLogin } from '../Models/ILogin';
 import { Room } from '../Models/room';
-import { User } from '../Models/user';
+import { User, UserItems } from '../Models/user';
 import { CartService } from './cart.service';
 
 @Injectable({
@@ -22,19 +22,31 @@ export class UserService {
   public UserKey: string = 'User';
   userDetails: any;
 
+  UserStorageItems: UserItems = {
+    message: '',
+    userData: '',
+    admin: false,
+  }
+
   private userSubject = new BehaviorSubject<User>(
     this.getUserFromLocalStorage()
   );
   public userObservable!: Observable<User>;
+  admin: any;
 
   constructor(
     private http: HttpClient,
     private cartService: CartService,
     private router: Router,
     private toast: NgToastService
-  ) {
+  ) // private _location: Location
+  {
     this.userObservable = this.userSubject.asObservable();
   }
+
+  // backClicked() {
+  //   this._location.reload();
+  // }
 
   LoginUser(login: IUserLogin): Observable<User> {
     return this.http.post<User>(this.baseApiUrl + '/Auth/Login', login).pipe(
@@ -76,12 +88,26 @@ export class UserService {
     );
   }
 
+  IsLoggedIn() {
+    return !!localStorage.getItem(this.UserKey);
+  } 
+  IsAdmin(){
+    this.admin = localStorage.getItem(this.UserKey);
+    this.UserStorageItems = JSON.parse(this.admin)
+    console.log(this.UserStorageItems.admin, 'ISADMIN-------');
+    console.log(this.UserStorageItems.message, 'MESSAGE-------');
+    return this.UserStorageItems.admin;
+    // console.log(this.admin, "ISADMIN-------");
+  }
+
+  
+
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(this.UserKey);
     this.cartService.clearCart();
     this.router.navigate(['login']);
-    // window.location.reload();
+    // this._location.reload();
     this.toast.info({
       detail: "You've been logged out",
       summary: 'Please login to continue',

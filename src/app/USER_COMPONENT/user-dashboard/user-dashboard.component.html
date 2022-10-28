@@ -188,7 +188,7 @@ id="navbarVertical"
                   <div class="col">
                     <span
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
-                      >Booked Room</span
+                      >Recent Booking</span
                     >
                     <span class="h4 font-bold mb-0">{{recentRoom}}</span>
                   </div>
@@ -207,7 +207,7 @@ id="navbarVertical"
                     <i class="bi bi-arrow-up me-1"></i>13%
                   </span>
                   <span class="text-nowrap text-xs text-muted"
-                    >Recent Booking</span
+                    >Latest Info</span
                   >
                 </div>
               </div>
@@ -279,7 +279,82 @@ id="navbarVertical"
           </div>
           
         </div>
+<!-- TABLE STARTS HERE -->
+<div class="card shadow border-0">
+  <div class="card-header">
+    <h5 class="mb-0">Recent Booking</h5>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover overflow-x" id="example1">
+      <thead class="thead-light fw-bold">
+        <tr>
+          <th class="fw-bold" scope="col">Payment ID</th>
+          <th class="fw-bold" scope="col">Room</th>
+          <th class="fw-bold" scope="col">Type </th>
+          <th class="fw-bold" scope="col">Unit Price </th>
+          <!-- <th class="fw-bold" scope="col">Room ID</th> -->
 
+          <th class="fw-bold" scope="col">Duration</th>
+          <th class="fw-bold" scope="col">Total Price</th>
+         
+
+
+          <th class="fw-bold" scope="col">Status</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <!-- TABLE BODY STARTS -->
+      <tbody>
+        <tr *ngFor="let book of Booking.userRooms">
+          <td>
+            <a class="text-heading font-semibold" href="#">
+              {{ book.payment_Id }}
+            </a>
+          </td>
+          <td>
+            <a class="text-heading font-semibold" href="#">
+                            {{ book.room.roomName }}
+            </a>
+          </td>
+          <td>
+                            {{ book.room.roomType }}
+          </td>
+          <td>
+{{ book.room.roomPrice | currency: '₦'}}
+          </td>
+          <td>
+            {{ book.days }} days
+
+          </td>
+          <td>
+{{ book.roomPrice  | currency: '₦'}}
+          </td>
+
+
+
+          <!-- <td>{{ order.items }}</td> -->
+          <td>
+            <span class="badge badge-lg badge-dot">
+
+              <!-- <i class="bg-success"></i> -->
+              {{ book.status }}
+            </span>
+          </td>
+          <!-- <td class="text-end">
+            <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
+            <button
+                      type="button"
+                      class="btn btn-sm btn-square btn-neutral text-danger-hover"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
              
       </div></div>

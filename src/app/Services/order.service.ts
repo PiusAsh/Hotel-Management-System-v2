@@ -18,6 +18,10 @@ export class OrderService {
     return this.http.get<Order[]>(this.baseApiUrl + '/Order/AllOrders');
   }
 
+  getOrdersByUser(id:any): Observable<Order[]> {
+    return this.http.get<Order[]>(this.baseApiUrl + '/Order/GetAllUserOrders?userId=' + id);
+  }
+
   
 
   getOrderByUser() {}

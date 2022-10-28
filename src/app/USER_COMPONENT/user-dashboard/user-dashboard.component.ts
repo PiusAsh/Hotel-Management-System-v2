@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { UserBooking } from 'src/app/Models/order';
+import { Room } from 'src/app/Models/room';
 import { LoginResponse, User } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
+import { OrderService } from 'src/app/Services/order.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -25,15 +28,27 @@ export class UserDashboardComponent implements OnInit {
     gender: '',
     isAdmin: false,
   };
+
+  rooms: Room = {
+    roomName: '',
+    roomPrice: 0,
+    roomDes: '',
+    id: 0,
+    roomImg: '',
+    roomType: ''
+  }
   recentRoom: any;
   orderCount: any;
+  Booking: any;
+
 
   constructor(
     private userService: UserService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -45,22 +60,59 @@ export class UserDashboardComponent implements OnInit {
             next: (res) => {
               this.user = res;
               console.log('res %%%%%%%%%', res);
-              this.route.navigate([`user/${res.id}`]);
+              console.log(' CHECKING THE ID', res.id);
             },
           });
           this.userService.GetUserOrder(id).subscribe({
             next: (res: any) => {
-              this.route.navigate([`user/${res.id}`]);
-              // this.route.navigate([`user`]);
               console.log(res);
-              //this.userOrder = res;
               this.recentRoom = res.recentRoom;
               this.orderCount = res.orderCount;
+            },
+          });
+          this.orderService.getOrdersByUser(id).subscribe({
+            next: (res: any) => {
+              this.Booking = res;
+              console.log(this.Booking, 'CHECKING USER ORDERS');
             },
           });
         }
       },
     });
+    // this.activatedRoute.paramMap.subscribe({
+    //   next: (params) => {
+    //     const id: any = params.get('id');
+    //     if (id) {
+    //       this.userService.getUserById(id).subscribe({
+    //         next: (res) => {
+    //           this.user = res;
+    //           console.log('res %%%%%%%%%', res);
+    //           this.route.navigate([`user/${res.id}`]);
+    //         },
+    //       });
+    //     }
+    //     this.userService.GetUserOrder(id).subscribe({
+    //       next: (res: any) => {
+    //         this.route.navigate([`user/${res.id}`]);
+    //         // this.route.navigate([`user`]);
+    //         console.log(res);
+    //         //this.userOrder = res;
+    //         this.recentRoom = res.recentRoom;
+    //         this.orderCount = res.orderCount;
+    //       },
+    //     });
+
+    //     this.orderService.getOrdersByUser(id).subscribe({
+    //       next: (res: any) => {
+
+    //         this.route.navigate([`user/${res.id}`]);
+    //         this.userRooms = res;
+    //         console.log(this.userRooms, "CHECKING USER ORDERS")
+    //       }
+    //     })
+
+    //   },
+    // });
   }
 
   logout() {

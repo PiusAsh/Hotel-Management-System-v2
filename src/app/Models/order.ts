@@ -16,3 +16,18 @@ export class Order{
     endDate!: string;
     status!: string;
 }
+export class UserBooking {
+  id!: number;
+  room!: Room;
+  roomPrice!: number;
+  firstName!: string;
+  lastName!: string;
+  phone!: string;
+  payment_Id!: string;
+  bookDate!: string;
+  endDate!: string;
+  status!: string;
+  days!: number;
+  user!: User;
+  userRooms!: any
+}

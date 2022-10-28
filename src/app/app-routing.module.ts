@@ -26,6 +26,8 @@ import { CartPageComponent } from './Components/cart-page/cart-page.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { AuthGuard } from './Guard/auth.guard';
+import { RoleGuard } from './Guard/role.guard';
 
 const routes: Routes = [
   {
@@ -49,6 +51,7 @@ const routes: Routes = [
   {
     path: 'admin/:id',
     component: AdminDashboardComponent,
+    canActivate: [RoleGuard],
   },
   // {
   //   path: 'me',
@@ -79,14 +82,17 @@ const routes: Routes = [
   {
     path: 'reg-users',
     component: RegisteredUsersComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'bookings',
     component: BookedRoomsComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'view-user/:id',
     component: ViewUserComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'room/:id',
@@ -96,6 +102,7 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddRoomsComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'testing',
@@ -104,6 +111,7 @@ const routes: Routes = [
   {
     path: 'sidebar',
     component: AdminSideBarComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'account-details',
@@ -116,18 +124,22 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: UserDashboardComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-bar',
     component: UserSidebarComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'analytics',
     component: AnalyticsComponent,
+    canActivate: [RoleGuard],
   },
   {
     path: 'cart-page',
     component: CartPageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'signup',
@@ -136,6 +148,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

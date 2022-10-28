@@ -146,7 +146,7 @@ export class CheckoutComponent implements OnInit {
       console.log('CHECKING CHECKOUT PAGE', this.order);
       this.orderService.createOrder(this.order).subscribe({
         next: () => {
-          this.route.navigateByUrl('/payment');
+          this.route.navigateByUrl('/receipt');
         },
         error: (errors) => {
           alert(errors.error);

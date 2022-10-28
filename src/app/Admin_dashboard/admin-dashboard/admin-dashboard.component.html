@@ -176,7 +176,8 @@
                   <th class="fw-bold" scope="col">USER CONTACT</th>
                   <!-- <th class="fw-bold" scope="col">Room ID</th> -->
 
-                  <th class="fw-bold" scope="col">Booking Date</th>
+                  <th class="fw-bold" scope="col">Duration</th> 
+                  <th class="fw-bold" scope="col">Amount</th>
                   <th class="fw-bold" scope="col">Checkout Date</th>
 
 
@@ -195,10 +196,12 @@
                   </td>
                   <td>
                     <a class="text-heading font-semibold" href="#">
-                      {{ order.first_Name }} {{ order.last_Name }}
+                       {{ order.firstName }} {{ order.lastName }}
                     </a>
                   </td>
                   <td>{{ order.phone }}</td>
+                  <td >{{ order.days }} days</td>
+                  <td>{{ order.roomPrice | currency: '₦' }}</td>
                   <td>{{ order.book_Date | date: "medium" }}</td>
 
 
