@@ -85,11 +85,11 @@ import { AuthInterceptor } from './AUTH/auth.interceptor';
     BrowserAnimationsModule,
     NgxPrintElementModule,
     Angular4PaystackModule.forRoot(
-      'pk_test_c613fc7d428a64fd1e5daea22f8380551b28c78e'
+      'pk_test_db114057f7e1e073f3bc5d5551869e8eef51b9b1'
     ),
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

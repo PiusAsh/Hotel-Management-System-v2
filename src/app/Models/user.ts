@@ -23,4 +23,5 @@ export interface UserItems {
     message: string;
     userData: string;
     admin: boolean;
+    email: string;
   }

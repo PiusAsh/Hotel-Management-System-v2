@@ -32,11 +32,7 @@ font-size: 17px;
     visibility: hidden;
   }
   #prints, #prints * {
-    visibility: visible;
+    visibility: hidden;
   }
-  #prints {
-    position: absolute;
-    left: 50;
-    top: 40;
-  }
+
 }

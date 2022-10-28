@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Order } from 'src/app/Models/order';
-import { User } from 'src/app/Models/user';
+import { User, UserItems } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
 import { PaystackOptions } from 'angular4-paystack';
 import { OrderService } from 'src/app/Services/order.service';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-checkout',
@@ -15,6 +16,12 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
   // PAYSTACK TESTING
+  options: PaystackOptions = {
+    amount: 0,
+    email: '',
+    // email: this.UserStorageItems.email,
+    ref: '',
+  };
 
   // END OF PAYSTACK TESTING
   order: Order = new Order();
@@ -24,6 +31,8 @@ export class CheckoutComponent implements OnInit {
   resp: any;
   res: any;
 
+  globalemail = '';
+  public UserKey: string = 'User';
   login = {
     message: '',
     userData: 0,
@@ -43,43 +52,95 @@ export class CheckoutComponent implements OnInit {
     gender: '',
     isAdmin: false,
   };
+  UserStorageItems: UserItems = {
+    message: '',
+    userData: '',
+    admin: false,
+    email: '',
+  };
+
+  message: any;
+  redirecturl: any;
+  
+  status = '';
+  trans = '';
+  transaction = '';
+  trxref = '';
 
   reference = '';
   title = '';
+  currentUser: any;
+  public isShow : boolean = false;
+
+
+  // public PaystackOptions: any;
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private cartService: CartService,
     private orderService: OrderService,
-    private route: Router
+    private route: Router,
+    private toast: NgToastService,
   ) {
     const cart = cartService.getCart();
     this.order.items = cart.items;
     this.order.totalPrice = cart.totalPrice;
   }
 
+  // options: PaystackOptions = {
+  //   amount: 50000,
+  //   email: 'user@mail.com',
+  //   ref: `${Math.ceil(Math.random() * 10e10)}`,
+  // };
   // PAYSTACK METHOD
-
-  options: PaystackOptions = {
-    amount: 50000,
-    email: 'user@mail.com',
-    ref: `${Math.ceil(Math.random() * 10e10)}`,
-  };
-
   paymentInit() {
     console.log('Payment initialized');
   }
 
   paymentDone(ref: any) {
-    this.title = 'Payment successfull';
-    console.log(this.title, ref);
+    this.title = 'Payment successful';
+    console.log(ref, this.title, 'CHECKING SUCCESS');
+    if (ref.message == "Approved") {
+      this.isShow = true;
+      this.createOrder();
+      console.log(ref.status, 'CHECKING SUCCESS');
+    } 
+    
   }
 
   paymentCancel() {
+    this.toast.error({
+      detail: 'Payment failed',
+      summary: 'Please check your balance and try again',
+      duration: 4000,
+    });
     console.log('payment failed');
-  } //END OF PAYSTACK METHOD
+    console.log(this.title);
+  }
+  printReceipt() {
+    window.print();
+  }
+
+  todayDate = Date.now();
+
+  //END OF PAYSTACK METHOD
 
   ngOnInit(): void {
+    this.currentUser = localStorage.getItem(this.UserKey);
+    this.UserStorageItems = JSON.parse(this.currentUser);
+    console.log(this.UserStorageItems.email, 'CHECKING EMAIL -----');
+
+    this.options = {
+      amount: this.order.totalPrice * 100,
+      // email: 'as@gmail.com',
+      email: this.UserStorageItems.email,
+      ref: `${Math.ceil(Math.random() * 10e10)}`,
+    };
+
+    // PAYSTACK METHOD
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+    // END OF PAYSTACK METHOD
+
     let { firstName, lastName, address, email, phoneNo } =
       this.userService.currentUser;
     this.checkoutForm = this.formBuilder.group({
@@ -103,6 +164,8 @@ export class CheckoutComponent implements OnInit {
         console.log('Checking current add------ user', this.resp);
 
         this.res = res;
+        console.log(this.user.email, 'CHECKINGGGGG');
+        this.globalemail = this.res.email;
 
         console.log('re', this.res);
         this.checkoutForm.patchValue({
@@ -114,24 +177,16 @@ export class CheckoutComponent implements OnInit {
         });
       },
     });
-
-    // this.order.address = this.res.address;
-    // this.order.email = this.res.email;
-    // this.order.firstName = this.res.firstName;
-    // this.order.lastName = this.res.lastName;
-    // this.order.phone = this.res.phoneNo;
   }
 
+  
   get checkout() {
     return this.checkoutForm.controls;
   }
 
   createOrder() {
+    
     if (this.checkoutForm.valid) {
-      // this.order.name = this.checkoutForm.controls.firstName.value;
-      // this.order.email = this.checkoutForm.controls.email.value;
-      // this.order.address = this.checkoutForm.controls.address.value;
-      // this.order.phone = this.checkoutForm.controls.phoneNo.value;
       this.order.id = this.res.id;
       this.order.paymentId = '';
       this.order.address = this.res.address;
@@ -140,20 +195,23 @@ export class CheckoutComponent implements OnInit {
       this.order.lastName = this.res.lastName;
       this.order.phone = this.res.phoneNo;
       this.order.address = this.res.address;
-     
 
+      // this.PaystackOptions = {
+      //   amount: 6000,
+      //   email: this.order.email,
+      //   ref: `${Math.ceil(Math.random() * 10e10)}`,
+      // };
+      console.log('CHECKING ORDER EMAIL', this.order.email);
+      console.log('CHECKING ORDER', this.order);
 
-      console.log('CHECKING CHECKOUT PAGE', this.order);
       this.orderService.createOrder(this.order).subscribe({
         next: () => {
-          this.route.navigateByUrl('/receipt');
+          // this.route.navigateByUrl('/receipt');
         },
         error: (errors) => {
           alert(errors.error);
         },
       });
     }
-
-    return;
   }
 }

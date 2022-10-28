@@ -23,12 +23,44 @@ form{
     border:2px solid #112A48 !important;
 }
 
-.btn-primary{
+.offcanvas-body {
+  flex-grow: 1;
+  padding: 1rem 1rem;
+  /* overflow-y: auto; */
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #prints,
+  #prints * {
+    visibility: hidden;
+  }
+}
+.offcanvas{
+    height: 100vh!important;
+}
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px;
+}
+
+.btn{
     background-color: #112A48;
     color: white;
     border: none;
     font-weight: 500;
 }
+/* .btn-primary {
+  color: #fff;
+  
+  background-color: #112A48;
+
+} */
 .btn-primary:hover{
     background-color: #112A48;
     color: white;

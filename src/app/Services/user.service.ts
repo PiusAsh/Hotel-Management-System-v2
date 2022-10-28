@@ -26,6 +26,7 @@ export class UserService {
     message: '',
     userData: '',
     admin: false,
+    email: ''
   }
 
   private userSubject = new BehaviorSubject<User>(
