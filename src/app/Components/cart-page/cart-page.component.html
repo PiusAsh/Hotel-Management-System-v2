@@ -45,25 +45,29 @@
             <div>
                 <button (click)="removeFromCart(cartItem)" class="remove-button">Remove</button>
             </div>
-
-            <div class="date">
-                <form [formGroup]="form">
+    
+        <div class="date">
+                <form [formGroup]="form" class="form">
                 <div class="d-flex">
-                    <p>Booking Date</p>
+                    <p class="h6 me-2 py-2">Start:</p>
                         <input class="form-control mb-2" 
                         (change)="startDt(this.form.value.startDate)" formControlName="startDate" type="date"
                         label="Name" />
                 </div>
                 <div class="d-flex">
-                  <p>CheckOut Date</p>
+                  <p class="h6 me-2 py-2">CheckOut:</p>
                   <input class="form-control mb-2" [value]="cartItem.days"
                     formControlName="checkoutDate"
                     (change)="changeDays(cartItem)" type="date" label="Name" />
                 </div>
             </form>
             </div>
+    
+            
         </li>
+        
     </ul>
+
     <div class="checkout shadow-sm ms-5">
 <div>
   <div class="room-count">

@@ -12,6 +12,10 @@
     font-weight: 600;
     color: black;
 }
+
+.form{
+    display: flex;
+}
 ul{
     display: flex;
     flex-direction: column;
@@ -51,7 +55,7 @@ li img{
     object-fit: cover;
 }
 li div{
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 li div:not(:first-child){

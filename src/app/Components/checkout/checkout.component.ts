@@ -61,7 +61,7 @@ export class CheckoutComponent implements OnInit {
 
   message: any;
   redirecturl: any;
-  
+
   status = '';
   trans = '';
   transaction = '';
@@ -70,8 +70,7 @@ export class CheckoutComponent implements OnInit {
   reference = '';
   title = '';
   currentUser: any;
-  public isShow : boolean = false;
-
+  isShown = false;
 
   // public PaystackOptions: any;
   constructor(
@@ -80,7 +79,7 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private route: Router,
-    private toast: NgToastService,
+    private toast: NgToastService
   ) {
     const cart = cartService.getCart();
     this.order.items = cart.items;
@@ -97,15 +96,19 @@ export class CheckoutComponent implements OnInit {
     console.log('Payment initialized');
   }
 
+  open() {
+    this.isShown = true;
+  }
+
   paymentDone(ref: any) {
     this.title = 'Payment successful';
+    this.open();
     console.log(ref, this.title, 'CHECKING SUCCESS');
-    if (ref.message == "Approved") {
-      this.isShow = true;
+
+    if (ref.message === 'Approved') {
       this.createOrder();
       console.log(ref.status, 'CHECKING SUCCESS');
-    } 
-    
+    }
   }
 
   paymentCancel() {
@@ -179,13 +182,13 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  
   get checkout() {
     return this.checkoutForm.controls;
   }
-
+  receipt() {
+    this.isShown = true;
+  }
   createOrder() {
-    
     if (this.checkoutForm.valid) {
       this.order.id = this.res.id;
       this.order.paymentId = '';
