@@ -15,7 +15,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class CartPageComponent implements OnInit {
   cart!: Cart;
-
+cartItem!: CartItem;
   // user: User = {
   //   id: 0,
   //   firstName: '',
@@ -31,7 +31,7 @@ export class CartPageComponent implements OnInit {
   // };
 
   public startDate!: AbstractControl;
-  public checkoutDate!: AbstractControl;
+  public checkOutDate!: AbstractControl;
 
   public form!: FormGroup;
   constructor(
@@ -45,12 +45,11 @@ export class CartPageComponent implements OnInit {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
     });
-    
+
     this.form = this.fb.group({
       startDate: [''],
-      checkoutDate: [''],
+      checkOutDate: [''],
     });
-
   }
 
   ngOnInit(): void {
@@ -101,8 +100,8 @@ export class CartPageComponent implements OnInit {
   changeDays(cartItem: CartItem) {
     const days = this.form.value.startDate.substring(8);
 
-    const days2 = this.form.value.checkoutDate.substring(8)
-    
+    const days2 = this.form.value.checkOutDate.substring(8);
+
     let difference = days2 - days;
 
     // let TotalDays = (days - days2) / (1000 * 3600 * 24);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Order } from 'src/app/Models/order';
+import { Order, PayOrder } from 'src/app/Models/order';
 import { User, UserItems } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -23,8 +23,11 @@ export class CheckoutComponent implements OnInit {
     ref: '',
   };
 
+  myDate = Date.now();
+
   // END OF PAYSTACK TESTING
   order: Order = new Order();
+  orderPay: PayOrder = new PayOrder();
   checkoutForm!: FormGroup;
   globaluser: any;
   uselocal: any;
@@ -58,14 +61,21 @@ export class CheckoutComponent implements OnInit {
     admin: false,
     email: '',
   };
+  reff: PayOrder = {
+    message: '',
+    redirecturl: '',
+    status: '',
+    trans: '',
+    transaction: '',
+    trxref: '',
+  };
 
-  message: any;
-  redirecturl: any;
-
-  status = '';
-  trans = '';
-  transaction = '';
-  trxref = '';
+  // message: any;
+  // redirecturl: any;
+  // status!: '';
+  // trans!: '';
+  // transaction!: '';
+  // trxref!: '';
 
   reference = '';
   title = '';
@@ -102,8 +112,12 @@ export class CheckoutComponent implements OnInit {
 
   paymentDone(ref: any) {
     this.title = 'Payment successful';
+    this.reff = ref;
+    console.log(this.reff.trxref, 'CHECKING TRX-------');
+    // this.route.navigate(['receipt']);
     this.open();
     console.log(ref, this.title, 'CHECKING SUCCESS');
+    console.log(ref.trxref, 'CHECKING TRXREF====');
 
     if (ref.message === 'Approved') {
       this.createOrder();
@@ -188,16 +202,20 @@ export class CheckoutComponent implements OnInit {
   receipt() {
     this.isShown = true;
   }
+  randNumber = Math.random().toString().replace('.', '1') + 10;
+
   createOrder() {
     if (this.checkoutForm.valid) {
       this.order.id = this.res.id;
-      this.order.paymentId = '';
+      this.order.paymentId = 'ASH' + this.randNumber;
       this.order.address = this.res.address;
       this.order.email = this.res.email;
       this.order.firstName = this.res.firstName;
       this.order.lastName = this.res.lastName;
       this.order.phone = this.res.phoneNo;
       this.order.address = this.res.address;
+      this.order.payOder = this.order.payOder;
+      
 
       // this.PaystackOptions = {
       //   amount: 6000,

@@ -33,30 +33,6 @@ export class ViewUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.activatedRoute.paramMap.subscribe({
-    //   next: (params) => {
-    //     const id: any = params.get('id');
-    //     if (id) {
-    //       this.userService.getUserById(id).subscribe({
-    //         next: (res) => {
-    //           this.user = res;
-    //           console.log('res %%%%%%%%%', res);
-    //         },
-    //       });
-    //       this.userService.GetUserOrder(id).subscribe({
-    //         next: (res: any) => {
-    //           this.router.navigate([`view-user/${res.id}`]);
-    //           console.log(res);
-    //           this.recentRoom = res.recentRoom;
-    //           this.orderCount = res.orderCount;
-    //           console.log(this.recentRoom, ' CHECKING RECENT ROOM');
-    //           console.log(this.orderCount, ' CHECKING ORDER COUNT');
-    //         },
-    //       });
-    //     }
-    //   },
-    // });
-
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         const id: any = params.get('id');
@@ -71,9 +47,7 @@ export class ViewUserComponent implements OnInit {
           this.userService.GetUserOrder(id).subscribe({
             next: (res: any) => {
               this.router.navigate([`view-user/${res.id}`]);
-              // this.route.navigate([`user`]);
               console.log(res);
-              //this.userOrder = res;
               this.recentRoom = res.recentRoom;
               this.orderCount = res.orderCount;
               console.log(this.recentRoom, ' CHECKING RECENT ROOM');
@@ -89,7 +63,6 @@ export class ViewUserComponent implements OnInit {
     this.userService.GetUserOrder(id).subscribe({
       next: (res) => {
         this.router.navigate([`view-user/${res.id}`]);
-        // this.route.navigate([`user`]);
         console.log(res);
       },
     });

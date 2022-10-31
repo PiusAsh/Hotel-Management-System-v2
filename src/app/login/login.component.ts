@@ -14,7 +14,8 @@ import { UserService } from '../Services/user.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   IsSubmitted = false;
-
+  mode: 'edit' | 'locked' = 'locked';
+  buttonText: 'Loading...' | 'Login' = 'Login';
   user: User = {
     id: 0,
     firstName: '',
@@ -27,13 +28,12 @@ export class LoginComponent implements OnInit {
     password: '',
     dateOfBirth: '',
     gender: '',
-    isAdmin: false
+    isAdmin: false,
   };
   loginResponse: LoginResponse = {
     Message: '',
     userData: '',
   };
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,6 +56,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  changeMode(mode?: 'edit' | 'locked'): void {
+    console.log(mode);
+    this.mode = this.mode === 'locked' ? 'edit' : 'locked';
+    this.buttonText = this.buttonText === 'Login' ? 'Loading...' : 'Login';
+    if (mode === 'edit') {
+      console.log('UPDATING USER INFO');
+    }
+  }
+
   Login() {
     this.user = this.loginForm.value;
     this.IsSubmitted = true;
@@ -69,9 +78,7 @@ export class LoginComponent implements OnInit {
 
       //   this.route.navigate([`user/${this.loginResponse.userData}`]);
       // }
-      // this.route.navigate([`user/${this.loginResponse.userData}`]); 
+      // this.route.navigate([`user/${this.loginResponse.userData}`]);
     });
   }
-
-
 }

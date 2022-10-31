@@ -34,7 +34,7 @@ export class AdminSideBarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userId = this.userDetails.id;
+    
      console.log("GETTING USER ID",this.userId)
 
     this.activatedRoute.paramMap.subscribe({
@@ -44,6 +44,7 @@ export class AdminSideBarComponent implements OnInit {
           this.userService.getUserById(id).subscribe({
             next: (res) => {
               this.userDetails = res;
+              this.userId = this.userDetails.id;
               console.log('res %%%%%%%%%', res);
               console.log(' CHECKING THE ID', res.id);
               // this.route.navigate([`admin/${res.id}`]);

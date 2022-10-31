@@ -63,7 +63,7 @@ id="navbarVertical"
     <!-- Navigation -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-white" routerLink="/admin/{{userId}}">
+        <a class="nav-link text-white" routerLink="/admin/{{this.userDetails.id}}">
           <i class="bi bi-house"></i> Dashboard
         </a>
       </li>
@@ -105,8 +105,8 @@ id="navbarVertical"
     <!-- User (md) -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i class="bi bi-person-square"></i> Account
+        <a class="nav-link text-white" routerLink="/user/{{this.userDetails.id}}">
+          <i class="bi bi-person-square"></i> User Mode
         </a>
       </li>
       <li class="nav-item">

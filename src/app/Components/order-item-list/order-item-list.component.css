@@ -9,9 +9,11 @@ table{
 
 h3{
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     margin-left: 3.3rem;
     text-align: left!important;
     color: black;
+    font-size: 25px;
 }
 td img{
     width: 4rem;

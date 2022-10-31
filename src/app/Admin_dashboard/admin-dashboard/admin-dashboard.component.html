@@ -81,7 +81,7 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Due Checkout</span
                     >
-                    <span class="h3 font-bold mb-0">21</span>
+                    <span class="h3 font-bold mb-0">0</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -178,7 +178,7 @@
 
                   <th class="fw-bold" scope="col">Duration</th> 
                   <th class="fw-bold" scope="col">Amount</th>
-                  <th class="fw-bold" scope="col">Checkout Date</th>
+                  <!-- <th class="fw-bold" scope="col">Checkout Date</th> -->
 
 
                   <th class="" scope="col">Status</th>
@@ -188,7 +188,7 @@
 
               <!-- TABLE BODY STARTS -->
               <tbody>
-                <tr *ngFor="let order of orders">
+                <tr *ngFor="let order of orders ">
                   <td>
                     <a class="text-heading font-semibold" href="#">
                       {{ order.payment_Id }}
@@ -202,7 +202,7 @@
                   <td>{{ order.phone }}</td>
                   <td >{{ order.days }} days</td>
                   <td>{{ order.roomPrice | currency: '₦' }}</td>
-                  <td>{{ order.book_Date | date: "medium" }}</td>
+                  <!-- <td>{{ order.checkOutDate | date: "medium" }}</td> -->
 
 
                   
@@ -214,13 +214,28 @@
                     </span>
                   </td>
                   <td class="text-end">
-                    <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
-                    <!-- <button
-                      type="button"
+                    <!-- <a href="#" class="bg-light btn-sm btn-neutral ">View</a> -->
+                    <button
+                      type="button" data-toggle="modal" data-target="#exampleModalCenter1"
                       class="btn btn-sm btn-square btn-neutral text-danger-hover"
                     >
                       <i class="bi bi-trash"></i>
-                    </button> -->
+                    </button>
+                    <!-- delete Modal -->
+<div class="modal fade shadow justify-content-center" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center"><i class="bi bi-question-circle-fill"></i></div>
+        <h4 class="modal-title text-center" id="exampleModalCenterTitle">Are you sure you want to delete this order</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="deleteOrder(order.id)" >Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
                   </td>
                 </tr>
               </tbody>
@@ -231,3 +246,5 @@
     </main>
   </div>
 </div>
+
+

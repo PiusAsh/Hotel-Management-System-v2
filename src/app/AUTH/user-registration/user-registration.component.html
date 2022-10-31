@@ -94,7 +94,9 @@
 
                     <input autocomplete="chrome-off" type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
                     <span class="text-danger"
-                    *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required', 'confirmPassword')">Confirm your password</span>
+                    *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required', 'confirmPassword')">Password can't be empty</span>
+                    <span class="text-danger"
+                    *ngIf="registerForm.controls['confirmPassword'].touched && registerForm.hasError('required', 'confirmPassword') !== registerForm.controls['password'].touched && registerForm.hasError('required', 'password')"> Confirm your password</span>
 
                 </div></div>
             <!-- <div class="login-button">

@@ -9,6 +9,7 @@ import { NgToastService } from 'ng-angular-popup';
 import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUserLogin } from '../Models/ILogin';
+import { Order } from '../Models/order';
 import { Room } from '../Models/room';
 import { User, UserItems } from '../Models/user';
 import { CartService } from './cart.service';
@@ -26,8 +27,8 @@ export class UserService {
     message: '',
     userData: '',
     admin: false,
-    email: ''
-  }
+    email: '',
+  };
 
   private userSubject = new BehaviorSubject<User>(
     this.getUserFromLocalStorage()
@@ -39,9 +40,8 @@ export class UserService {
     private http: HttpClient,
     private cartService: CartService,
     private router: Router,
-    private toast: NgToastService
-  ) // private _location: Location
-  {
+    private toast: NgToastService // private _location: Location
+  ) {
     this.userObservable = this.userSubject.asObservable();
   }
 
@@ -91,17 +91,21 @@ export class UserService {
 
   IsLoggedIn() {
     return !!localStorage.getItem(this.UserKey);
-  } 
-  IsAdmin(){
+  }
+  IsAdmin() {
     this.admin = localStorage.getItem(this.UserKey);
-    this.UserStorageItems = JSON.parse(this.admin)
+    this.UserStorageItems = JSON.parse(this.admin);
     console.log(this.UserStorageItems.admin, 'ISADMIN-------');
     console.log(this.UserStorageItems.message, 'MESSAGE-------');
     return this.UserStorageItems.admin;
     // console.log(this.admin, "ISADMIN-------");
   }
 
-  
+  // deleteOrder(id: string): Observable<Order> {
+  //   return this.http.delete<Order>(
+  //     this.baseApiUrl + '/api/Order/DeleteOrder?Id=' + id
+  //   );
+  // }
 
   logout() {
     this.userSubject.next(new User());

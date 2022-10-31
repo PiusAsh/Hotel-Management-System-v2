@@ -15,6 +15,7 @@ export class Order{
     bookDate!: string;
     endDate!: string;
     status!: string;
+    payOder!: PayOrder[];
 }
 export class UserBooking {
   id!: number;
@@ -24,10 +25,18 @@ export class UserBooking {
   lastName!: string;
   phone!: string;
   payment_Id!: string;
-  bookDate!: string;
-  endDate!: string;
+  startDate!: string;
+  checkOutDate!: string;
   status!: string;
   days!: number;
   user!: User;
   userRooms!: any
+}
+export class PayOrder {
+  message: any;
+  redirecturl: any;
+  status!: string;
+  trans!: string;
+  transaction!: string;
+  trxref!: string;
 }

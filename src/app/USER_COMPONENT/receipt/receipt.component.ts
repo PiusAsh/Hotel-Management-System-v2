@@ -63,10 +63,10 @@ export class ReceiptComponent implements OnInit {
   message: any;
   redirecturl: any;
 
-  status = '';
-  trans = '';
-  transaction = '';
-  trxref = '';
+  status!: '';
+  trans!: '';
+  transaction! :'';
+  trxref!:'';
 
   reference = '';
   title = '';
@@ -105,10 +105,12 @@ export class ReceiptComponent implements OnInit {
     this.title = 'Payment successful';
     this.route.navigate(['receipt']);
     console.log(ref, this.title, 'CHECKING SUCCESS');
+    
 
     if (ref.message === 'Approved') {
       this.createOrder();
       console.log(ref.status, 'CHECKING SUCCESS');
+      
     }
   }
 

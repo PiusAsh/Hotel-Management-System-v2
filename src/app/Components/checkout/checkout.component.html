@@ -50,8 +50,8 @@
 
 
 
-<!-- <button class="btn btn-primary" type="button" (click)="receipt()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
-  aria-controls="offcanvasTop">Toggle top offcanvas</button> -->
+<button class="btn btn-primary" type="button" (click)="receipt()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+  aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
 <div class="offcanvas offcanvas-top" tabindex="-1" (open)="open()" [ngClass]="{'show': isShown}" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
   <div class="offcanvas-header">
@@ -62,7 +62,7 @@
     <!-- OFFCANVAS BODY -->
     <div class="container">
       <div class="d-flex justify-content-center row">
-        <div class="col-md-8">
+        <div class="col-md-9">
           <div class="p-5 bg-white rounded card shadow-sm">
             <div class="row">
               <div class="col-md-6">
@@ -70,12 +70,12 @@
                 <div class="billed"><span class="font-weight-bold">Billed:</span><span class="ml-1">{{res.firstName}}
                     {{res.lastName}}</span></div>
                 <div class="billed"><span class="font-weight-bold ">Order Date:</span><span
-                    class="ml-1">{{order.bookDate| date: 'medium'}}</span></div>
+                    class="ml-1">{{myDate | date: 'medium'}}</span></div>
                 <div class="billed"><span class="font-weight-bold">Payment ID:</span><span
                     class="ml-1">{{order.paymentId}}</span>
                 </div>
-                <div class="billed"><span class="font-weight-bold">Reference:</span><span
-                    class="ml-1">{{reference}}</span>
+                <div class="billed"><span class="font-weight-bold">Transaction Ref:</span><span
+                    class="ml-1">{{this.reff.trxref}}</span>
                 </div>
               </div>
               <div class="col-md-6 text-right mt-3">
@@ -91,6 +91,8 @@
                       <th>Room</th>
                       <th>Duration</th>
                       <th>Unit Price</th>
+                      <th>Book Date</th>
+                      <th>Checkout Date</th>
                       <th>Total Price</th>
                     </tr>
                   </thead>
@@ -101,10 +103,15 @@
                       <td>{{item.room.roomName}}</td>
                       <td> {{item.days}} days </td>
                       <td>{{item.room.roomPrice | currency: '₦'}}</td>
+                      <td>{{item.startDate | date: 'MM-dd-yyyy'}}</td>
+                      <td>{{item.checkOutDate | date: 'MM-dd-yyyy'}}</td>
+
                       <td> {{item.price | currency: '₦'}}</td>
                     </tr>
 
                     <tr>
+                      <td></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

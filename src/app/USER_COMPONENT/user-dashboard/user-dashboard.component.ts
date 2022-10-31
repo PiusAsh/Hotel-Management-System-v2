@@ -35,13 +35,17 @@ export class UserDashboardComponent implements OnInit {
     roomDes: '',
     id: 0,
     roomImg: '',
-    roomType: ''
-  }
+    roomType: '',
+  };
   recentRoom: any;
   orderCount: any;
   Booking: any;
 
+  isShown = true;
 
+  maxAge: Date | any;
+  mode: 'edit' | 'locked' = 'locked';
+  buttonText: 'Save Changes' | 'Edit Info' = 'Edit Info';
   constructor(
     private userService: UserService,
     private route: Router,
@@ -49,7 +53,14 @@ export class UserDashboardComponent implements OnInit {
     private cartService: CartService,
     private toast: NgToastService,
     private orderService: OrderService
-  ) {}
+  ) {
+    // const today = new Date();
+    // this.maxAge = new Date(
+    //   today.getFullYear() - 18,
+    //   today.getMonth(),
+    //   today.getDate()
+    // );
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
@@ -79,41 +90,19 @@ export class UserDashboardComponent implements OnInit {
         }
       },
     });
-    // this.activatedRoute.paramMap.subscribe({
-    //   next: (params) => {
-    //     const id: any = params.get('id');
-    //     if (id) {
-    //       this.userService.getUserById(id).subscribe({
-    //         next: (res) => {
-    //           this.user = res;
-    //           console.log('res %%%%%%%%%', res);
-    //           this.route.navigate([`user/${res.id}`]);
-    //         },
-    //       });
-    //     }
-    //     this.userService.GetUserOrder(id).subscribe({
-    //       next: (res: any) => {
-    //         this.route.navigate([`user/${res.id}`]);
-    //         // this.route.navigate([`user`]);
-    //         console.log(res);
-    //         //this.userOrder = res;
-    //         this.recentRoom = res.recentRoom;
-    //         this.orderCount = res.orderCount;
-    //       },
-    //     });
 
-    //     this.orderService.getOrdersByUser(id).subscribe({
-    //       next: (res: any) => {
-
-    //         this.route.navigate([`user/${res.id}`]);
-    //         this.userRooms = res;
-    //         console.log(this.userRooms, "CHECKING USER ORDERS")
-    //       }
-    //     })
-
-    //   },
-    // });
   }
+
+
+changeMode(mode?: 'edit' | 'locked'): void {
+console.log(mode);
+this.mode = this.mode === 'locked' ? 'edit' : 'locked';
+this.buttonText = this.buttonText === 'Edit Info' ? 'Save Changes' : 'Edit Info';
+if(mode === 'edit'){
+  console.log('UPDATING USER INFO')
+}
+}
+
 
   logout() {
     this.userService.logout();
@@ -146,11 +135,14 @@ export class UserDashboardComponent implements OnInit {
     this.userService.updateUser(this.user.id, this.user).subscribe({
       next: (response) => {
         console.log(response, 'CHECKING RESPONSE--ffgg---');
-        this.toast.success({
-          detail: 'Updated Successfully',
-          summary: 'Profile Info Updated',
-          duration: 5000,
-        });
+        if(this.mode === 'locked'){
+
+          this.toast.success({
+            detail: 'Updated Successfully',
+            summary: 'Profile Info Updated',
+            duration: 5000,
+          });
+        }
       },
       error: (errors) => {
         console.log(errors, 'CHECKING ERRORS-----');
@@ -166,4 +158,10 @@ export class UserDashboardComponent implements OnInit {
   get isAuth() {
     return this.user;
   }
+
+
+
+
+
+
 }

@@ -18,11 +18,17 @@ export class OrderService {
     return this.http.get<Order[]>(this.baseApiUrl + '/Order/AllOrders');
   }
 
-  getOrdersByUser(id:any): Observable<Order[]> {
-    return this.http.get<Order[]>(this.baseApiUrl + '/Order/GetAllUserOrders?userId=' + id);
+  getOrdersByUser(id: any): Observable<Order[]> {
+    return this.http.get<Order[]>(
+      this.baseApiUrl + '/Order/GetAllUserOrders?userId=' + id
+    );
   }
 
-  
+  deleteOrder(id: string): Observable<Order> {
+    return this.http.delete<Order>(
+      this.baseApiUrl + '/Order/DeleteOrder?Id=' + id
+    );
+  }
 
   getOrderByUser() {}
 }

@@ -1,9 +1,16 @@
 <table class="shadow-sm container">
     <tr><td colspan="5">
-<h3>Order Items:</h3>
+<h3>Booking Details:</h3>
     </td></tr>
+    <th></th>
+    <th>Room</th>
+    <th>Price</th>
+    <th>Book Date</th>
+    <th>Checkout</th>
+    <th>Room Price</th>
+    
     <tr *ngFor="let item of order.items">
-        <td>
+        <td class="px-2">
         <a routerLink="/room/{{item.room.id}}">
             <img [src]="item.room.roomImg" alt="{{item.room.roomName}}">
         </a></td>
@@ -12,9 +19,13 @@
 
         </td>
         <td>{{item.room.roomPrice | currency: '₦'}}</td>
-        <td>
-           {{item.days}} 
+        <td class="px-2">
+           {{item.startDate | date: 'dd-MM-yyyy'}} 
         </td>
+        <td>
+           {{item.days  | date: 'dd-MM-yyyy'}} 
+        </td>
+       
         <td>
             {{item.price | currency: '₦'}}
         </td>
@@ -32,7 +43,7 @@
         </td>
     </tr>
     <tr>
-        <td class="colso" colspan="4"></td>
+        <td class="colso" colspan="5"></td>
         <td><strong>
             {{order.totalPrice | currency: '₦'}}
         </strong></td>

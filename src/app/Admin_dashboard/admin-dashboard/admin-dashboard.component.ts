@@ -18,6 +18,22 @@ export class AdminDashboardComponent implements OnInit {
   user: User[] = [];
   rooms: Room[] = [];
   orders: any;
+  order: Order = {
+    id: 0,
+    items: [],
+    totalPrice: 0,
+    firstName: '',
+    lastName: '',
+    address: '',
+    email: '',
+    phone: '',
+    paymentId: '',
+    bookDate: '',
+    endDate: '',
+    status: '',
+    payOder: []
+  }
+  
   userDetails: User = {
     id: 0,
     firstName: '',
@@ -32,6 +48,10 @@ export class AdminDashboardComponent implements OnInit {
     gender: '',
     isAdmin: false,
   };
+  Trans1: number = 0;
+  p: number = 1;
+  collection!: any[];
+
   public loginame: string = '';
   constructor(
     private http: UserService,
@@ -45,7 +65,6 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         let id = params.get('id');
@@ -70,14 +89,12 @@ export class AdminDashboardComponent implements OnInit {
     this.roomService.getAllRooms().subscribe((res: any) => {
       this.rooms = res;
     });
-   
 
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data;
-      console.log("CHECKING Orders 000000", this.orders);
+      console.log('CHECKING Orders 000000', this.orders);
       console.log('CHECKING Orders firstNmae 000000', this.orders.endDate);
     });
-    
   }
 
   getUserId(id: any) {
@@ -113,5 +130,23 @@ export class AdminDashboardComponent implements OnInit {
       });
   }
 
+   deleteOrder(id: any){
+    this.orderService.deleteOrder(id).subscribe({
+      next: (response) => {
+        window.location.reload();
+        this.toast.success({
+          detail: 'Order Deleted Successfully',
+          duration: 5000,
+        });
 
-}
+      },
+      error: (errors) => {
+        console.log(errors, 'CHECKING ERRORS-----');
+        this.toast.error({
+          detail: 'Oops! An error occurred',
+          summary: 'Please try again later',
+          duration: 4000,
+        });
+      },
+    });
+  }}

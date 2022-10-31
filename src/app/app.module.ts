@@ -40,6 +40,7 @@ import { Angular4PaystackModule } from 'angular4-paystack';
 import { NgxPrintElementModule } from 'ngx-print-element';
 import { NgxPrintModule } from 'ngx-print';
 import { AuthInterceptor } from './AUTH/auth.interceptor';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { AuthInterceptor } from './AUTH/auth.interceptor';
     NgToastModule,
     BrowserAnimationsModule,
     NgxPrintElementModule,
+    NgxPaginationModule,
     Angular4PaystackModule.forRoot(
       'pk_test_db114057f7e1e073f3bc5d5551869e8eef51b9b1'
     ),
