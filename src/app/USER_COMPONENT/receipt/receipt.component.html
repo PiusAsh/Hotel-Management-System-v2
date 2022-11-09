@@ -1,5 +1,8 @@
+   
+   
+   
     <!-- OFFCANVAS BODY -->
-    <div class="container mt-5">
+    <div class="container">
       <div class="d-flex justify-content-center row">
         <div class="col-md-9">
           <div class="p-5 bg-white rounded card shadow-sm">
@@ -9,12 +12,12 @@
                 <div class="billed"><span class="font-weight-bold">Billed:</span><span class="ml-1">{{res.firstName}}
                     {{res.lastName}}</span></div>
                 <div class="billed"><span class="font-weight-bold ">Order Date:</span><span
-                    class="ml-1">{{order.bookDate| date: 'medium'}}</span></div>
+                    class="ml-1">{{myDate | date: 'medium'}}</span></div>
                 <div class="billed"><span class="font-weight-bold">Payment ID:</span><span
-                    class="ml-1">{{trxref}}</span>
+                    class="ml-1">{{order.paymentId}}</span>
                 </div>
-                <div class="billed"><span class="font-weight-bold">Reference:</span><span
-                    class="ml-1">{{reference}}</span>
+                <div class="billed"><span class="font-weight-bold">Transaction Ref:</span><span
+                    class="ml-1">{{this.reff.trxref}}</span>
                 </div>
               </div>
               <div class="col-md-6 text-right mt-3">
@@ -69,7 +72,7 @@
             </div>
             <p class="font-weight-bold mb-0 py-2">Enjoy your stay with us!</p>
 
-            <div class="d-flex justify-content-between footer p-3">
+            <div class="d-flex justify-content-between footer py-3">
 
               <span>{{todayDate | date: 'medium'}}</span>
               <span>Need Help? visit our <a href="#"> help center</a></span>
@@ -78,9 +81,7 @@
             <!-- <div class="text-right mb-3"><button class="btn btn-danger btn-sm mr-5" type="button"></button></div> -->
             <button class="btn btn-primary mt-3" (click)="printReceipt()">Print <i class="fa fa-print"
                 aria-hidden="true"></i></button>
-                          <a class="text-center" routerLink="/"> Back To Home</a>
           </div>
-
         </div>
       </div>
     </div>

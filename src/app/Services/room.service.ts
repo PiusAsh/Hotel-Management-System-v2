@@ -54,4 +54,10 @@ export class RoomService {
       update
     );
   }
+
+  deleteRoom(id: string): Observable<Room> {
+    return this.http.delete<Room>(
+      this.baseApiUrl + '/HotelRoom/DeleteRoom?Id=' + id
+    );
+  }
 }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PaystackOptions } from 'angular4-paystack/lib/paystack-options';
 import { NgToastService } from 'ng-angular-popup';
-import { Order } from 'src/app/Models/order';
+import { Order, PayOrder } from 'src/app/Models/order';
 import { User, UserItems } from 'src/app/Models/user';
 import { CartService } from 'src/app/Services/cart.service';
 import { OrderService } from 'src/app/Services/order.service';
@@ -15,7 +15,6 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./receipt.component.css'],
 })
 export class ReceiptComponent implements OnInit {
-  todayDate = Date.now();
   // PAYSTACK TESTING
   options: PaystackOptions = {
     amount: 0,
@@ -24,8 +23,11 @@ export class ReceiptComponent implements OnInit {
     ref: '',
   };
 
+  myDate = Date.now();
+
   // END OF PAYSTACK TESTING
   order: Order = new Order();
+  orderPay: PayOrder = new PayOrder();
   checkoutForm!: FormGroup;
   globaluser: any;
   uselocal: any;
@@ -59,14 +61,21 @@ export class ReceiptComponent implements OnInit {
     admin: false,
     email: '',
   };
+  reff: PayOrder = {
+    message: '',
+    redirecturl: '',
+    status: '',
+    trans: '',
+    transaction: '',
+    trxref: '',
+  };
 
-  message: any;
-  redirecturl: any;
-
-  status!: '';
-  trans!: '';
-  transaction! :'';
-  trxref!:'';
+  // message: any;
+  // redirecturl: any;
+  // status!: '';
+  // trans!: '';
+  // transaction!: '';
+  // trxref!: '';
 
   reference = '';
   title = '';
@@ -87,6 +96,8 @@ export class ReceiptComponent implements OnInit {
     this.order.totalPrice = cart.totalPrice;
   }
 
+  open() {}
+
   // options: PaystackOptions = {
   //   amount: 50000,
   //   email: 'user@mail.com',
@@ -97,20 +108,26 @@ export class ReceiptComponent implements OnInit {
     console.log('Payment initialized');
   }
 
-  open() {
-    this.isShown = true;
-  }
-
   paymentDone(ref: any) {
     this.title = 'Payment successful';
-    this.route.navigate(['receipt']);
+    this.reff = ref;
+    this.isShown === true;
+
+    // this.isShown = true;
+    // this.cartService.clearCart();
+
+    // this.route.navigate(['/']);
+
+    console.log(this.reff.trxref, 'CHECKING TRX-------');
+    // this.route.navigate(['receipt']);
+
     console.log(ref, this.title, 'CHECKING SUCCESS');
-    
+    console.log(ref.trxref, 'CHECKING TRXREF====');
 
     if (ref.message === 'Approved') {
       this.createOrder();
+
       console.log(ref.status, 'CHECKING SUCCESS');
-      
     }
   }
 
@@ -127,10 +144,9 @@ export class ReceiptComponent implements OnInit {
     window.print();
   }
 
-
+  todayDate = Date.now();
 
   //END OF PAYSTACK METHOD
-
   ngOnInit(): void {
     this.currentUser = localStorage.getItem(this.UserKey);
     this.UserStorageItems = JSON.parse(this.currentUser);

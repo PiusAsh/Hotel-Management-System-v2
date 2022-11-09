@@ -41,6 +41,8 @@ import { NgxPrintElementModule } from 'ngx-print-element';
 import { NgxPrintModule } from 'ngx-print';
 import { AuthInterceptor } from './AUTH/auth.interceptor';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -86,6 +88,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserAnimationsModule,
     NgxPrintElementModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     Angular4PaystackModule.forRoot(
       'pk_test_db114057f7e1e073f3bc5d5551869e8eef51b9b1'
     ),

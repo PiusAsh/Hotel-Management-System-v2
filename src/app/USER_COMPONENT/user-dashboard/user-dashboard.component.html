@@ -211,13 +211,13 @@
   <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
     <!-- Header -->
-    <header class="bg-surface-primary border-bottom py-3 pt-6">
+    <header class="bg-surface-primary border-bottom py-1 pt-6">
       <div class="container-fluid">
         <div class="mb-npx">
           <div class="row align-items-center">
             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
               <!-- Title -->
-              <h1 class="h3 mb-4 py-3 ls-tight">
+              <h1 class="h3  py-3 ls-tight">
                 Welcome, <span class="">{{ user.firstName }}</span>
               </h1>
             </div>
@@ -337,6 +337,17 @@
                 </div>
               </div>
             </div>
+            <!-- <div class="row">
+  <div class="col-lg-4"><form class="d-flex"><input id="staffid" class="form-control mysearch" type="text" placeholder="Search by Payment ID" name="paymentId" [(ngModel)]="Booking.userRoom.payment_Id" >  <button
+                  class="btn btn-search ms-3"
+                  type="submit"
+(click)="PaymentSearch(this.Booking.userRoom.payment_Id)"
+                >
+                  Search
+                </button></form></div>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4"></div>
+</div> -->
             <!-- TABLE STARTS HERE -->
             <div class="card shadow border-0">
               <div class="card-header">
@@ -362,7 +373,7 @@
 
                   <!-- TABLE BODY STARTS -->
                   <tbody>
-                    <tr *ngFor="let book of Booking.userRooms">
+                    <tr *ngFor="let book of Booking.userRooms  | paginate: {itemsPerPage: 3, currentPage: p}">
                       <td>
                         <a class="text-heading font-semibold" href="#">
                           {{ book.payment_Id }}
@@ -403,6 +414,7 @@
                     </tr>
                   </tbody>
                 </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
               </div>
             </div>
           </div>
@@ -417,7 +429,7 @@
             <!-- TABLE STARTS HERE -->
             <div class="card shadow border-0">
               <div class="card-header">
-                <h5 class="mb-0">Recent Booking</h5>
+                <h5 class="mb-0">My Booking</h5>
               </div>
               <div class="table-responsive">
                 <table class="table table-hover overflow-x" id="example1">
@@ -439,7 +451,7 @@
 
                   <!-- TABLE BODY STARTS -->
                   <tbody>
-                    <tr *ngFor="let book of Booking.userRooms">
+                    <tr *ngFor="let book of Booking.userRooms | paginate: {itemsPerPage: 6, currentPage: p}">
                       <td>
                         <a class="text-heading font-semibold" href="#">
                           {{ book.payment_Id }}
@@ -480,6 +492,7 @@
                     </tr>
                   </tbody>
                 </table>
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
               </div>
             </div>
           </div>

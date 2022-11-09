@@ -8,6 +8,7 @@ import { PaystackOptions } from 'angular4-paystack';
 import { OrderService } from 'src/app/Services/order.service';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -80,7 +81,7 @@ export class CheckoutComponent implements OnInit {
   reference = '';
   title = '';
   currentUser: any;
-  isShown = false;
+  isShown = true;
 
   // public PaystackOptions: any;
   constructor(
@@ -96,6 +97,8 @@ export class CheckoutComponent implements OnInit {
     this.order.totalPrice = cart.totalPrice;
   }
 
+  open() {}
+
   // options: PaystackOptions = {
   //   amount: 50000,
   //   email: 'user@mail.com',
@@ -106,21 +109,42 @@ export class CheckoutComponent implements OnInit {
     console.log('Payment initialized');
   }
 
-  open() {
-    this.isShown = true;
-  }
-
   paymentDone(ref: any) {
     this.title = 'Payment successful';
     this.reff = ref;
+
+    Swal.fire({
+      title: 'Booked Successfully',
+      text: 'Your room has been booked',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: ' #112A48',
+      cancelButtonColor: ' #112A48',
+      confirmButtonText: 'Print Receipt',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isShown === true;
+        // $('#myOffcanvas').offcanvas('show');
+        // this.route.navigate(['receipt'])
+        // Swal.fire('Booked', 'Your room has been booked.', 'success');
+        // this.open();
+      }
+    });
+
+    // this.isShown = true;
+    this.cartService.clearCart();
+
+    // this.route.navigate(['/']);
+
     console.log(this.reff.trxref, 'CHECKING TRX-------');
     // this.route.navigate(['receipt']);
-    this.open();
+
     console.log(ref, this.title, 'CHECKING SUCCESS');
     console.log(ref.trxref, 'CHECKING TRXREF====');
 
     if (ref.message === 'Approved') {
       this.createOrder();
+
       console.log(ref.status, 'CHECKING SUCCESS');
     }
   }
@@ -199,9 +223,7 @@ export class CheckoutComponent implements OnInit {
   get checkout() {
     return this.checkoutForm.controls;
   }
-  receipt() {
-    this.isShown = true;
-  }
+
   randNumber = Math.random().toString().replace('.', '1') + 10;
 
   createOrder() {
@@ -214,8 +236,7 @@ export class CheckoutComponent implements OnInit {
       this.order.lastName = this.res.lastName;
       this.order.phone = this.res.phoneNo;
       this.order.address = this.res.address;
-      this.order.payOder = this.order.payOder;
-      
+      this.order.payOrder = this.order.payOrder;
 
       // this.PaystackOptions = {
       //   amount: 6000,
@@ -235,4 +256,6 @@ export class CheckoutComponent implements OnInit {
       });
     }
   }
+
+  
 }

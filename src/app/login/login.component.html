@@ -75,6 +75,12 @@
           <button (click)="changeMode(mode)"class="btn btn-success w-100" [disabled]="!loginForm.valid">
 {{buttonText}}
           </button>
+            <!-- <button  *ngIf="buttonText !== 'Loading'"  (click)="changeMode(mode)"class="btn btn-success w-100" [disabled]="!loginForm.valid">
+{{buttonText}} 
+          </button>
+          <button *ngIf="buttonText === 'Loading'" (click)="changeMode(mode)"class="btn btn-success w-100" [disabled]="!loginForm.valid">
+{{buttonText}} <i class="fa fa-spinner w3-spin" style="font-size:14px; color: white; font-weight: 900;"></i> 
+          </button> -->
           <!-- <button class="btn btn-success w-100" [disabled]="!loginForm.valid">Sign In</button> -->
         </div>
       </form>

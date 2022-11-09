@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   IsSubmitted = false;
   mode: 'edit' | 'locked' = 'locked';
-  buttonText: 'Loading...' | 'Login' = 'Login';
+  buttonText: 'Loading' | 'Login' = 'Login';
   user: User = {
     id: 0,
     firstName: '',
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  
     this.loginForm = this.formBuilder.group({
       email: [
         '',
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
   changeMode(mode?: 'edit' | 'locked'): void {
     console.log(mode);
     this.mode = this.mode === 'locked' ? 'edit' : 'locked';
-    this.buttonText = this.buttonText === 'Login' ? 'Loading...' : 'Login';
+    this.buttonText = this.buttonText === 'Login' ? 'Loading' : 'Login';
     if (mode === 'edit') {
       console.log('UPDATING USER INFO');
     }

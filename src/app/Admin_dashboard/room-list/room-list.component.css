@@ -1,3 +1,26 @@
 table td{
     font-size: 15px;
 }
+
+
+.bi-question-circle-fill{
+    font-size: 50px;
+    color: #112A48;
+    
+}
+.modal-footer{
+    display: flex;
+    justify-content: center;
+}
+.btn-primary{
+    background-color: #112A48;
+    border: none;
+}
+.btn-primary:active{
+    background-color: #112A48;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: #112A48;
+    border: none;
+}

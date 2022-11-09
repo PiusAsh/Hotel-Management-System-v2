@@ -1,8 +1,8 @@
-import {  HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Order } from '../Models/order';
+import { Order, PayOrder } from '../Models/order';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,7 @@ export class OrderService {
   baseApiUrl: string = environment.baseApiUrl;
   constructor(private http: HttpClient) {}
   createOrder(order: Order) {
+    this.getUserFromLocalStorage();
     return this.http.post<Order>(this.baseApiUrl + '/Order/AddOrder', order);
   }
 
@@ -30,5 +31,20 @@ export class OrderService {
     );
   }
 
+  searchByPaymentId(searchParam: any): any {
+    return this.http.get(
+      `${this.baseApiUrl}/Order/searchPaymentId?search=${searchParam}`
+      // JSON.stringify(searchParam)
+    );
+  }
+
+  private setUserLocalStorage(payOrder: PayOrder) {
+    localStorage.setItem('PayOrder', JSON.stringify(payOrder));
+  }
+  private getUserFromLocalStorage(): PayOrder {
+    const userJson = localStorage.getItem('payOrder');
+    if (userJson) return JSON.parse(userJson) as PayOrder;
+    return new PayOrder();
+  }
   getOrderByUser() {}
 }

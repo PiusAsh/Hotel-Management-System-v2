@@ -12,10 +12,10 @@ export class Order{
     email!: string;
     phone!: string;
     paymentId!: string;
-    bookDate!: string;
-    endDate!: string;
+    // bookDate!: string;
+    // endDate!: string;
     status!: string;
-    payOder!: PayOrder[];
+    payOrder!: PayOrder[];
 }
 export class UserBooking {
   id!: number;

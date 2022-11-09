@@ -63,10 +63,10 @@ const routes: Routes = [
   },
   //   { path: '404', component: NotFoundComponent },
   // { path: '**', component: NotFoundComponent },
-  {
-    path: 'edit',
-    component: EditUserComponent,
-  },
+  // {
+  //   path: 'edit',
+  //   component: EditUserComponent,
+  // },
   {
     path: 'receipt',
     component: ReceiptComponent,
@@ -118,7 +118,7 @@ const routes: Routes = [
     component: UserAccountDetailsComponent,
   },
   {
-    path: 'test',
+    path: 'testtt',
     component: TestimonialComponent,
   },
   {
@@ -134,7 +134,7 @@ const routes: Routes = [
   {
     path: 'analytics',
     component: AnalyticsComponent,
-    canActivate: [RoleGuard],
+    // canActivate: [RoleGuard],
   },
   {
     path: 'cart-page',
@@ -144,6 +144,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: RegisterComponent,
+  },
+  {
+    path: 'test',
+    component: EditUserComponent,
   },
   {
     path: 'checkout',

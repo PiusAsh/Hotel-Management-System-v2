@@ -164,6 +164,17 @@
           </div>
         </div>
 
+<div class="row">
+  <div class="col-lg-4"><form class="d-flex"><input id="staffid" class="form-control mysearch" type="text" placeholder="Search by Payment ID" name="paymentId" [(ngModel)]="orders.payment_Id" >  <button
+                  class="btn btn-search ms-3"
+                  type="submit"
+(click)="PaymentSearch(this.orders.payment_Id)"
+                >
+                  Search
+                </button></form></div>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4"></div>
+</div>
         <!-- TABLE STARTS HERE -->
         <div class="card shadow border-0">
           <div class="card-header"><h5 class="mb-0">Recent Booking</h5></div>
@@ -188,7 +199,8 @@
 
               <!-- TABLE BODY STARTS -->
               <tbody>
-                <tr *ngFor="let order of orders ">
+                <!-- <tr *ngFor="let order of orders"> -->
+                <tr *ngFor="let order of orders | paginate: {itemsPerPage: 3, currentPage: p};">
                   <td>
                     <a class="text-heading font-semibold" href="#">
                       {{ order.payment_Id }}
@@ -240,6 +252,7 @@
                 </tr>
               </tbody>
             </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@
       <app-order-item-list [order]="order"></app-order-item-list>
 
 
-      <button class="btn btn-primary w-100 text-center py-2 mt-3" angular4-paystack [paystackOptions]="options"
+      <button class="btn py-2 btn-primary w-100 text-center" angular4-paystack [paystackOptions]="options"
         (paymentInit)="paymentInit()" (onClose)="paymentCancel()" (callback)="paymentDone($event)">
         Pay with Paystack
       </button>
@@ -50,10 +50,11 @@
 
 
 
-<button class="btn btn-primary" type="button" (click)="receipt()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
-  aria-controls="offcanvasTop">Toggle top offcanvas</button>
+<!-- <button class="btn btn-primary" type="button"
+ data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+  aria-controls="offcanvasTop">Toggle top offcanvas</button> -->
 
-<div class="offcanvas offcanvas-top" tabindex="-1" (open)="open()" [ngClass]="{'show': isShown}" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+<div class="offcanvas offcanvas-top" tabindex="-1"  [ngClass]="{'show': isShown}" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
   <div class="offcanvas-header">
     <h5 id="offcanvasTopLabel"></h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>

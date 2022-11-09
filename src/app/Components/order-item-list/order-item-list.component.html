@@ -1,11 +1,15 @@
-<table class="shadow-sm container">
-    <tr><td colspan="5">
+<table class="table shadow-sm container">
+    <!-- <tr><td colspan="6">
 <h3>Booking Details:</h3>
-    </td></tr>
+    </td></tr> -->
+    <thead><tr><td colspan="5">
+<h3>Booking Details:</h3>
+    </td></tr></thead>
+    
     <th></th>
     <th>Room</th>
     <th>Price</th>
-    <th>Book Date</th>
+    <th>Start</th>
     <th>Checkout</th>
     <th>Room Price</th>
     
@@ -18,16 +22,16 @@
             {{item.room.roomName}}
 
         </td>
-        <td>{{item.room.roomPrice | currency: '₦'}}</td>
+        <td>{{item.room.roomPrice | currency: '₦' : 'symbol' : '1.0-0'}}</td>
         <td class="px-2">
            {{item.startDate | date: 'dd-MM-yyyy'}} 
         </td>
         <td>
-           {{item.days  | date: 'dd-MM-yyyy'}} 
+           {{item.days}} 
         </td>
        
         <td>
-            {{item.price | currency: '₦'}}
+            {{item.price | currency: '₦' : 'symbol' : '1.0-0'}}
         </td>
         <td>
           <div class="date">
@@ -45,8 +49,9 @@
     <tr>
         <td class="colso" colspan="5"></td>
         <td><strong>
-            {{order.totalPrice | currency: '₦'}}
+            {{order.totalPrice | currency: '₦' : 'symbol' : '1.0-0'}}
         </strong></td>
         
     </tr>
 </table>
+

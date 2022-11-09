@@ -1,98 +1,592 @@
+<div class="container">
 
+    <div class="img container mt-2">
+        <img class="logo" src="/assets/images/Zenith (1).svg" alt="">
+        <img class="logo" src="/assets/images/RIA (1).svg" alt="">
+        
+    </div>
+    <form class="py-1">
+    <div class="row">
+      
+        <h4 class="headings">Beneficiary & Sender Information</h4>
+            <div class="col-lg-6 container">
+                <div class="card shadow-sm p-2">
+                    <h4 class="title p">Beneficiary Information</h4>
+                            <div class="row mb-1">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
 
-
-    <!-- Dashboard -->
-<div class="d-flex flex-column flex-lg-row">
-    <!-- Vertical Navbar -->
-    <app-admin-side-bar></app-admin-side-bar>
-  
-    <!-- Main content -->
-    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
-      <!-- Header -->
-      <header class="bg-surface-primary border-bottom pt-6">
-        <div class="container-fluid">
-          <div class="mb-npx">
-            <div class="row align-items-center">
-              <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                <!-- Title -->
-                <h1 class="h3 mb-0 ls-tight py-5">Analytics</h1>
-              </div>
-              <!-- Actions -->
-              <div class="col-sm-6 col-12 text-sm-end">
-
-              </div>
+                    <label class="me-2 py-2" for="firstname">First&nbsp;Name</label>
+                    <input type="text"  class="form-control formName" placeholder="First Name">
+                </div>
             </div>
 
-          </div>
+            <div class="col-md-6 d-flex">
+                <label class="me-2 py-2" for="lastname">Last&nbsp;Name</label>
+                <input type="text" class=" form-control formName" placeholder="Last Name">
+            </div>
         </div>
-      </header>
-  
-      <!-- Main -->
-  
-      <main class="py-6">
-        <div class="container-fluid">
+                            <div class="row">
+                                
+            <div class="col-md-12 d-flex">
+              &nbsp;&nbsp;&nbsp;&nbsp;  <label class="me-2 py-2" for="firstname">Address</label>
+                <input type="text" class=" form-control address" placeholder="Address">
+            </div>
+        </div>
+                </div>
 
+            </div>
+            <div class="col-lg-6">
+               
+                 <div class="card shadow-sm p-2">
+                    <h4 class="title p">Sender Information</h4>
+                            <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
 
-            <div class="page-content page-container" id="page-content">
-                <div class="padding">
-                    <div class="row">
-                        <div class="container-fluid d-flex justify-content-center py-5">
-                            <div class="col-sm-10 col-md-6 py-4">
-                                <div class="">
-                                    <!-- <div class="card-header">Analytics</div> -->
-                                    <div class="card-body py-4" style="height: 470px">
-                                        <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                            </div>
-                                            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                            </div>
-                                        </div> <canvas id="chart-line" width="299" height="200" class="chartjs-render-monitor" style="display: block; width: 299px; height: 200px;"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <label class="me-2 py-2" for="firstname">First&nbsp;Name</label>
+                </div>
+                <input type="text"  class="form-control formName" placeholder="First Name">
+            </div>
+        <!-- <div class="col-md-1"></div> -->
+            <div class="col-md-6 d-flex">
+                <label class="me-2 py-2" for="lastname">Last&nbsp;Name</label>
+                <input type="text" class=" form-control formName" placeholder="Last Name">
+            </div>
+        </div>
+                            <div class="row">
+                                
+            <div class="col-md-12 d-flex">
+                             &nbsp;&nbsp;&nbsp;&nbsp; <label class="py-2 me-2 " for="firstname">Address</label>
+                <input type="text" class=" form-control address" placeholder="Address">
+            </div>
+        </div>
+                </div>
+                
+            </div>
+        
+    </div>
+    <!-- OTHER INFORMATION -->
+    <div class="row py-2">
+        <h4 class="headings">Other Information</h4>
+            <div class="col-lg-12 container">
+                <div class="card shadow-sm p-2">
+                    <h4 class="titlesuc px-2"> <img src="assets/images/Featured icon.png" alt="">  Available for payment at 20/05/2022</h4>
+                            <div class="row py-2">
+            <div class="col-md-4 d-flex">
+                <div class="d-flex ">
+
+                    <label class="me-2 py-2" for="amount">Amount</label>
+                </div>
+                <input type="text"  class="form-control formName" placeholder="Amount">
+            </div>
+
+            <div class="col-md-4 d-flex ">
+                <label class="me-2 py-2" for="ordernumber">Order&nbsp;Number</label>
+                <input type="text" class=" form-control formName" placeholder="Order Number">
+            </div>
+            <div class="col-md-4 d-flex">
+                <label class="me-2 py-2" for="sequencnumber">Sequence&nbsp;Number</label>
+                <input type="text" class=" form-control formName" placeholder="Sequence Number">
+            </div>
+        </div>
+                    
+                </div>
+
+            </div>
+        
+    </div>
+    <!-- BENEFICIARY IDENTIFICATION -->
+    <div class="row ">
+        <h4 class="headings">Beneficiary Identification</h4>
+            <div class="col-lg-12 container">
+                <div class="card shadow-sm p-2">
+                    <!-- <h4 class="title p">Available for payment at 20/05/2022</h4> -->
+                            <div class="row">
+            <div class="col-md-4 d-flex">
+                <div class="d-flex ">
+
+                    <label class="me-2 py-2" for="amount">Identification&nbsp;Type</label>
+              <select class="select px-1 formName px-2">
+            <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+              >Select</option
+            >
+            <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+              >Driver's License</option
+            >
+            <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+              >National Identification Number</option
+            >
+            <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+              >Voters Card</option
+            >
+            <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+              >International Passport</option
+            >
+          </select>
                 </div>
             </div>
 
+            <div class="col-md-4 d-flex ">
+                <label class="me-2 py-2" for="ordernumber">Identification&nbsp;Number</label>
+                <input type="text" class=" form-control formName" placeholder="Identification Number">
+            </div>
+            <div class="col-md-4 d-flex">
+                <label class="me-2 py-2" for="sequencnumber">Issue&nbsp;By&nbsp;Country</label>
+<select class="select px-1 formName px-2">
+            <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+              >Select</option
+            >
+            <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+              >Cash Pickup</option
+            >
+            <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+              >Transfer to Zenith</option
+            >
+            <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+              >Transfer (GAM Switch)</option
+            >
+            <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+              >Transfer (ACP-ACH)</option
+            >
+            <option value="5" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
+              >Five</option
+            >
+          </select>
+            </div>
+        </div>
+                            <div class="row py-2">
+            <div class="col-md-4 d-flex">
+                <div class="d-flex ">
 
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                  <label class="me-2 py-2" for="amount">Issue&nbsp;By</label>
 
-
-          
-      <!-- PIE CHART -->
-
-      <!-- <div class="page-content page-container" id="page-content">
-        <div class="padding">
-            <div class="row">
-                <div class="container-fluid d-flex justify-content-center">
-                    <div class="col-sm-10 col-md-6">
-                        <div class="">
-                            <div class="card-header">Pie chart</div>
-                            <div class="card-body" style="height: 480px">
-                                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                    <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                    </div>
-                                </div> <canvas id="chart-line" width="299" height="200" class="chartjs-render-monitor" style="display: block; width: 299px; height: 200px;"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                  <input type="text"  class="form-control formName" placeholder="Issue By">
                 </div>
             </div>
+
+            <div class="col-md-4 d-flex">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <label class="me-2 py-2" for="ordernumber">Expiry&nbsp;Date</label>
+                <input type="text" class=" form-control formName" placeholder="Expiry Date">
+            </div>
+        </div>
+                
+        <!-- <div class="row px-5">
+            <div class="scan">
+                <p class="scanText py-2">SCAN ID</p>
+            </div>
+        </div> -->
+                </div>
+
+            </div>
+        
+    </div>
+
+    <!-- TESTING ROW -->
+    <!-- <div class="container">
+        
+        <div class="row paydiv shadow text-cnter">
+            <div class="col-lg-6 paymentt py-2 "><p class="text-center text-white">Payment Options</p></div>
+            <div class="col-lg-6 paymenttt bg-light"></div>
+<div class="row paydiv shadow">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-6"></div>
+</div>
+            
         </div>
     </div> -->
-    <!-- END OF PIE CHART -->
-        
+    <!--END OF TESTING ROW -->
+    
+    <!-- PAYMENT INFORMATION -->
+   
+        <!-- TESTING ROW -->
+    <div class="mt-2">
+        <!-- <ul class="navbar-nav nav nav-pills">
+    <li class="nav-item active">
+      <a class="" id="tab-1" data-toggle="tab" role="tab" href="#content-1" aria-selected="true" aria-controls="content-1"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="tab-2" data-toggle="tab" role="tab" href="#content-2" aria-selected="false" aria-controls="content-2">Cash Pickup</a>
+    </li></ul> -->
+        <h4 class="headings">Payment Information</h4>
+        <!-- <div class="row paydiv shadow text-cnter">
+            <div class="col-lg-6 paymentt  py-2  "><p class="text-center text-white">Payment Options</p></div>
+            <div class="col-lg-6  bg-light"><p class="text-center text-white py-2"></p></div>
+
+    <div class="col-lg-6 acctType">
+        <div class="col-lg-8">
+
+            <div class="row py-3">
+                           <div class="px-5">
+                                   <p class=" acctTitle">Select Payment Option</p>
+                                   
+            <select  class="select px-1 formName">
+                           <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                             >Select</option
+                           >
+                           <option value="http://www.javascriptsource.com" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                             >Cash Pickup</option
+                           >
+                           <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                             >Transfer to Zenith</option
+                           >
+                           <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                             >Transfer (GAM Switch)</option
+                           >
+                           <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                             >Transfer (ACP-ACH)</option
+                           >
+                         </select>
+                           </div>
+           
+                      
+           
+                       <div class="col-md-6">
+                           
+                       </div>
+                                           
+           
+           
+                  
+               </div>
         </div>
-      </main>
     </div>
+    
+    
+
+            
+        </div> -->
+
+
+    </div>
+    <!--END OF TESTING ROW -->
+
+        <!-- CASH PICKUP -->
+    <div class="">
+        
+        <div class="row paydiv shadow text-cnter">
+            <div class="col-lg-6 paymenttt  py-2 " id="tab-1" data-toggle="tab" role="tab" href="#content-1" aria-selected="true" aria-controls="content-1"><p class="payOpt text-center text-black">Payment Options</p></div>
+            <div class="col-lg-6 paymentt" id="tab-2" data-toggle="tab" role="tab" href="#content-2" aria-selected="false" aria-controls="content-2"><p class="text-center text-white py-2">Cash Pickup</p></div>
+
+
+            <div class="tab-content">
+      <div class="tab-pane fade show active" id="content-1" aria-labelledby="tab-1" role="tabpanel">
+        <!-- SELECT OPTIONS CONTENT -->
+       
+      </div>
+      <div class="tab-pane fade" id="content-2" aria-labelledby="tab-2" role="tabpanel">   <!-- POST TRANSACTION -->    
+
+    <!-- END OF POST TRANSACTION CONTENT -->
   </div>
-  
+
+    </div>
+<!-- <div class="row paydiv shadow"> -->
+    <div class="col-lg-6 acctType p-2">
+ <div class="row py-3">
+    <p class="px-4 acctTitle">Debit Account Information</p>
+            <!-- <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+                  &nbsp;
+                    <label class="me-2 py-2" for="firstname">Account&nbsp;Type</label>
+                    <select class="select px-1 formName">
+                                   <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                                     >CA</option
+                                   >
+                                   <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                                     >Cash Pickup</option
+                                   >
+                                   <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                                     >Transfer to Zenith</option
+                                   >
+                                   <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                                     >Transfer (GAM Switch)</option
+                                   >
+                                   <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                                     >Transfer (ACP-ACH)</option
+                                   >
+                                 </select>
+                </div>
+            </div> -->
+
+            <!-- <div class="col-md-6">
+                <div class="d-flex">
+
+                    <label class="me-2 py-2" for="lastname">Account&nbsp;Number</label>
+                    <input type="text" class=" form-control formName" placeholder="Account Number">
+                                     
+                </div>
+            </div> -->
+                                        <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="me-2 py-2" for="firstname">Account&nbsp;Type</label>
+                    <select class="select px-1 formName">
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >GMD</option
+                >
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Cash Pickup</option
+                >
+                <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  >Transfer to Zenith</option
+                >
+                <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                  >Transfer (GAM Switch)</option
+                >
+                <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                  >Transfer (ACP-ACH)</option
+                >
+              </select>
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex">
+                <label class="me-2 py-2" for="lastname">Account&nbsp;Number</label>
+                <input type="text" class=" form-control formName" placeholder="Account Name">
+            </div>
+        </div>
+                                        <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="me-2 py-2" for="firstname">Currency</label>
+                    <select class="select px-1 formName">
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >GMD</option
+                >
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Cash Pickup</option
+                >
+                <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  >Transfer to Zenith</option
+                >
+                <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                  >Transfer (GAM Switch)</option
+                >
+                <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                  >Transfer (ACP-ACH)</option
+                >
+              </select>
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex">
+               &nbsp;&nbsp;&nbsp; <label class="me-2 py-2" for="lastname">Account&nbsp;Name</label>
+                <input type="text" class=" form-control formName" placeholder="Account Name">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+
+                    <label class="me-2 py-2" for="firstname">Account&nbsp;Status</label>
+                    <select class="select px-1 formName">
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Active</option
+                >
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Cash Pickup</option
+                >
+                <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  >Transfer to Zenith</option
+                >
+                <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                  >Transfer (GAM Switch)</option
+                >
+                <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                  >Transfer (ACP-ACH)</option
+                >
+              </select>
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex">
+               &nbsp;&nbsp; <label class="me-2 py-2" for="lastname">Charge&nbsp;Amount</label>
+                <input type="text" class=" form-control formName" placeholder="Charge Amount">
+            </div>
+        </div>
+                                    <div class="row">
+                                
+            <div class="col-md-12 d-flex">                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <label class="me-2 py-2" for="firstname">Narration</label>
+                <input type="text" class=" form-control address" placeholder="Narration">
+            </div>
+        </div>
+
+       
+    </div>
+    </div>
+    
+    <div class="col-lg-6 p-2 acctType">
+        <div class="row py-3">
+    <p class="px-4 acctTitle">Credit Account Information</p>
+                                        <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="me-2 py-2" for="firstname">Account&nbsp;Type</label>
+                    <select class="select px-1 px-2 formName">
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >GMD</option
+                >
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Cash Pickup</option
+                >
+                <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  >Transfer to Zenith</option
+                >
+                <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                  >Transfer (GAM Switch)</option
+                >
+                <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                  >Transfer (ACP-ACH)</option
+                >
+              </select>
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex">
+                <label class="me-2 py-2" for="lastname">Account&nbsp;Number</label>
+                <input type="text" class=" form-control formName" placeholder="Account Name">
+            </div>
+        </div>
+                                        <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="me-2 py-2" for="firstname">Currency</label>
+                    <select class="select px-1 formName">
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >GMD</option
+                >
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Cash Pickup</option
+                >
+                <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  >Transfer to Zenith</option
+                >
+                <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                  >Transfer (GAM Switch)</option
+                >
+                <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                  >Transfer (ACP-ACH)</option
+                >
+              </select>
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex">
+               &nbsp;&nbsp;&nbsp; <label class="me-2 py-2" for="lastname">Account&nbsp;Name</label>
+                <input type="text" class=" form-control formName" placeholder="Account Name">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-6 d-flex">
+                <div class="d-flex ">
+
+                    <label class="me-2 py-2" for="firstname">Account&nbsp;Status</label>
+                    <select class="select px-1 formName">
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Active</option
+                >
+                <option value="1" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg"
+                  >Cash Pickup</option
+                >
+                <option value="2" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  >Transfer to Zenith</option
+                >
+                <option value="3" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg"
+                  >Transfer (GAM Switch)</option
+                >
+                <option value="4" data-mdb-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-4.jpg"
+                  >Transfer (ACP-ACH)</option
+                >
+              </select>
+                </div>
+                
+            </div>
+
+            <div class="col-md-6 d-flex">
+               &nbsp;&nbsp; <label class="me-2 py-2" for="lastname">Charge&nbsp;Amount</label>
+                <input type="text" class=" form-control formName" placeholder="Charge Amount">
+            </div>
+        </div>
+                                    <div class="row">
+                                
+            <div class="col-md-12 d-flex">                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <label class="me-2 py-2" for="firstname">Narration</label>
+                <input type="text" class=" form-control address" placeholder="Narration">
+            </div>
+        </div>
+
+       
+    </div>
+    </div>
+</div>
+            
+        </div>
+        <!-- END OF PAYMENT -->
+
+        <!-- AFTER PAY OPTIONS -->
+        
+         
+    <!-- </div> -->
+
+    
+    <div class="row paydiv shadow-sm card p-2">
+            <div class="col-lg-12">
+                <div class="">
+<p class="px-5 acctTitle text-center">Other Transaction Details</p>
+                            <div class="row p-2">
+            <div class="col-md-4 d-flex">
+                <div class="d-flex ">
+
+                    <label class="me-2 py-2" for="amount">Transaction&nbsp;Amount</label>
+                    <input type="text"  class="form-control formName" placeholder="Transaction Amount">
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex ">
+                <label class="me-2 py-2" for="ordernumber">Transaction&nbsp;Date</label>
+                <input type="text" class=" form-control formName" placeholder="Transaction Date">
+            </div>
+            <div class="col-md-4 d-flex">
+                <label class="me-2 py-2" for="sequencnumber">Error&nbsp;Code</label>
+                <input type="text" class=" form-control formName" placeholder="Error Code">
+            </div>
+        </div>
+                                            <div class="row">
+                                
+            <div class="col-md-12 d-flex">
+                                  &nbsp;&nbsp;&nbsp;                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="me-2 py-2" for="firstname">Narration</label>
+                <input type="text" class=" form-control narration" placeholder="Narration">
+            </div>
+        </div>
+                    
+                </div>
+
+                
+            </div>
+            
+        </div>
+        <div class="py-3">
+
+            <button type="submit" class="btn text-white">Post Transaction</button>
+        </div>
+    <!--END OF TESTING ROW -->
+    
+    </form>
+    
+</div>
 
 
 
+  <!-- TOGGLE TAB -->

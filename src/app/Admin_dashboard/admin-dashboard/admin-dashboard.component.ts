@@ -28,12 +28,12 @@ export class AdminDashboardComponent implements OnInit {
     email: '',
     phone: '',
     paymentId: '',
-    bookDate: '',
-    endDate: '',
+    // bookDate: '',
+    // endDate: '',
     status: '',
-    payOder: []
-  }
-  
+    payOrder: [],
+  };
+
   userDetails: User = {
     id: 0,
     firstName: '',
@@ -51,6 +51,7 @@ export class AdminDashboardComponent implements OnInit {
   Trans1: number = 0;
   p: number = 1;
   collection!: any[];
+  // paymentId: any;
 
   public loginame: string = '';
   constructor(
@@ -130,7 +131,7 @@ export class AdminDashboardComponent implements OnInit {
       });
   }
 
-   deleteOrder(id: any){
+  deleteOrder(id: any) {
     this.orderService.deleteOrder(id).subscribe({
       next: (response) => {
         window.location.reload();
@@ -138,7 +139,6 @@ export class AdminDashboardComponent implements OnInit {
           detail: 'Order Deleted Successfully',
           duration: 5000,
         });
-
       },
       error: (errors) => {
         console.log(errors, 'CHECKING ERRORS-----');
@@ -149,4 +149,13 @@ export class AdminDashboardComponent implements OnInit {
         });
       },
     });
-  }}
+  }
+ 
+
+  PaymentSearch(value: any): any {
+    this.orderService.searchByPaymentId(value).subscribe((res: any) => {
+      this.orders = res;
+      // this.p = 1;
+    });
+  }
+}

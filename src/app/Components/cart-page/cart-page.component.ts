@@ -64,7 +64,7 @@ cartItem!: CartItem;
 
   startDt(value: any) {
     let dt = new Date();
-    let dt2 = new Date(value);
+    let dt2 = new Date(value) ;
 
     if (dt2 < dt) {
       this.form.patchValue({

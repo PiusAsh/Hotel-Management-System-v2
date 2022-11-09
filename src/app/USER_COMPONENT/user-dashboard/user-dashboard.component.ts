@@ -62,6 +62,8 @@ export class UserDashboardComponent implements OnInit {
     // );
   }
 
+  p: number = 1;
+  collection!: any[];
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
@@ -69,7 +71,7 @@ export class UserDashboardComponent implements OnInit {
         if (id) {
           this.userService.getUserById(id).subscribe({
             next: (res) => {
-              this.user = res;
+              this.user = res; 
               console.log('res %%%%%%%%%', res);
               console.log(' CHECKING THE ID', res.id);
             },
@@ -90,23 +92,22 @@ export class UserDashboardComponent implements OnInit {
         }
       },
     });
-
   }
 
-
-changeMode(mode?: 'edit' | 'locked'): void {
-console.log(mode);
-this.mode = this.mode === 'locked' ? 'edit' : 'locked';
-this.buttonText = this.buttonText === 'Edit Info' ? 'Save Changes' : 'Edit Info';
-if(mode === 'edit'){
-  console.log('UPDATING USER INFO')
-}
-}
-
+  changeMode(mode?: 'edit' | 'locked'): void {
+    console.log(mode);
+    this.mode = this.mode === 'locked' ? 'edit' : 'locked';
+    this.buttonText =
+      this.buttonText === 'Edit Info' ? 'Save Changes' : 'Edit Info';
+    if (mode === 'edit') {
+      console.log('UPDATING USER INFO');
+    }
+  }
 
   logout() {
     this.userService.logout();
     this.route.navigate(['login']);
+     window.location.reload();
     // this.cartQuantity = 0;
   }
 
@@ -135,8 +136,8 @@ if(mode === 'edit'){
     this.userService.updateUser(this.user.id, this.user).subscribe({
       next: (response) => {
         console.log(response, 'CHECKING RESPONSE--ffgg---');
-        if(this.mode === 'locked'){
-
+        if (this.mode === 'locked') {
+ window.location.reload();
           this.toast.success({
             detail: 'Updated Successfully',
             summary: 'Profile Info Updated',
@@ -159,9 +160,10 @@ if(mode === 'edit'){
     return this.user;
   }
 
-
-
-
-
-
+  PaymentSearch(value: any): any {
+    this.orderService.searchByPaymentId(value).subscribe((res: any) => {
+      this.Booking.userRooms = res;
+      // this.p = 1;
+    });
+  }
 }
