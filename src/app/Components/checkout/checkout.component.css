@@ -55,6 +55,18 @@ form{
     border: none;
     font-weight: 500;
 }
+.btn-secondary{
+    background-color: #112A48;
+    color: white;
+    border: none;
+    font-weight: 500;
+    padding: 8px;
+    border: none;
+}
+.bi-x-circle-fill{
+  /* background-color: white; */
+  color: #fff;
+}
 /* .btn-primary {
   color: #fff;
   

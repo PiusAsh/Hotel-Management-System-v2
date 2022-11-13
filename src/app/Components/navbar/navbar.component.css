@@ -25,7 +25,9 @@
     justify-content: end;
 }
 @media (max-width: 600px) {
-
+.details{
+    display: none;
+}
 .top-link1{
     display: none;
 }

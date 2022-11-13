@@ -70,11 +70,35 @@
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="sidebarAvatar"
           >
-            <a href="#" class="dropdown-item">Profile</a>
-            <a href="#" class="dropdown-item">Settings</a>
-            <a href="#" class="dropdown-item">Billing</a>
+            <a
+              href="#"
+              class="dropdown-item"
+              id="contact-tab"
+              data-toggle="tab"
+              href="#contact"
+              role="tab"
+              aria-controls="contact"
+              aria-selected="false"
+              >Profile</a
+            >
+            <a
+              href="#"
+              class="dropdown-item"
+              data-toggle="tab"
+              href="#profile"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+              >Booking</a
+            >
             <hr class="dropdown-divider" />
-            <a href="#" class="dropdown-item">Logout</a>
+            <a
+              href="#"
+              class="dropdown-item"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+              >Logout</a
+            >
           </div>
         </div>
       </div>
@@ -109,8 +133,7 @@
             </a>
           </li>
         </ul>
-        <!-- Divider -->
-        <hr class="navbar-divider my-5 opacity-20" />
+       
         <!-- Navigation -->
 
         <!-- Push content down -->
@@ -128,6 +151,16 @@
               aria-selected="false"
             >
               <i class="bi bi-person-square"></i> Account Details
+            </a>
+          </li>
+           <!-- Divider -->
+        <hr class="navbar-divider my-5 opacity-20" />
+
+          <li class="nav-item" *ngIf="user.isAdmin == true">
+            <a routerLink="/admin/{{user.id}}"
+              class="nav-link text-white"
+            >
+              <i class="bi bi-person-square"></i> Admin Mode
             </a>
           </li>
           <li class="nav-item">
@@ -217,7 +250,7 @@
           <div class="row align-items-center">
             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
               <!-- Title -->
-              <h1 class="h3  py-3 ls-tight">
+              <h1 class="h3 py-3 ls-tight">
                 Welcome, <span class="">{{ user.firstName }}</span>
               </h1>
             </div>
@@ -283,9 +316,24 @@
                       <div class="col">
                         <span
                           class="h6 font-semibold text-muted text-sm d-block mb-2"
-                          >Checkout Time</span
+                          >Check Out
+</span
                         >
-                        <span class="h4 font-bold mb-0">9/05/2022</span>
+                         <span
+                          class="h4 font-bold mb-0"
+                          
+                          >{{ justDate | date: "MM-dd-yyyy" }}</span
+                        >
+                        <!-- <span
+                          class="h4 font-bold mb-0"
+                          *ngIf="this.duration == 1"
+                          >{{ duration }} day</span
+                        >
+                        <span
+                          class="h4 font-bold mb-0"
+                          *ngIf="this.duration > 1"
+                          >{{ duration }} days</span
+                        > -->
                       </div>
                       <div class="col-auto">
                         <div
@@ -363,6 +411,8 @@
                       <th class="fw-bold" scope="col">Unit Price</th>
                       <!-- <th class="fw-bold" scope="col">Room ID</th> -->
 
+                      <!-- <th class="fw-bold" scope="col">Check In</th> -->
+                      <th class="fw-bold" scope="col">Check In</th>
                       <th class="fw-bold" scope="col">Duration</th>
                       <th class="fw-bold" scope="col">Total Price</th>
 
@@ -373,7 +423,12 @@
 
                   <!-- TABLE BODY STARTS -->
                   <tbody>
-                    <tr *ngFor="let book of Booking.userRooms  | paginate: {itemsPerPage: 3, currentPage: p}">
+                    <tr
+                      *ngFor="
+                        let book of Booking.userRooms
+                          | paginate: { itemsPerPage: 3, currentPage: p }
+                      "
+                    >
                       <td>
                         <a class="text-heading font-semibold" href="#">
                           {{ book.payment_Id }}
@@ -390,7 +445,9 @@
                       <td>
                         {{ book.room.roomPrice | currency: "₦" }}
                       </td>
-                      <td>{{ book.days }} days</td>
+                      <td>{{ book.startDate | date: "MM-dd-yyyy"  }}</td>
+                      <td *ngIf="book.days > 1">{{ book.days }} days</td>
+                      <td *ngIf="book.days < 2">{{ book.days }} day</td>
                       <td>
                         {{ book.roomPrice | currency: "₦" }}
                       </td>
@@ -398,8 +455,8 @@
                       <!-- <td>{{ order.items }}</td> -->
                       <td>
                         <span class="badge badge-lg badge-dot">
-                          <!-- <i class="bg-success"></i> -->
-                          {{ book.status }}
+                          <i class="bg-success"></i>
+                          Paid
                         </span>
                       </td>
                       <!-- <td class="text-end">
@@ -414,8 +471,10 @@
                     </tr>
                   </tbody>
                 </table>
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
               </div>
+              <pagination-controls
+                (pageChange)="p = $event"
+              ></pagination-controls>
             </div>
           </div>
         </div>
@@ -451,7 +510,12 @@
 
                   <!-- TABLE BODY STARTS -->
                   <tbody>
-                    <tr *ngFor="let book of Booking.userRooms | paginate: {itemsPerPage: 6, currentPage: p}">
+                    <tr
+                      *ngFor="
+                        let book of Booking.userRooms
+                          | paginate: { itemsPerPage: 6, currentPage: p }
+                      "
+                    >
                       <td>
                         <a class="text-heading font-semibold" href="#">
                           {{ book.payment_Id }}
@@ -476,8 +540,8 @@
                       <!-- <td>{{ order.items }}</td> -->
                       <td>
                         <span class="badge badge-lg badge-dot">
-                          <!-- <i class="bg-success"></i> -->
-                          {{ book.status }}
+                          <i class="bg-success"></i>
+                          Paid
                         </span>
                       </td>
                       <!-- <td class="text-end">
@@ -492,7 +556,9 @@
                     </tr>
                   </tbody>
                 </table>
-                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
               </div>
             </div>
           </div>
@@ -624,47 +690,45 @@
                         id="state"
                         name="state"
                       >
-                      
-                          <option>Select State</option>
-                          <option>Abuja FCT</option>
-                          <option>Abia</option>
-                          <option>Adamawa</option>
-                          <option>Akwa Ibom</option>
-                          <option>Anambra</option>
-                          <option>Bauchi</option>
-                          <option>Bayesla</option>
-                          <option>Benue</option>
-                          <option>Borno</option>
-                          <option>Cross River</option>
-                          <option>Delta</option>
-                          <option>Ebonyi</option>
-                          <option>Edo</option>
-                          <option>Ekiti</option>
-                          <option>Enugu</option>
-                          <option>Gombe</option>
-                          <option>Imo</option>
-                          <option>Jigawa</option>
-                          <option>Kaduna</option>
-                          <option>Kano</option>
-                          <option>Katsina</option>
-                          <option>Kebbi</option>
-                          <option>Kogi</option>
-                          <option>Kwara</option>
-                          <option>Lagos</option>
-                          <option>Nassarawa</option>
-                          <option>Nigeria</option>
-                          <option>Ogun</option>
-                          <option>Ondo</option>
-                          <option>Osun</option>
-                          <option>Oyo</option>
-                          <option>Plateau</option>
-                          <option>Rivers</option>
-                          <option>Sokoto</option>
-                          <option>Taraba</option>
-                          <option >Yobe</option>
-                          <option>Zamfara</option>
-                        </select>
-                    
+                        <option>Select State</option>
+                        <option>Abuja FCT</option>
+                        <option>Abia</option>
+                        <option>Adamawa</option>
+                        <option>Akwa Ibom</option>
+                        <option>Anambra</option>
+                        <option>Bauchi</option>
+                        <option>Bayesla</option>
+                        <option>Benue</option>
+                        <option>Borno</option>
+                        <option>Cross River</option>
+                        <option>Delta</option>
+                        <option>Ebonyi</option>
+                        <option>Edo</option>
+                        <option>Ekiti</option>
+                        <option>Enugu</option>
+                        <option>Gombe</option>
+                        <option>Imo</option>
+                        <option>Jigawa</option>
+                        <option>Kaduna</option>
+                        <option>Kano</option>
+                        <option>Katsina</option>
+                        <option>Kebbi</option>
+                        <option>Kogi</option>
+                        <option>Kwara</option>
+                        <option>Lagos</option>
+                        <option>Nassarawa</option>
+                        <option>Nigeria</option>
+                        <option>Ogun</option>
+                        <option>Ondo</option>
+                        <option>Osun</option>
+                        <option>Oyo</option>
+                        <option>Plateau</option>
+                        <option>Rivers</option>
+                        <option>Sokoto</option>
+                        <option>Taraba</option>
+                        <option>Yobe</option>
+                        <option>Zamfara</option>
+                      </select>
                     </div>
                     <div class="col-lg-1"></div>
                     <div class="col-lg-4">

@@ -78,19 +78,23 @@
                     <h6 class="mb-0">Recent Booking</h6>
 
                     <span class="text-secondary">{{recentRoom}}</span>
+                    <span class="text-secondary" *ngIf="!recentRoom">No booking yet</span>
                   </li>
-                  <li
+                  <!-- <li
                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
                   >
                     <h6 class="mb-0">Checkout Time</h6>
                     <span class="text-secondary">20-07-2022</span>
-                  </li>
+                  </li> -->
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
                   >
                     <h6 class="mb-0">Total Booking</h6>
 
-                    <span class="text-secondary">{{orderCount}} Times</span>
+                    <span class="text-secondary" *ngIf="orderCount > 1">{{orderCount}} Times</span>
+                    <span class="text-secondary" *ngIf="orderCount < 2">{{orderCount}} Time</span>
+                    <span class="text-secondary" *ngIf="!orderCount"> No booking yet</span>
+                    
 
                   </li>
                 </ul>

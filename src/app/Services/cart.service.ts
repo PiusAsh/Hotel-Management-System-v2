@@ -39,6 +39,8 @@ this.toast.error({
     let cartItem = this.cart.items.find((item) => item.room.id === roomId);
     if (!cartItem) return;
     cartItem.days = duration;
+    // cartItem.checkOutDate = duration;
+    // console.log(cartItem.checkOutDate, "checking checkout date");
     cartItem.price = duration * cartItem.room.roomPrice;
     this.setCartToLocalStorage();
   }

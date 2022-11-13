@@ -15,7 +15,7 @@
 
                  
 <div class="rooms container mb-5">
-            <div class="card shadow me-4 mb-3" *ngFor="let room of rooms">
+            <div class="card shadow me-4 mb-3" *ngFor="let room of rooms  | paginate: { itemsPerPage: 8, currentPage: p }">
                 <div > <img src="{{room.roomImg}}"
                   [alt]="room.roomName" class="card-img-top"> </div>
                 <p class="rating">5.0</p>
@@ -29,6 +29,9 @@
                     </div>
                 </div>
             </div>
+             <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
         </div>
 <!-- <div class="container text-center mb-5"><a class="exp" routerLink="/rooms">Explore our rooms</a></div> -->
 <app-footer></app-footer>

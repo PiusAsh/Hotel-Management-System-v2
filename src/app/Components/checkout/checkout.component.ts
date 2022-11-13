@@ -6,7 +6,7 @@ import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
 import { PaystackOptions } from 'angular4-paystack';
 import { OrderService } from 'src/app/Services/order.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import Swal from 'sweetalert2';
 
@@ -81,7 +81,7 @@ export class CheckoutComponent implements OnInit {
   reference = '';
   title = '';
   currentUser: any;
-  isShown = true;
+  isShown = false;
 
   // public PaystackOptions: any;
   constructor(
@@ -90,14 +90,17 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private route: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private activatedRoute: ActivatedRoute
   ) {
     const cart = cartService.getCart();
     this.order.items = cart.items;
     this.order.totalPrice = cart.totalPrice;
   }
 
-  open() {}
+  // open() {
+  //    return this.isShown ? true : false;
+  // }
 
   // options: PaystackOptions = {
   //   amount: 50000,
@@ -123,8 +126,12 @@ export class CheckoutComponent implements OnInit {
       confirmButtonText: 'Print Receipt',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.isShown === true;
-        // $('#myOffcanvas').offcanvas('show');
+        this.isShown = true;
+        // open(){
+
+        //   return this.isShown = true;
+        // }
+        // $('#offcanvasBtn').click();
         // this.route.navigate(['receipt'])
         // Swal.fire('Booked', 'Your room has been booked.', 'success');
         // this.open();
@@ -167,6 +174,21 @@ export class CheckoutComponent implements OnInit {
   //END OF PAYSTACK METHOD
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        const id: any = params.get('id');
+        if (id) {
+          this.userService.getUserById(id).subscribe({
+            next: (res) => {
+              this.user = res;
+              console.log('res00000 %%%%%%%%%', this.resp);
+              console.log(' CHECKING THE ID000', this.resp.id);
+            },
+          });
+        }
+      },
+    });
+
     this.currentUser = localStorage.getItem(this.UserKey);
     this.UserStorageItems = JSON.parse(this.currentUser);
     console.log(this.UserStorageItems.email, 'CHECKING EMAIL -----');
@@ -219,6 +241,14 @@ export class CheckoutComponent implements OnInit {
       },
     });
   }
+  goToUser() {
+    if(this.resp.isAdmin == true){
+
+      this.route.navigate([`admin/${this.resp.id}`]);
+    }else{
+      this.route.navigate([`user/${this.resp.id}`]);
+    }
+  }
 
   get checkout() {
     return this.checkoutForm.controls;
@@ -237,13 +267,15 @@ export class CheckoutComponent implements OnInit {
       this.order.phone = this.res.phoneNo;
       this.order.address = this.res.address;
       this.order.payOrder = this.order.payOrder;
+      this.order.items = this.order.items;
+      
 
       // this.PaystackOptions = {
       //   amount: 6000,
       //   email: this.order.email,
       //   ref: `${Math.ceil(Math.random() * 10e10)}`,
       // };
-      console.log('CHECKING ORDER EMAIL', this.order.email);
+      // console.log('CHECKING ORDER EMAIL', this.order.email);
       console.log('CHECKING ORDER', this.order);
 
       this.orderService.createOrder(this.order).subscribe({
@@ -256,6 +288,4 @@ export class CheckoutComponent implements OnInit {
       });
     }
   }
-
-  
 }

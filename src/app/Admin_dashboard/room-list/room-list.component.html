@@ -39,7 +39,7 @@
 
           <!-- TABLE BODY STARTS -->
           <tbody>
-            <tr *ngFor="let room of rooms">
+            <tr *ngFor="let room of rooms | paginate: { itemsPerPage: 3, currentPage: p }">
               <td>
                 <p class="text-heading font-semibold">
                   {{ room.id }}
@@ -86,6 +86,9 @@
             </tr>
           </tbody>
         </table>
+         <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
       </div>
     </main>
   </div>

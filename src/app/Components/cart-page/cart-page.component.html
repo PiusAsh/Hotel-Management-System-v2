@@ -50,7 +50,7 @@
                 <form [formGroup]="form" class="form">
                 <div class="d-flex">
                     <p class="h6 me-2 py-2">Start:</p>
-                        <input class="form-control mb-2" 
+                        <input class="form-control mb-2" [value]="cartItem.startDate"
                         (change)="startDt(this.form.value.startDate)" formControlName="startDate" type="date"
                         label="Name" />
                 </div>

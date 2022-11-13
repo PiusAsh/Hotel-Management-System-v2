@@ -16,6 +16,7 @@ export class Order{
     // endDate!: string;
     status!: string;
     payOrder!: PayOrder[];
+  
 }
 export class UserBooking {
   id!: number;

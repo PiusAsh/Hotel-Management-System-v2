@@ -31,10 +31,15 @@
     <div class="col-lg-7">
       <app-order-item-list [order]="order"></app-order-item-list>
 
-
-      <button class="btn py-2 btn-primary w-100 text-center" angular4-paystack [paystackOptions]="options"
+<button (click)="createOrder()">PAY</button>
+      <button *ngIf="isShown == false" class="btn py-2 btn-primary w-100 text-center" angular4-paystack [paystackOptions]="options"
         (paymentInit)="paymentInit()" (onClose)="paymentCancel()" (callback)="paymentDone($event)">
         Pay with Paystack
+      </button>
+      <button *ngIf="isShown == true" class="btn py-2 btn-primary w-100 text-center" id="offcanvasBtn"
+ data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+  aria-controls="offcanvasTop">
+        Print Receipt
       </button>
 
       <div class="paystack-buttons text-center d-md-flex d-lg-flex d-xl-flex justify-content-between">
@@ -50,14 +55,17 @@
 
 
 
-<!-- <button class="btn btn-primary" type="button"
+<!-- <button id="offcanvasBtn" class="btn btn-primary" type="button"
  data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
   aria-controls="offcanvasTop">Toggle top offcanvas</button> -->
 
-<div class="offcanvas offcanvas-top" tabindex="-1"  [ngClass]="{'show': isShown}" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+<div class="offcanvas offcanvas-top" tabindex="-1"  *ngIf="isShown == true" id="offcanvasTop" 
+
+aria-labelledby="offcanvasTopLabel"
+>
   <div class="offcanvas-header">
     <h5 id="offcanvasTopLabel"></h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button (click)="goToUser()" type="button" class="btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close">  <i class="bi bi-x-circle-fill"></i> Close</button>
   </div>
   <div class="offcanvas-body">
     <!-- OFFCANVAS BODY -->
@@ -70,7 +78,7 @@
                 <h2 class="text-uppercase">Receipt</h2>
                 <div class="billed"><span class="font-weight-bold">Billed:</span><span class="ml-1">{{res.firstName}}
                     {{res.lastName}}</span></div>
-                <div class="billed"><span class="font-weight-bold ">Order Date:</span><span
+                <div class="billed"><span class="font-weight-bold ">Book Date:</span><span
                     class="ml-1">{{myDate | date: 'medium'}}</span></div>
                 <div class="billed"><span class="font-weight-bold">Payment ID:</span><span
                     class="ml-1">{{order.paymentId}}</span>
@@ -90,10 +98,10 @@
                   <thead>
                     <tr>
                       <th>Room</th>
-                      <th>Duration</th>
+
                       <th>Unit Price</th>
-                      <th>Book Date</th>
-                      <th>Checkout Date</th>
+                      <th>Check In</th>
+                      <th>Duration</th>
                       <th>Total Price</th>
                     </tr>
                   </thead>
@@ -102,10 +110,11 @@
                     <!-- <tr *ngFor="let orders or order"> -->
                     <tr *ngFor="let item of order.items">
                       <td>{{item.room.roomName}}</td>
-                      <td> {{item.days}} days </td>
+
                       <td>{{item.room.roomPrice | currency: '₦'}}</td>
                       <td>{{item.startDate | date: 'MM-dd-yyyy'}}</td>
-                      <td>{{item.checkOutDate | date: 'MM-dd-yyyy'}}</td>
+                                            <td *ngIf="item.days > 1"> {{item.days}} days </td>
+                                            <td  *ngIf="item.days < 2">  {{item.days}} day </td>
 
                       <td> {{item.price | currency: '₦'}}</td>
                     </tr>
@@ -115,7 +124,7 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
+                     
                       <td class="fw-bold"> {{order.totalPrice  | currency: '₦'}}</td>
                     </tr>
 

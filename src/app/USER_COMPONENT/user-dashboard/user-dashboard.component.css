@@ -5,6 +5,14 @@
     background-color: #112A48;
 }
 
+
+.ngx-pagination .current {
+    /* padding: 0.1875rem 0.625rem; */
+    background: #2199e8!important;
+    color: #fefefe;
+    cursor: default;
+}
+
 /* .nav-link{
     color: white!important;
 } */

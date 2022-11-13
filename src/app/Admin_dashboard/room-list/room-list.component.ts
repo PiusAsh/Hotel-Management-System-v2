@@ -6,21 +6,21 @@ import { RoomService } from 'src/app/Services/room.service';
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
-  styleUrls: ['./room-list.component.css']
+  styleUrls: ['./room-list.component.css'],
 })
 export class RoomListComponent implements OnInit {
-rooms: Room[] = [];
-  constructor(private http: RoomService, private toast: NgToastService) { }
-
+  rooms: Room[] = [];
+  constructor(private http: RoomService, private toast: NgToastService) {}
+  p: number = 1;
+  collection!: any[];
   ngOnInit(): void {
     this.http.getAllRooms().subscribe((res: any) => {
       this.rooms = res;
-      console.log(res)
-    })
-
+      console.log(res);
+    });
   }
 
-  deleteRoom(id: any){
+  deleteRoom(id: any) {
     this.http.deleteRoom(id).subscribe({
       next: (response) => {
         window.location.reload();
@@ -28,7 +28,6 @@ rooms: Room[] = [];
           detail: 'Order Deleted Successfully',
           duration: 5000,
         });
-
       },
       error: (errors) => {
         console.log(errors, 'CHECKING ERRORS-----');
@@ -39,5 +38,6 @@ rooms: Room[] = [];
         });
       },
     });
-  }}
+  }
+}
 

@@ -16,12 +16,15 @@ table, td{
 }
 
 .unatho{
-    /* Text xs/Medium */
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 13px;
+  padding: 8px!important;
+  border-radius: 6px;
+  background: #FAEBEB;
+  color: #E31E23;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
 
 /* identical to box height, or 150% */
 /* background: #F9F2EC; */

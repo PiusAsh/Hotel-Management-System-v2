@@ -54,6 +54,10 @@ export class AdminDashboardComponent implements OnInit {
   // paymentId: any;
 
   public loginame: string = '';
+  checkout: any;
+  duration: any;
+  justDate: any;
+
   constructor(
     private http: UserService,
     private roomService: RoomService,
@@ -93,6 +97,19 @@ export class AdminDashboardComponent implements OnInit {
 
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data;
+      this.order = data;
+      this.duration = this.orders[0].days;
+      // this.justDate = new Date(this.duration);
+      // const date = this.order.items.startDate;
+      const date = new Date();
+      this.justDate = date.setDate(date.getDate() + this.duration).toString();
+      // TESTING FOR ALL CHECKOUT
+      const checkout = this.orders.days;
+      const mainCheckout = date.setDate(date.getDate() + checkout).toString();
+      console.log(mainCheckout, 'CHECKING CHECKOUT ----');
+      console.log(this.justDate, 'CHECKING DATE ----');
+      console.log(this.duration, 'CHECKING DURATION');
+
       console.log('CHECKING Orders 000000', this.orders);
       console.log('CHECKING Orders firstNmae 000000', this.orders.endDate);
     });
@@ -150,7 +167,6 @@ export class AdminDashboardComponent implements OnInit {
       },
     });
   }
- 
 
   PaymentSearch(value: any): any {
     this.orderService.searchByPaymentId(value).subscribe((res: any) => {

@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 col-12">
+          <!-- <div class="col-xl-3 col-sm-6 col-12">
             <div class="card shadow border-0">
               <div class="card-body">
                 <div class="row">
@@ -81,7 +81,8 @@
                       class="h6 font-semibold text-muted text-sm d-block mb-2"
                       >Due Checkout</span
                     >
-                    <span class="h3 font-bold mb-0">0</span>
+                    
+                    <span class="h3 font-bold mb-0">{{duration}}</span>
                   </div>
                   <div class="col-auto">
                     <div
@@ -101,7 +102,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-xl-3 col-sm-6 col-12">
             <div class="card shadow border-0">
               <div class="card-body">
@@ -187,6 +188,8 @@
                   <th class="fw-bold" scope="col">USER CONTACT</th>
                   <!-- <th class="fw-bold" scope="col">Room ID</th> -->
 
+                  <!-- <th class="fw-bold" scope="col">Check In</th>  -->
+                  <th class="fw-bold" scope="col">Check In</th> 
                   <th class="fw-bold" scope="col">Duration</th> 
                   <th class="fw-bold" scope="col">Amount</th>
                   <!-- <th class="fw-bold" scope="col">Checkout Date</th> -->
@@ -212,7 +215,9 @@
                     </a>
                   </td>
                   <td>{{ order.phone }}</td>
-                  <td >{{ order.days }} days</td>
+                  <td>{{ order.startDate | date: "MM-dd-yyyy" }} </td>
+                  <td *ngIf="order.days < 2" >{{ order.days }} day</td>
+                  <td *ngIf="order.days > 1" >{{ order.days }} days</td>
                   <td>{{ order.roomPrice | currency: '₦' }}</td>
                   <!-- <td>{{ order.checkOutDate | date: "medium" }}</td> -->
 
@@ -221,8 +226,8 @@
                   <!-- <td>{{ order.items }}</td> -->
                   <td>
                     <span class="badge badge-lg badge-dot">
-                      <!-- <i class="bg-success"></i> -->
-                      {{ order.status }}
+                      <i class="bg-success"></i> Paid
+                      <!-- {{ order.status }} -->
                     </span>
                   </td>
                   <td class="text-end">

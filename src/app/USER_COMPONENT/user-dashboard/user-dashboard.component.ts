@@ -1,3 +1,4 @@
+import { AnimationStyleMetadata } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -42,10 +43,13 @@ export class UserDashboardComponent implements OnInit {
   Booking: any;
 
   isShown = true;
+  duration: any;
+  durations: any;
 
   maxAge: Date | any;
   mode: 'edit' | 'locked' = 'locked';
   buttonText: 'Save Changes' | 'Edit Info' = 'Edit Info';
+  justDate: any;
   constructor(
     private userService: UserService,
     private route: Router,
@@ -86,7 +90,14 @@ export class UserDashboardComponent implements OnInit {
           this.orderService.getOrdersByUser(id).subscribe({
             next: (res: any) => {
               this.Booking = res;
+              this.duration = this.Booking.userRooms[0].days;
+              const date = new Date();
+              this.justDate = date
+                .setDate(date.getDate() + this.duration)
+                .toString();
+              // this.durations = this.Booking.userRooms.days;
               console.log(this.Booking, 'CHECKING USER ORDERS');
+              console.log(this.duration, 'CHECKING DURATION');
             },
           });
         }
@@ -166,4 +177,7 @@ export class UserDashboardComponent implements OnInit {
       // this.p = 1;
     });
   }
+
+
+  
 }

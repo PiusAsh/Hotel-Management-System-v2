@@ -9,6 +9,8 @@ import { RoomService } from 'src/app/Services/room.service';
 })
 export class HotelRoomsComponent implements OnInit {
   rooms: Room[] = [];
+  p: number = 1;
+  collection!: any[];
   constructor(private roomService: RoomService) {
     // this.rooms = roomService.getAll();
   }
