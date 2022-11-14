@@ -57,6 +57,10 @@ export class AdminDashboardComponent implements OnInit {
   checkout: any;
   duration: any;
   justDate: any;
+  userRoomRecord: any;
+  RecordRoom: any[] = [];
+  today: any;
+  allDue: any
 
   constructor(
     private http: UserService,
@@ -98,24 +102,49 @@ export class AdminDashboardComponent implements OnInit {
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data;
       // this.order = data;
+
+      
+      for (let i = 0; i < this.orders.length; i++) {
+        this.userRoomRecord = this.orders[i];
+// this.allDue = this.orders.checkOutDate[i];
+        const date2 = new Date(this.orders[i].startDate);
+        let xx = date2
+          .setDate(date2.getDate() + this.orders[i].days)
+          .toString();
+
+        this.userRoomRecord.CheckOutDate = xx;
+        let fg = [];
+
+        fg.push(this.userRoomRecord);
+        let ss = Object.assign(fg)[0];
+        console.log('***', fg);
+
+        this.RecordRoom.push(ss);
+        
+        //console.log('*', this.RecordRoom);
+
+        console.log('***RECORD ROOM', this.RecordRoom);
+        console.log('***ALL DUE', this.allDue);
+      }
+      
+
+      this.today = new Date();
       this.duration = this.orders[0].days;
-      const sura = this.order.items;
-      const check = new Array(this.duration);
-      // this.justDate = new Date(this.duration);
-      // const date = this.order.items.startDate;
       const date = new Date();
       this.justDate = date.setDate(date.getDate() + this.duration).toString();
-      // TESTING FOR ALL CHECKOUT
-      const checkout = this.orders.days;
-      const mainCheckout = date.setDate(date.getDate() + checkout).toString();
-      console.log(mainCheckout, 'CHECKING CHECKOUT ----');
-      console.log(check, 'CHECK ----');
+
       console.log(this.justDate, 'CHECKING DATE ----');
       console.log(this.duration, 'CHECKING DURATION');
 
       console.log('CHECKING Orders 000000', this.orders);
       // console.log('CHECKING Orders firstName 000000', this.orders.endDate);
+
+          // this.allDue = this.orders[0].checkOutDate;
+          // console.log('ALL DUE', this.allDue);
     });
+
+
+
   }
 
   getUserId(id: any) {
