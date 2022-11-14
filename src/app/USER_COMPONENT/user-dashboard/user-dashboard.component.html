@@ -413,7 +413,8 @@
 
                       <!-- <th class="fw-bold" scope="col">Check In</th> -->
                       <th class="fw-bold" scope="col">Check In</th>
-                      <th class="fw-bold" scope="col">Duration</th>
+                      <th class="fw-bold" scope="col">Check Out</th>
+                      <!-- <th class="fw-bold" scope="col">Duration</th> -->
                       <th class="fw-bold" scope="col">Total Price</th>
 
                       <th class="fw-bold" scope="col">Status</th>
@@ -425,7 +426,7 @@
                   <tbody>
                     <tr
                       *ngFor="
-                        let book of Booking.userRooms
+                        let book of RecordRoom
                           | paginate: { itemsPerPage: 3, currentPage: p }
                       "
                     >
@@ -446,19 +447,60 @@
                         {{ book.room.roomPrice | currency: "₦" }}
                       </td>
                       <td>{{ book.startDate | date: "MM-dd-yyyy"  }}</td>
-                      <td *ngIf="book.days > 1">{{ book.days }} days</td>
-                      <td *ngIf="book.days < 2">{{ book.days }} day</td>
+                      <td>{{ (book.CheckOutDate)  | date: "MM-dd-yyyy"  }}</td>
+                      <!-- <td *ngIf="book.days > 1">{{ book.days }} days</td>
+                      <td *ngIf="book.days < 2">{{ book.days }} day</td> -->
                       <td>
                         {{ book.roomPrice | currency: "₦" }}
                       </td>
 
                       <!-- <td>{{ order.items }}</td> -->
-                      <td>
+                      <!-- <td *ngIf="due">
                         <span class="badge badge-lg badge-dot">
                           <i class="bg-success"></i>
-                          Paid
+                          Due
+                        </span>
+                      </td> -->
+                      <!-- <td *ngIf="book.CheckOutDate > today">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-success"></i>
+                          Checkout
+                        </span>
+                      </td> -->
+                      
+                                            <td *ngIf="book.CheckOutDate > this.today">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-success"></i>
+                          Active
                         </span>
                       </td>
+
+                                            <td *ngIf="book.CheckOutDate <= this.today">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-danger"></i>
+                          Due
+                        </span>
+                      </td>
+                                                                  <!-- <td *ngIf="book.CheckOutDate == this.today">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-danger"></i>
+                          Due
+                        </span> -->
+                      
+                      <!-- <td *ngIf="book.CheckOutDate > book.days">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-success"></i>
+                          Over Due
+                        </span>
+                      </td>
+
+                      <td *ngIf="book.CheckOutDate == book.days">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-success"></i>
+                          Due
+                        </span>
+                      </td> -->
+
                       <!-- <td class="text-end">
             <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
             <button

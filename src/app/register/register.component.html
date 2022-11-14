@@ -20,7 +20,7 @@
               <div class="col-sm-12 col-lg-6 col-md-6 mb-2">
                 <div class="form-outline">
                   <input type="text" class="form-control" formControlName="name" placeholder="First Name">
-
+                  <span class="eyeicon"><i class="bi bi-eye-fill"></i></span>
                   <span class="text-danger"
                   *ngIf="registerForm.controls['name'].dirty && registerForm.hasError('required', 'name')">First
                   Name is
@@ -44,6 +44,7 @@
               <div class="col-sm-12 col-lg-6 col-md-6 mb-2">
                 <div class="form-outline">
                   <input type="text" class="form-control" formControlName="email" placeholder="Email Address">
+
                   <span class="text-danger"
                   *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
                   email is

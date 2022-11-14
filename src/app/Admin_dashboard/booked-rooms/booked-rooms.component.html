@@ -45,9 +45,8 @@
 
 
 
-                <!-- TABLE STARTS HERE -->
-         <div class="card shadow border-0">
-
+           <!-- TABLE STARTS HERE -->
+        <div class="card shadow border-0">
           <div class="table-responsive">
             <table class="table table-hover overflow-x" id="example1">
               <thead class="thead-light fw-bold">
@@ -57,7 +56,11 @@
                   <th class="fw-bold" scope="col">USER CONTACT</th>
                   <!-- <th class="fw-bold" scope="col">Room ID</th> -->
 
-                  <th class="fw-bold" scope="col">Booking Date</th>
+                  <!-- <th class="fw-bold" scope="col">Check In</th>  -->
+                  <th class="fw-bold" scope="col">Check In</th> 
+                  <th class="fw-bold" scope="col">Duration</th> 
+                  <th class="fw-bold" scope="col">Amount</th>
+                  <!-- <th class="fw-bold" scope="col">Checkout Date</th> -->
 
 
                   <th class="" scope="col">Status</th>
@@ -67,7 +70,8 @@
 
               <!-- TABLE BODY STARTS -->
               <tbody>
-                <tr *ngFor="let order of orders">
+                <!-- <tr *ngFor="let order of orders"> -->
+                <tr *ngFor="let order of orders | paginate: {itemsPerPage: 7, currentPage: p};">
                   <td>
                     <a class="text-heading font-semibold" href="#">
                       {{ order.payment_Id }}
@@ -75,33 +79,53 @@
                   </td>
                   <td>
                     <a class="text-heading font-semibold" href="#">
-                      {{ order.first_Name }} {{ order.last_Name }}
+                       {{ order.firstName }} {{ order.lastName }}
                     </a>
                   </td>
                   <td>{{ order.phone }}</td>
-                  <td>{{ order.book_Date | date: "medium" }}</td>
+                  <td>{{ order.startDate | date: "MM-dd-yyyy" }} </td>
+                  <td *ngIf="order.days < 2" >{{ order.days }} day</td>
+                  <td *ngIf="order.days > 1" >{{ order.days }} days</td>
+                  <td>{{ order.roomPrice | currency: '₦' }}</td>
+                  <!-- <td>{{ order.checkOutDate | date: "medium" }}</td> -->
 
 
                   
                   <!-- <td>{{ order.items }}</td> -->
                   <td>
                     <span class="badge badge-lg badge-dot">
-                      <!-- <i class="bg-success"></i> -->
-                      {{ order.status }}
+                      <i class="bg-success"></i> Paid
+                      <!-- {{ order.status }} -->
                     </span>
                   </td>
                   <td class="text-end">
-                    <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
-                    <!-- <button
-                      type="button"
+                    <!-- <a href="#" class="bg-light btn-sm btn-neutral ">View</a> -->
+                    <button
+                      type="button" data-toggle="modal" data-target="#exampleModalCenter1"
                       class="btn btn-sm btn-square btn-neutral text-danger-hover"
                     >
                       <i class="bi bi-trash"></i>
-                    </button> -->
+                    </button>
+                    <!-- delete Modal -->
+<div class="modal fade shadow justify-content-center" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center"><i class="bi bi-question-circle-fill"></i></div>
+        <h4 class="modal-title text-center" id="exampleModalCenterTitle">Are you sure you want to delete this order</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="deleteOrder(order.id)" >Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>
         </div>
 

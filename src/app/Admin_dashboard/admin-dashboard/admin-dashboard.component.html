@@ -18,7 +18,7 @@
             <div class="col-sm-6 col-12 text-sm-end"></div>
           </div>
           <!-- Nav -->
-          <ul class="nav nav-tabs mt-4 overflow-x border-0">
+          <ul class="nav nav-tabs  overflow-x border-0">
             <li class="nav-item">
               <a href="#" class="nav-link active">Overview</a>
             </li>
@@ -26,10 +26,10 @@
               <a routerLink="/reg-users" class="nav-link font-regular">Registered Users</a>
             </li>
             <li class="nav-item">
-              <a routerLink="/bookings" class="nav-link font-regular">Booked Rooms</a>
+              <a routerLink="/bookings" class="nav-link font-regular">Bookings</a>
             </li>
             <li class="nav-item">
-              <a router="/not-found" class="nav-link font-regular">Available Rooms</a>
+              <a routerLink="/not-found" class="nav-link font-regular">Due Checkout</a>
             </li>
           </ul>
         </div>
@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-xl-3 col-sm-6 col-12">
+          <div class="col-xl-3 col-sm-6 col-12">
             <div class="card shadow border-0">
               <div class="card-body">
                 <div class="row">
@@ -102,7 +102,7 @@
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
           <div class="col-xl-3 col-sm-6 col-12">
             <div class="card shadow border-0">
               <div class="card-body">
@@ -165,20 +165,16 @@
           </div>
         </div>
 
-<div class="row">
-  <div class="col-lg-4"><form class="d-flex"><input id="staffid" class="form-control mysearch" type="text" placeholder="Search by Payment ID" name="paymentId" [(ngModel)]="orders.payment_Id" >  <button
-                  class="btn btn-search ms-3"
-                  type="submit"
-(click)="PaymentSearch(this.orders.payment_Id)"
-                >
-                  Search
-                </button></form></div>
-  <div class="col-lg-4"></div>
-  <div class="col-lg-4"></div>
-</div>
+
         <!-- TABLE STARTS HERE -->
         <div class="card shadow border-0">
-          <div class="card-header"><h5 class="mb-0">Recent Booking</h5></div>
+          <div class="card-header d-flex"><h5 class="mb-0 py-2">Recent Booking</h5> <div class="d-flex"><form class="d-flex"><input class="form-control mysearch" type="text"  placeholder="Search by Payment ID" name="paymentId" >  <button (click)="PaymentSearch(this.orders.payment_Id)"
+                  class="btn btn-search"
+                  type="submit"
+
+                >
+                  Search
+                </button></form></div></div>
           <div class="table-responsive">
             <table class="table table-hover overflow-x" id="example1">
               <thead class="thead-light fw-bold">
@@ -205,12 +201,12 @@
                 <!-- <tr *ngFor="let order of orders"> -->
                 <tr *ngFor="let order of orders | paginate: {itemsPerPage: 3, currentPage: p};">
                   <td>
-                    <a class="text-heading font-semibold" href="#">
+                    <a class="text-heading font-semibold">
                       {{ order.payment_Id }}
                     </a>
                   </td>
                   <td>
-                    <a class="text-heading font-semibold" href="#">
+                    <a class="text-heading font-semibold">
                        {{ order.firstName }} {{ order.lastName }}
                     </a>
                   </td>
@@ -232,12 +228,12 @@
                   </td>
                   <td class="text-end">
                     <!-- <a href="#" class="bg-light btn-sm btn-neutral ">View</a> -->
-                    <button
+                    <!-- <button
                       type="button" data-toggle="modal" data-target="#exampleModalCenter1"
                       class="btn btn-sm btn-square btn-neutral text-danger-hover"
                     >
                       <i class="bi bi-trash"></i>
-                    </button>
+                    </button> -->
                     <!-- delete Modal -->
 <div class="modal fade shadow justify-content-center" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

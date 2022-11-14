@@ -1,46 +1,69 @@
 @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
-#navbarVertical{
-    background-color: #112A48;
+#navbarVertical {
+  background-color: #112a48;
 }
 
 /* .nav-link{
     color: white!important;
 } */
 
-.nav-item:hover, .nav-link:hover{
-background-color: white!important;
-color: #112A48!important;
+.nav-item:hover,
+.nav-link:hover {
+  background-color: white !important;
+  color: #112a48 !important;
 }
-table td{
-    font-size: 14px;
-    font-weight: 500;
+table td {
+  font-size: 14px;
+  font-weight: 500;
 }
-table th{
-    font-size: 12px;
-    font-weight: 700!important;
-}
-
-.bi-question-circle-fill{
-    font-size: 50px;
-    color: #112A48;
-    
+table th {
+  font-size: 12px;
+  font-weight: 700 !important;
 }
 
-.modal-footer{
+.bi-question-circle-fill {
+  font-size: 50px;
+  color: #112a48;
+}
+.form-control {
+  height: 35px;
+  /* border: 2px solid #eee; */
+  transition: all 0.9s;
+  border: 2px solid #112a48;
+  /* position: relative; */
+}
+.card-header{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 10px!important;
 }
-.btn-primary{
-    background-color: #112A48;
-    border: none;
+.btn-search{
+    /* position: absolute; */
+    background-color: #112a48;
+    color: white;
+    height: 35px;
+    /* left: 65%; */
 }
-.btn-primary:active{
-    background-color: #112A48;
-    border: none;
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #112a48;
 }
-.btn-primary:hover{
-    background-color: #112A48;
-    border: none;
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+.btn-primary {
+  background-color: #112a48;
+  border: none;
+}
+.btn-primary:active {
+  background-color: #112a48;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #112a48;
+  border: none;
 }

@@ -97,8 +97,10 @@ export class AdminDashboardComponent implements OnInit {
 
     this.orderService.getAllOrders().subscribe((data: any) => {
       this.orders = data;
-      this.order = data;
+      // this.order = data;
       this.duration = this.orders[0].days;
+      const sura = this.order.items;
+      const check = new Array(this.duration);
       // this.justDate = new Date(this.duration);
       // const date = this.order.items.startDate;
       const date = new Date();
@@ -107,11 +109,12 @@ export class AdminDashboardComponent implements OnInit {
       const checkout = this.orders.days;
       const mainCheckout = date.setDate(date.getDate() + checkout).toString();
       console.log(mainCheckout, 'CHECKING CHECKOUT ----');
+      console.log(check, 'CHECK ----');
       console.log(this.justDate, 'CHECKING DATE ----');
       console.log(this.duration, 'CHECKING DURATION');
 
       console.log('CHECKING Orders 000000', this.orders);
-      console.log('CHECKING Orders firstNmae 000000', this.orders.endDate);
+      // console.log('CHECKING Orders firstName 000000', this.orders.endDate);
     });
   }
 
@@ -171,7 +174,7 @@ export class AdminDashboardComponent implements OnInit {
   PaymentSearch(value: any): any {
     this.orderService.searchByPaymentId(value).subscribe((res: any) => {
       this.orders = res;
-      // this.p = 1;
+      this.p = 1;
     });
   }
 }

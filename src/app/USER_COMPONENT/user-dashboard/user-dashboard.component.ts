@@ -41,15 +41,18 @@ export class UserDashboardComponent implements OnInit {
   recentRoom: any;
   orderCount: any;
   Booking: any;
-
+  userRoomRecord: any;
   isShown = true;
   duration: any;
   durations: any;
+
+  // RecordRoom any[] = [];
 
   maxAge: Date | any;
   mode: 'edit' | 'locked' = 'locked';
   buttonText: 'Save Changes' | 'Edit Info' = 'Edit Info';
   justDate: any;
+  today: any;
   constructor(
     private userService: UserService,
     private route: Router,
@@ -68,6 +71,7 @@ export class UserDashboardComponent implements OnInit {
 
   p: number = 1;
   collection!: any[];
+  RecordRoom: any[] = [];
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
@@ -75,7 +79,7 @@ export class UserDashboardComponent implements OnInit {
         if (id) {
           this.userService.getUserById(id).subscribe({
             next: (res) => {
-              this.user = res; 
+              this.user = res;
               console.log('res %%%%%%%%%', res);
               console.log(' CHECKING THE ID', res.id);
             },
@@ -90,12 +94,45 @@ export class UserDashboardComponent implements OnInit {
           this.orderService.getOrdersByUser(id).subscribe({
             next: (res: any) => {
               this.Booking = res;
+
+              for (let i = 0; i < this.Booking.userRooms.length; i++) {
+                this.userRoomRecord = this.Booking.userRooms[i];
+
+                const date2 = new Date(this.Booking.userRooms[i].startDate);
+                let xx = date2
+                  .setDate(date2.getDate() + this.Booking.userRooms[i].days)
+                  .toString();
+
+                this.userRoomRecord.CheckOutDate = xx;
+                let fg = [];
+
+                fg.push(this.userRoomRecord);
+                let ss = Object.assign(fg)[0];
+                console.log('***', fg);
+
+                this.RecordRoom.push(ss);
+                //console.log('*', this.RecordRoom);
+
+                console.log('***RECORD ROOM', this.RecordRoom);
+              }
+
+              console.log('*', this.RecordRoom);
               this.duration = this.Booking.userRooms[0].days;
-              const date = new Date();
+
+              // add this.duration + this.Booking.userRooms[0].startDate
+              //reuslt
+              this.today = new Date();
+              const date = new Date(this.Booking.userRooms[0].startDate);
               this.justDate = date
                 .setDate(date.getDate() + this.duration)
                 .toString();
+
+
+
+              console.log('DURATION----', this.durations);
+              console.log('justDate', this.justDate);
               // this.durations = this.Booking.userRooms.days;
+              console.log(this.today, 'CHECKING TODAY');
               console.log(this.Booking, 'CHECKING USER ORDERS');
               console.log(this.duration, 'CHECKING DURATION');
             },
@@ -118,7 +155,7 @@ export class UserDashboardComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.route.navigate(['login']);
-     window.location.reload();
+    window.location.reload();
     // this.cartQuantity = 0;
   }
 
@@ -148,7 +185,7 @@ export class UserDashboardComponent implements OnInit {
       next: (response) => {
         console.log(response, 'CHECKING RESPONSE--ffgg---');
         if (this.mode === 'locked') {
- window.location.reload();
+          window.location.reload();
           this.toast.success({
             detail: 'Updated Successfully',
             summary: 'Profile Info Updated',
@@ -177,7 +214,4 @@ export class UserDashboardComponent implements OnInit {
       // this.p = 1;
     });
   }
-
-
-  
 }
