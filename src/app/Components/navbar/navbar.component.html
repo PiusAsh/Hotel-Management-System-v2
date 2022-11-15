@@ -8,14 +8,37 @@
   </li></ul></div> -->
 
   <div class=" mt-3">
-    <ul class="d-flex">
-    <li class=" topLi">
-      <a class="top-link me-3 text-left" routerLink="/register">09052794388</a>
-    </li> <li class="topLi  me-3">|</li>
-    <li class=" topLi">
-      <a class="top-link text-left me-5" routerLink="/login">Pius1ash@gmail.com</a>
+    <div *ngIf="!isAuth" class="mobileDiv">
+
+      <ul class="d-flex ">
+      <li class=" topLi">
+        <a class="top-link me-3 text-left" style="cursor: pointer;" routerLink="/register">Register</a>
+      </li> <li class="topLi  me-3">|</li>
+      <li class=" topLi">
+        <a class="top-link text-left me-5" style="cursor: pointer;" routerLink="/login">Login</a>
+      </li>
+    </ul>
+    </div>
+    <div *ngIf="isAuth" class="mobileDiv">
+
+      <ul class="logged">
+<li class=" topLi" *ngIf="resp.isAdmin === true">
+      <a  *ngIf="isAuth" class="top-link users text-left me-3" routerLink="/admin/{{this.resp.id}}">Welcome {{this.resp.firstName}}, </a>
     </li>
-  </ul></div>
+    <li class=" topLi" *ngIf="resp.isAdmin === false">
+      <a  *ngIf="isAuth" class="top-link users text-left me-3" routerLink="/user/{{this.resp.id}}">Welcome {{this.resp.firstName}}, </a>
+    </li>  <li *ngIf="isAuth" class="topLi  me-3">|</li>
+    <li class=" topLi">
+      <a  *ngIf="isAuth" class="top-link users text-left me-3" routerLink="/cart-page" >Cart <span class="cartNo"><a routerLink="/cart-page">{{cartQuantity}}</a></span></a>
+    </li>
+     <li *ngIf="isAuth" class="topLi  me-3">|</li>
+
+    <li *ngIf="isAuth" class=" topLi">
+      <a class="top-link users text-left me-5" data-toggle="modal" data-target="#exampleModalCenter" >Logout</a>
+    </li>
+    </ul>
+    </div>
+</div>
   <div class="ms-auto mt-3 details">
     <ul class="d-flex">
     <li *ngIf="!isAuth" class=" topLi">
@@ -70,9 +93,9 @@
             </ul>
           </li> -->
         </ul>
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto  mb-2 mt-3">
             <li class="">
-                <a class="navBtn me-5 mx-3" routerLink="/rooms">GET STARTED</a>
+                <a class="navBtn mx-5" routerLink="/rooms">GET STARTED</a>
               </li>
         </ul>
       </div>

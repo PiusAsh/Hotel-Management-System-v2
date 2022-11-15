@@ -28,9 +28,9 @@
             <li class="nav-item">
               <a routerLink="/bookings" class="nav-link font-regular">Bookings</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a routerLink="/not-found" class="nav-link font-regular">Due Checkout</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -168,13 +168,15 @@
 
         <!-- TABLE STARTS HERE -->
         <div class="card shadow border-0">
-          <div class="card-header d-flex"><h5 class="mb-0 py-2">Recent Booking</h5> <div class="d-flex"><form class="d-flex"><input class="form-control mysearch" type="text"  placeholder="Search by Payment ID" name="paymentId" >  <button (click)="PaymentSearch(this.orders.payment_Id)"
+          <div class="card-header d-flex"><h5 class="mb-0 p-3">Recent Booking</h5>
+             <!-- <div class="d-flex"><form class="d-flex"><input class="form-control mysearch" type="text"  placeholder="Search by Payment ID" name="paymentId" >  <button (click)="PaymentSearch(this.orders.payment_Id)"
                   class="btn btn-search"
                   type="submit"
 
                 >
                   Search
-                </button></form></div></div>
+                </button></form></div> -->
+              </div>
           <div class="table-responsive">
             <table class="table table-hover overflow-x" id="example1">
               <thead class="thead-light fw-bold">

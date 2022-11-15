@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AddRoomsComponent implements OnInit {
   public roomForm!: FormGroup;
-  baseApiUrl: string = environment.baseApiUrl;
+  // baseApiUrl: string = environment.baseApiUrl;
 
   rooms: Room = {
     roomName: '',

@@ -1,5 +1,5 @@
 
-<div class="container mt-5 mb-4">
+<div class="container py-2">
     <div class="row">
         <h3 class="text-center fw-bold"> Explore our rooms</h3>
         <p class="text-center mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, odit. <br> Non quisquam eos debitis dolores.</p>
@@ -7,8 +7,8 @@
 </div>
 
                  
-<div class="rooms container mb-5">
-            <div class="card shadow me-4 mb-3" *ngFor="let room of rooms">
+<div class="rooms container mb-1">
+            <div class="card shadow m-2 mb-3" *ngFor="let room of rooms | paginate: { itemsPerPage: 4, currentPage: p }">
                 <div > <img src="{{room.roomImg}}"
                   [alt]="room.roomName" class="card-img-top"> </div>
                 <p class="rating">5.0</p>
@@ -22,6 +22,9 @@
                     </div>
                 </div>
             </div>
+                         <!-- <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls> -->
         </div>
 <div class="container text-center mb-5"><a class="exp" routerLink="/rooms">Explore our rooms</a></div>
 

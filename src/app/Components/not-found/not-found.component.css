@@ -16,3 +16,29 @@ a{
     margin: 1rem;
     text-decoration: none;
 }
+
+.forMobile{
+    display: none;
+}
+
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+     .forMobile{
+    display: block;
+ }
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+         .forMobile{
+    display: block;
+ }
+}
+.forPc{
+display: none;
+}
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+    .forPc{
+display: block;
+}
+}

@@ -10,7 +10,7 @@
 
     <img [src]="cartItem.room.roomImg" alt="">
 </p> -->
-    <app-not-found
+    <app-not-found class=""
     [visible]="!cart || !cart.items.length"
     notFoundMessage ="Cart Page is empty"
     resetLink="Go To HomePage">
@@ -42,24 +42,31 @@
                </select> 
             </div> -->
             <div>{{cartItem.price | currency: '₦'}}</div>
-            <div>
-                <button (click)="removeFromCart(cartItem)" class="remove-button">Remove</button>
-            </div>
-    
-        <div class="date">
-                <form [formGroup]="form" class="form">
-                <div class="d-flex">
+            
+            <div class="date">
+            
+            
+            <form [formGroup]="form" class="form">
+ <div class="row">
+                        <div class="col-lg-6 me-4"><div class="d-flex">
                     <p class="h6 me-2 py-2">Start:</p>
                         <input class="form-control mb-2" [value]="cartItem.startDate"
                         (change)="startDt(this.form.value.startDate)" formControlName="startDate" type="date"
                         label="Name" />
-                </div>
-                <div class="d-flex">
+                </div> </div>
+                        <div class="col-lg-6">                <div class="d-flex">
                   <p class="h6 me-2 py-2">CheckOut:</p>
                   <input class="form-control mb-2" id="checkOutDate" [value]="cartItem.days"
                     formControlName="checkOutDate" 
                     (change)="changeDays(cartItem)" type="date" label="Name" />
+                </div> </div>
+                <div class="row px-5">
+                    <div>
+                <button (click)="removeFromCart(cartItem)" class="remove-button px-2 ">Remove</button>
+            </div>
                 </div>
+
+            </div>
             </form>
             </div>
     

@@ -2,11 +2,11 @@
 <app-navbar></app-navbar>
     <app-not-found
     [visible]="!rooms || !rooms.length"
-    notFoundMessage ="Oops! No Room Available. Please check back soon"
+    notFoundMessage ="Oops! No Room Available at the moment"
     resetLink="Go To HomePage">
 
 </app-not-found>
-<div class="container mt-5 mb-4" >
+<div class="container mt-5 mb-4">
     <div class="row">
         <h3 class="text-center fw-bold"> Explore our rooms</h3>
         <p class="text-center mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, odit. <br> Non quisquam eos debitis dolores.</p>
@@ -15,7 +15,7 @@
 
                  
 <div class="rooms container mb-5">
-            <div class="card shadow me-4 mb-3" *ngFor="let room of rooms  | paginate: { itemsPerPage: 8, currentPage: p }">
+            <div class="card shadow  mb-3" *ngFor="let room of rooms  | paginate: { itemsPerPage: 8, currentPage: p }">
                 <div > <img src="{{room.roomImg}}"
                   [alt]="room.roomName" class="card-img-top"> </div>
                 <p class="rating">5.0</p>

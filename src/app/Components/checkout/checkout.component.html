@@ -31,7 +31,7 @@
     <div class="col-lg-7">
       <app-order-item-list [order]="order"></app-order-item-list>
 
-<button (click)="createOrder()">PAY</button>
+<!-- <button (click)="createOrder()">PAY</button> -->
       <button *ngIf="isShown == false" class="btn py-2 btn-primary w-100 text-center" angular4-paystack [paystackOptions]="options"
         (paymentInit)="paymentInit()" (onClose)="paymentCancel()" (callback)="paymentDone($event)">
         Pay with Paystack

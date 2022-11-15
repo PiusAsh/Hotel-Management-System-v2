@@ -7,19 +7,19 @@ import { IRoom } from 'src/app/Shared/IRoom';
 @Component({
   selector: 'app-hotel-list',
   templateUrl: './hotel-list.component.html',
-  styleUrls: ['./hotel-list.component.css']
+  styleUrls: ['./hotel-list.component.css'],
 })
 export class HotelListComponent implements OnInit {
-rooms: Room[] = [];
-  constructor(private roomService : RoomService) {
+  rooms: Room[] = [];
+  constructor(private roomService: RoomService) {
     // this.rooms = roomService.getAll();
-   }
-  
-
-  ngOnInit(): void {
-    this.roomService.getAllRooms().subscribe((res: any) => {
-this.rooms = res;
-    })
   }
 
+  p: number = 1;
+  collection!: any[];
+  ngOnInit(): void {
+    this.roomService.getAllRooms().subscribe((res: any) => {
+      this.rooms = res;
+    });
+  }
 }

@@ -8,15 +8,20 @@ import { Order, PayOrder } from '../Models/order';
   providedIn: 'root',
 })
 export class OrderService {
-  baseApiUrl: string = environment.baseApiUrl;
+  public baseApiUrl: string = environment.baseApiUrl;
   constructor(private http: HttpClient) {}
   createOrder(order: Order) {
     this.getUserFromLocalStorage();
-    return this.http.post<Order>(this.baseApiUrl + '/Order/AddOrder', order);
+    return this.http.post<Order>(
+      this.baseApiUrl + '/Order/AddOrder',
+      order
+    );
   }
 
   getAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.baseApiUrl + '/Order/AllOrders');
+    return this.http.get<Order[]>(
+      this.baseApiUrl + '/Order/AllOrders'
+    );
   }
 
   getOrdersByUser(id: any): Observable<Order[]> {

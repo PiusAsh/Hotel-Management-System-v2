@@ -18,7 +18,7 @@ import { CartService } from './cart.service';
   providedIn: 'root',
 })
 export class UserService {
-  baseApiUrl: string = environment.baseApiUrl;
+  public baseApiUrl: string = environment.baseApiUrl;
   globalUser: any;
   public UserKey: string = 'User';
   userDetails: any;

@@ -28,10 +28,56 @@
 .details{
     display: none;
 }
+
+ 
 .top-link1{
     display: none;
 }
   }
+  @media only screen and (min-width: 768px) {
+	.screenDisplay{
+		display:none
+	}
+ }
+
+ .mobileDiv{
+    display: none;
+ }
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+     .mobileDiv{
+    display: block;
+ }
+ .user:hover{
+    background-color: white;
+    padding: 9px;
+    color: #112A48!important;
+    cursor: pointer;
+}
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+         .mobileDiv{
+    display: block;
+ }
+ .users:hover{
+    background-color: white;
+    /* padding: 1px; */
+    color: #112A48!important;
+    cursor: pointer;
+}
+}
+
+  /* @media (min-width: 767px) {
+	.screenDisplay{
+		display:none
+	}
+} */
+
+.logged{
+    display: flex;
+    justify-content: space-between;
+}
 
   .cartNo a{
     color: #112A48;

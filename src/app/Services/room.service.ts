@@ -12,7 +12,7 @@ import { IRoom } from '../Shared/IRoom';
   providedIn: 'root',
 })
 export class RoomService {
-  baseApiUrl: string = environment.baseApiUrl;
+  public baseApiUrl: string = environment.baseApiUrl;
   room: Room = {
     roomName: '',
     roomPrice: 0,
