@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Room } from 'src/app/Models/room';
+import { User } from 'src/app/Models/user';
 import { RoomService } from 'src/app/Services/room.service';
+import { UserService } from 'src/app/Services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,6 +15,23 @@ import { environment } from 'src/environments/environment';
 export class AddRoomsComponent implements OnInit {
   public roomForm!: FormGroup;
   // baseApiUrl: string = environment.baseApiUrl;
+
+  userDetails: User = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: '',
+    address: '',
+    state: '',
+    country: '',
+    password: '',
+    dateOfBirth: '',
+    gender: '',
+    isAdmin: false,
+  };
+  res: any;
+  userId: any;
 
   rooms: Room = {
     roomName: '',
@@ -25,10 +44,40 @@ export class AddRoomsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: RoomService,
-    private route: Router
+    private route: Router, private activatedRoute: ActivatedRoute, private userService: UserService
   ) {}
 
   ngOnInit(): void {
+console.log("GETTING USER ID",this.userId)
+
+    this.activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        const id: any = params.get('id');
+        if (id) {
+          this.userService.getUserById(id).subscribe({
+            next: (res) => {
+              this.userDetails = res;
+              this.userId = this.userDetails.id;
+              console.log('res %%%%%%%%%', res);
+              console.log(' CHECKING THE ID', res.id);
+              // this.route.navigate([`admin/${res.id}`]);
+            },
+          });
+        }
+      },
+
+      
+    });
+  
+
+  //  get userId(){
+  //                 return this.res.id;
+  //   }
+
+  
+
+
+
     this.roomForm = this.formBuilder.group({
       roomName: ['', Validators.required],
       roomDes: ['', Validators.required],

@@ -43,6 +43,7 @@ import { AuthInterceptor } from './AUTH/auth.interceptor';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingComponent } from './Components/loading/loading.component';
+import { UserBookingComponent } from './Components/user-booking/user-booking.component';
 
 
 
@@ -79,6 +80,7 @@ import { LoadingComponent } from './Components/loading/loading.component';
     CheckoutComponent,
     OrderItemListComponent,
     LoadingComponent,
+    UserBookingComponent,
   ],
   imports: [
     BrowserModule,

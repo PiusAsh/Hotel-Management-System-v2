@@ -53,9 +53,11 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.route.navigate(['login']);
+    window.location.reload();
     // this.cartQuantity = 0;
   }
 
+  
   get isAuth() {
     return this.resp;
   }

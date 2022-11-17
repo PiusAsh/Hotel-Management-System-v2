@@ -112,6 +112,7 @@ export class UserService {
     localStorage.removeItem(this.UserKey);
     this.cartService.clearCart();
     this.router.navigate(['login']);
+    // window.location.reload();
     // this._location.reload();
     this.toast.info({
       detail: "You've been logged out",

@@ -28,6 +28,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AuthGuard } from './Guard/auth.guard';
 import { RoleGuard } from './Guard/role.guard';
+import { UserBookingComponent } from './Components/user-booking/user-booking.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'nav',
     component: NavbarComponent,
+  },
+  {
+    path: 'user-booking/:id',
+    component: UserBookingComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

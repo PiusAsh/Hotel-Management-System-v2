@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable, sample } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { sampleRoom } from '../demoData';

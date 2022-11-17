@@ -39,7 +39,7 @@
 
           <!-- TABLE BODY STARTS -->
           <tbody>
-            <tr *ngFor="let room of rooms | paginate: { itemsPerPage: 3, currentPage: p }">
+            <tr *ngFor="let room of rooms | paginate: { itemsPerPage: 5, currentPage: p }">
               <td>
                 <p class="text-heading font-semibold">
                   {{ room.id }}

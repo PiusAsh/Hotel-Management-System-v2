@@ -34,8 +34,7 @@ export class AdminSideBarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
-     console.log("GETTING USER ID",this.userId)
+    console.log('GETTING USER ID', this.userId);
 
     this.activatedRoute.paramMap.subscribe({
       next: (params) => {
@@ -62,15 +61,19 @@ export class AdminSideBarComponent implements OnInit {
   getUserId(id: any) {
     this.userService.getUserById(id).subscribe({
       next: (res) => {
-        this.route.navigate([`admin/${res.id}`]);
+        // this.route.navigate([`admin/${res.id}`]);
         // this.route.navigate([`user`]);
         console.log(res);
       },
     });
   }
-
+  // refresh(): void {
+  //   window.location.reload();
+  // }
   logout() {
     this.userService.logout();
-    this.route.navigate(['login']);
+    
+    // this.route.navigate(['login']);
+    // this.refresh();
   }
 }

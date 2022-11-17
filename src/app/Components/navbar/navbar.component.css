@@ -60,12 +60,33 @@
          .mobileDiv{
     display: block;
  }
+ .users{
+    /* background-color: white; */
+    /* padding: 1px; */
+    color: #fff!important;
+    cursor: pointer;
+    font-size: 13px;
+}
  .users:hover{
     background-color: white;
-    /* padding: 1px; */
-    color: #112A48!important;
+    padding: 1px;
+    color:  #112A48!important;
     cursor: pointer;
+    font-size: 13px;
 }
+ .cartNo a{
+    color: #112A48;
+    background-color: white;
+    padding: 3px;
+    border-radius: 100%;
+    font-weight: 700;
+  }
+  .cartNo a:hover{
+    background-color: #112A48!important;
+    color: white;
+    padding: 3px;
+    border-radius: 100%;
+  }
 }
 
   /* @media (min-width: 767px) {

@@ -212,7 +212,7 @@
 
               <!-- TABLE BODY STARTS -->
               <tbody>
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of users  | paginate: {itemsPerPage: 6, currentPage: p};">
                   <td>{{user.id}}</td>
                   <td>
                     <p class="text-heading font-semibold">
@@ -247,6 +247,9 @@
                 </tr>
               </tbody>
             </table>
+                     <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
           </div>
         </div>
 

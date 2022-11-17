@@ -1,4 +1,355 @@
 <!-- Dashboard -->
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for @getbootstrap</button> -->
+<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button> -->
+
+<div
+  class="offcanvas offcanvas-top"
+  tabindex="-1"
+  id="offcanvasTop"
+  aria-labelledby="offcanvasTopLabel"
+>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel"></h5>
+    <button
+      type="button"
+      class="btn-secondary1"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    >
+      Close
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container">
+      <!-- TABLE STARTS HERE -->
+      <div class="card shadow border-0">
+        <div class="card-header">
+          <h5 class="mb-0">Booking</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover overflow-x" id="example1">
+            <thead class="thead-light fw-bold">
+              <tr>
+                <th class="fw-bold" scope="col">Payment ID</th>
+                <th class="fw-bold" scope="col">Room</th>
+                <th class="fw-bold" scope="col">Type</th>
+                <th class="fw-bold" scope="col">Unit Price</th>
+                <!-- <th class="fw-bold" scope="col">Room ID</th> -->
+
+                <th class="fw-bold" scope="col">Check in</th>
+                <th class="fw-bold" scope="col">Check Out</th>
+                <th class="fw-bold" scope="col">Total Price</th>
+
+                <th class="fw-bold" scope="col">Status</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <!-- TABLE BODY STARTS -->
+            <tbody>
+              <tr
+                *ngFor="
+                  let book of RecordRoom
+                    | paginate: { itemsPerPage: 6, currentPage: p }
+                "
+              >
+                <td>
+                  <a class="text-heading font-semibold" href="#">
+                    {{ book.payment_Id }}
+                  </a>
+                </td>
+                <td>
+                  <a class="text-heading font-semibold" href="#">
+                    {{ book.room.roomName }}
+                  </a>
+                </td>
+                <td>
+                  {{ book.room.roomType }}
+                </td>
+                <td>
+                  {{ book.room.roomPrice | currency: "₦" }}
+                </td>
+                <td>{{ book.startDate | date: "MM-dd-yyyy" }}</td>
+                <td>{{ book.CheckOutDate | date: "MM-dd-yyyy" }}</td>
+
+                <td>
+                  {{ book.roomPrice | currency: "₦" }}
+                </td>
+
+                <td *ngIf="book.CheckOutDate > this.today">
+                  <span class="badge badge-lg badge-dot">
+                    <i class="bg-success"></i>
+                    Active
+                  </span>
+                </td>
+
+                <td *ngIf="book.CheckOutDate <= this.today">
+                  <span class="badge badge-lg badge-dot">
+                    <i class="bg-danger"></i>
+                    Due
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="btn-secondary1 px-4 py-4"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade bd-example-modal-lg"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title px-5" id="exampleModalLabel">User Profile</h5>
+        <button
+          type="button"
+          class="btn btn-secondary1"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          Close <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="container-fluid bg-white"> -->
+        <div class="row">
+          <!-- <div class="col-lg-1"></div> -->
+          <!-- <div class="col-lg-8 py-3"> -->
+          <form #form="ngForm" (ngSubmit)="updateUser()">
+            <div class="row">
+              <div class="col-lg-6">
+                <span class="label">First Name</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  type="text"
+                  class="form-control"
+                  placeholder="First Name"
+                  [(ngModel)]="user.firstName"
+                  id="firstName"
+                  name="firstName"
+                />
+              </div>
+              <!-- <div class="col-lg-1"></div> -->
+              <div class="col-lg-6">
+                <span class="label">Last Name</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name"
+                  [(ngModel)]="user.lastName"
+                  id="lastName"
+                  name="lastName"
+                />
+              </div>
+            </div>
+
+            <div class="row mt-1">
+              <div class="col-lg-6">
+                <span class="label">Phone Number</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  autocomplete="chrome-off"
+                  name="phoneNo"
+                  maxlength="11"
+                  type="number"
+                  class="form-control"
+                  placeholder="Phone Number"
+                  [(ngModel)]="user.phoneNo"
+                  id="phoneNo"
+                />
+              </div>
+              <!-- <div class="col-lg-1"></div> -->
+              <div class="col-lg-6">
+                <span class="label">Email Address</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  type="text"
+                  autocomplete="chrome-off"
+                  class="form-control"
+                  placeholder="Email address"
+                  [(ngModel)]="user.email"
+                  id="email"
+                  name="email"
+                />
+              </div>
+            </div>
+
+            <div class="row mt-1">
+              <div class="col-lg-6">
+                <span class="label">Date of Birth</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  type="date"
+                  class="form-control shadow-sm d-flex align-items-center"
+                  id="dateOfBirth"
+                  [(ngModel)]="user.dateOfBirth"
+                  max="2004-12-31"
+                  name="dateOfBirth"
+                />
+              </div>
+              <!-- <div class="col-lg-1"></div> -->
+              <div class="col-lg-6">
+                <span class="label">Gender</span>
+                <select
+                  [disabled]="mode === 'locked'"
+                  [(ngModel)]="user.gender"
+                  name="gender"
+                  class="form-select form-control flex align-items-center shadow-sm py-2 px-2"
+                  id="gender"
+                  aria-label=""
+                >
+                  <option selected hidden>Gender</option>
+                  <option class="valAmount" value="Male">Male</option>
+                  <option class="valAmount" value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mt-1">
+              <div class="col-lg-12">
+                <span class="label">Address</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  autocomplete="chrome-off"
+                  name="address"
+                  type="text"
+                  class="form-control"
+                  placeholder="Address"
+                  id="address"
+                  [(ngModel)]="user.address"
+                />
+              </div>
+            </div>
+
+            <div class="row mt-1">
+              <div class="col-lg-6">
+                <span class="label">State</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  autocomplete="chrome-off"
+                  name="state"
+                  type="text"
+                  class="form-control"
+                  placeholder="state"
+                  id="state"
+                  [(ngModel)]="user.state"
+                />
+                <!-- <select
+                        [disabled]="mode === 'locked'"
+                        [(ngModel)]="user.state"
+                        class="form-control"
+                        id="state"
+                        name="state"
+                      >
+                        <option>Select State</option>
+                        <option>Abuja FCT</option>
+                        <option>Abia</option>
+                        <option>Adamawa</option>
+                        <option>Akwa Ibom</option>
+                        <option>Anambra</option>
+                        <option>Bauchi</option>
+                        <option>Bayesla</option>
+                        <option>Benue</option>
+                        <option>Borno</option>
+                        <option>Cross River</option>
+                        <option>Delta</option>
+                        <option>Ebonyi</option>
+                        <option>Edo</option>
+                        <option>Ekiti</option>
+                        <option>Enugu</option>
+                        <option>Gombe</option>
+                        <option>Imo</option>
+                        <option>Jigawa</option>
+                        <option>Kaduna</option>
+                        <option>Kano</option>
+                        <option>Katsina</option>
+                        <option>Kebbi</option>
+                        <option>Kogi</option>
+                        <option>Kwara</option>
+                        <option>Lagos</option>
+                        <option>Nassarawa</option>
+                        <option>Nigeria</option>
+                        <option>Ogun</option>
+                        <option>Ondo</option>
+                        <option>Osun</option>
+                        <option>Oyo</option>
+                        <option>Plateau</option>
+                        <option>Rivers</option>
+                        <option>Sokoto</option>
+                        <option>Taraba</option>
+                        <option>Yobe</option>
+                        <option>Zamfara</option>
+                      </select> -->
+              </div>
+              <!-- <div class="col-lg-1"></div> -->
+              <div class="col-lg-6">
+                <!-- <span class="label">Country</span>
+                  <input [disabled]="mode === 'locked'"
+                    autocomplete="chrome-off"
+                    type="text"
+                    class="form-control"
+                    placeholder="Country"
+                    name="country"
+                    id="country"
+                    [(ngModel)]="user.country"
+                  /> -->
+                <span class="label">Country</span>
+                <input
+                  [disabled]="mode === 'locked'"
+                  [(ngModel)]="user.country"
+                  class="form-control"
+                  id="country"
+                  name="country"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-lg-12">
+                <div class="col-12 p-0">
+                  <button
+                    type="submit"
+                    (click)="changeMode(mode)"
+                    class="btn btn-success w-100"
+                  >
+                    {{ buttonText }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- </div> -->
+          <!-- <div class="col-lg-2"></div> -->
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button> -->
+    </div>
+  </div>
+</div>
+<!-- </div> -->
 <div class="d-flex flex-column flex-lg-row">
   <!-- Vertical Navbar -->
   <!-- SIDEBAR -->
@@ -40,7 +391,7 @@
         <img
           src="/assets/images/LOGO (2).png"
           alt="..."
-          style="height: 130px"
+          style="height: 90px; width: 100%"
         />
       </a>
       <!-- User menu (mobile) -->
@@ -73,23 +424,21 @@
             <a
               href="#"
               class="dropdown-item"
-              id="contact-tab"
-              data-toggle="tab"
-              href="#contact"
-              role="tab"
-              aria-controls="contact"
-              aria-selected="false"
+                           data-toggle="modal"
+              data-target="#exampleModal"
               >Profile</a
             >
             <a
               href="#"
               class="dropdown-item"
-              data-toggle="tab"
-              href="#profile"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
+routerLink="/user-booking/{{ user.id }}"
               >Booking</a
+            >
+            <a
+              href="#"
+              class="dropdown-item"
+routerLink="/rooms"
+              >Hotel Rooms</a
             >
             <hr class="dropdown-divider" />
             <a
@@ -105,9 +454,9 @@
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidebarCollapse">
         <!-- Navigation -->
-        <ul class="navbar-nav mt-3" id="myTab">
+        <ul class="navbar-nav mt-5" id="myTab pills-tab" role="tablist">
           <!-- <ul class="navbar-nav mt-3" nav nav-tabs" role="tablist" > -->
-          <li class="nav-item">
+          <li class="nav-item" role="presentation">
             <a
               class="nav-link text-white"
               id="home-tab"
@@ -123,17 +472,21 @@
           <li class="nav-item">
             <a
               class="nav-link text-white"
-              data-toggle="tab"
-              href="#profile"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
+              routerLink="/user-booking/{{ user.id }}"
             >
               <i class="bi bi-bar-chart"></i>Booking
             </a>
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-white"
+              routerLink="/rooms/"
+            >
+              <i class="bi bi-bar-chart"></i> Hotel Rooms
+            </a>
+          </li>
         </ul>
-       
+
         <!-- Navigation -->
 
         <!-- Push content down -->
@@ -142,6 +495,13 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a
+              class="nav-link text-white"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              <i class="bi bi-person-square"></i> User Profile
+            </a>
+            <!-- <a
               class="nav-link text-white"
               id="contact-tab"
               data-toggle="tab"
@@ -152,15 +512,13 @@
               
             >
               <i class="bi bi-person-square"></i> Account Details
-            </a>
+            </a> -->
           </li>
-           <!-- Divider -->
-        <hr class="navbar-divider my-5 opacity-20" />
+          <!-- Divider -->
+          <hr class="navbar-divider my-5 opacity-20" />
 
           <li class="nav-item" *ngIf="user.isAdmin == true">
-            <a routerLink="/admin/{{user.id}}"
-              class="nav-link text-white"
-            >
+            <a routerLink="/admin/{{ user.id }}" class="nav-link text-white">
               <i class="bi bi-person-square"></i> Admin Mode
             </a>
           </li>
@@ -209,7 +567,6 @@
     </div>
   </div>
 
-  
   <!-- END OF SIDEBAR -->
   <!-- Logout Modal -->
   <div
@@ -253,11 +610,17 @@
             <div class="col-sm-6 col-12 mb-4 mb-sm-0">
               <!-- Title -->
               <h1 class="h3 py-3 ls-tight">
+                <span class="h6" style="font-weight: 400">User Dashboard</span>
+                <br />
                 Welcome, <span class="">{{ user.firstName }}</span>
               </h1>
             </div>
             <!-- Actions -->
-            <div class="col-sm-6 col-12 text-sm-end"></div>
+            <div class="col-sm-6 col-12 text-sm-end">
+              <!-- <h1 class="h3 py-3 ls-tight">
+                 <span class="">User Dashboard</span>
+              </h1> -->
+            </div>
           </div>
         </div>
       </div>
@@ -266,8 +629,6 @@
     <!-- Main -->
 
     <main class="py-6 bg-surface-secondary">
-
-      
       <div class="tab-content" id="myTabContent">
         <div
           class="tab-pane fade show active"
@@ -300,7 +661,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="mt-2 mb-0 text-sm">
+                    <div class="mt-1 mb-0 text-sm">
                       <span
                         class="badge badge-pill bg-soft-success text-success me-2"
                       >
@@ -321,13 +682,10 @@
                         <span
                           class="h6 font-semibold text-muted text-sm d-block mb-2"
                           >Check Out
-</span
-                        >
-                         <span
-                          class="h4 font-bold mb-0"
-                          
-                          >{{ justDate | date: "MM-dd-yyyy" }}</span
-                        >
+                        </span>
+                        <span class="h4 font-bold mb-0">{{
+                          justDate | date: "MM-dd-yyyy"
+                        }}</span>
                         <!-- <span
                           class="h4 font-bold mb-0"
                           *ngIf="this.duration == 1"
@@ -347,7 +705,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="mt-2 mb-0 text-sm">
+                    <div class="mt-1 mb-0 text-sm">
                       <span
                         class="badge badge-pill bg-soft-success text-success me-2"
                       >
@@ -377,7 +735,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="mt-2 mb-0 text-sm">
+                    <div class="mt-1 mb-0 text-sm">
                       <span
                         class="badge badge-pill bg-soft-success text-success me-2"
                       >
@@ -450,70 +808,26 @@
                       <td>
                         {{ book.room.roomPrice | currency: "₦" }}
                       </td>
-                      <td>{{ book.startDate | date: "MM-dd-yyyy"  }}</td>
-                      <td>{{ (book.CheckOutDate)  | date: "MM-dd-yyyy"  }}</td>
-                      <!-- <td *ngIf="book.days > 1">{{ book.days }} days</td>
-                      <td *ngIf="book.days < 2">{{ book.days }} day</td> -->
+                      <td>{{ book.startDate | date: "MM-dd-yyyy" }}</td>
+                      <td>{{ book.CheckOutDate | date: "MM-dd-yyyy" }}</td>
+
                       <td>
                         {{ book.roomPrice | currency: "₦" }}
                       </td>
 
-                      <!-- <td>{{ order.items }}</td> -->
-                      <!-- <td *ngIf="due">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-success"></i>
-                          Due
-                        </span>
-                      </td> -->
-                      <!-- <td *ngIf="book.CheckOutDate > today">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-success"></i>
-                          Checkout
-                        </span>
-                      </td> -->
-                      
-                                            <td *ngIf="book.CheckOutDate > this.today">
+                      <td *ngIf="book.CheckOutDate > this.today">
                         <span class="badge badge-lg badge-dot">
                           <i class="bg-success"></i>
                           Active
                         </span>
                       </td>
 
-                                            <td *ngIf="book.CheckOutDate <= this.today">
+                      <td *ngIf="book.CheckOutDate <= this.today">
                         <span class="badge badge-lg badge-dot">
                           <i class="bg-danger"></i>
                           Due
                         </span>
                       </td>
-                                                                  <!-- <td *ngIf="book.CheckOutDate == this.today">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-danger"></i>
-                          Due
-                        </span> -->
-                      
-                      <!-- <td *ngIf="book.CheckOutDate > book.days">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-success"></i>
-                          Over Due
-                        </span>
-                      </td>
-
-                      <td *ngIf="book.CheckOutDate == book.days">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-success"></i>
-                          Due
-                        </span>
-                      </td> -->
-
-                      <!-- <td class="text-end">
-            <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
-            <button
-                      type="button"
-                      class="btn btn-sm btn-square btn-neutral text-danger-hover"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-          </td> -->
                     </tr>
                   </tbody>
                 </table>
@@ -534,7 +848,7 @@
             <!-- TABLE STARTS HERE -->
             <div class="card shadow border-0">
               <div class="card-header">
-                <h5 class="mb-0">My Booking</h5>
+                <h5 class="mb-0">Booking</h5>
               </div>
               <div class="table-responsive">
                 <table class="table table-hover overflow-x" id="example1">
@@ -546,7 +860,8 @@
                       <th class="fw-bold" scope="col">Unit Price</th>
                       <!-- <th class="fw-bold" scope="col">Room ID</th> -->
 
-                      <th class="fw-bold" scope="col">Duration</th>
+                      <th class="fw-bold" scope="col">Check in</th>
+                      <th class="fw-bold" scope="col">Check Out</th>
                       <th class="fw-bold" scope="col">Total Price</th>
 
                       <th class="fw-bold" scope="col">Status</th>
@@ -558,7 +873,7 @@
                   <tbody>
                     <tr
                       *ngFor="
-                        let book of Booking.userRooms
+                        let book of RecordRoom
                           | paginate: { itemsPerPage: 6, currentPage: p }
                       "
                     >
@@ -578,27 +893,26 @@
                       <td>
                         {{ book.room.roomPrice | currency: "₦" }}
                       </td>
-                      <td>{{ book.days }} days</td>
+                      <td>{{ book.startDate | date: "MM-dd-yyyy" }}</td>
+                      <td>{{ book.CheckOutDate | date: "MM-dd-yyyy" }}</td>
+
                       <td>
                         {{ book.roomPrice | currency: "₦" }}
                       </td>
 
-                      <!-- <td>{{ order.items }}</td> -->
-                      <td>
+                      <td *ngIf="book.CheckOutDate > this.today">
                         <span class="badge badge-lg badge-dot">
                           <i class="bg-success"></i>
-                          Paid
+                          Active
                         </span>
                       </td>
-                      <!-- <td class="text-end">
-            <a href="#" class="bg-light btn-sm btn-neutral ">View</a>
-            <button
-                      type="button"
-                      class="btn btn-sm btn-square btn-neutral text-danger-hover"
-                    >
-                      <i class="bi bi-trash"></i>
-                    </button>
-          </td> -->
+
+                      <td *ngIf="book.CheckOutDate <= this.today">
+                        <span class="badge badge-lg badge-dot">
+                          <i class="bg-danger"></i>
+                          Due
+                        </span>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -614,218 +928,8 @@
           id="contact"
           role="tabpanel"
           aria-labelledby="contact-tab"
-        >
-          <div class="container-fluid bg-white">
-            <div class="row">
-              <div class="col-lg-1"></div>
-              <div class="col-lg-8 py-3">
-                <form #form="ngForm" (ngSubmit)="updateUser()">
-                  <div class="row mt-5">
-                    <div class="col-lg-4">
-                      <span class="label">First Name</span>
-                      <input
-                        [disabled]="mode === 'locked'"
-                        type="text"
-                        class="form-control"
-                        placeholder="First Name"
-                        [(ngModel)]="user.firstName"
-                        id="firstName"
-                        name="firstName"
-                      />
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                      <span class="label">Last Name</span>
-                      <input
-                        [disabled]="mode === 'locked'"
-                        type="text"
-                        class="form-control"
-                        placeholder="Last Name"
-                        [(ngModel)]="user.lastName"
-                        id="lastName"
-                        name="lastName"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-lg-4">
-                      <span class="label">Phone Number</span>
-                      <input
-                        [disabled]="mode === 'locked'"
-                        autocomplete="chrome-off"
-                        name="phoneNo"
-                        maxlength="11"
-                        type="number"
-                        class="form-control"
-                        placeholder="Phone Number"
-                        [(ngModel)]="user.phoneNo"
-                        id="phoneNo"
-                      />
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                      <span class="label">Email Address</span>
-                      <input
-                        [disabled]="mode === 'locked'"
-                        type="text"
-                        autocomplete="chrome-off"
-                        class="form-control"
-                        placeholder="Email address"
-                        [(ngModel)]="user.email"
-                        id="email"
-                        name="email"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-lg-4">
-                      <span class="label">Date of Birth</span>
-                      <input
-                        [disabled]="mode === 'locked'"
-                        type="date"
-                        class="form-control shadow-sm d-flex align-items-center"
-                        id="dateOfBirth"
-                        [(ngModel)]="user.dateOfBirth"
-                        max="2004-12-31"
-                        name="dateOfBirth"
-                      />
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                      <span class="label">Gender</span>
-                      <select
-                        [disabled]="mode === 'locked'"
-                        [(ngModel)]="user.gender"
-                        name="gender"
-                        class="form-select form-control flex align-items-center shadow-sm py-2 px-2"
-                        id="gender"
-                        aria-label=""
-                      >
-                        <option selected hidden>Gender</option>
-                        <option class="valAmount" value="Male">Male</option>
-                        <option class="valAmount" value="Female">Female</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-lg-9">
-                      <span class="label">Address</span>
-                      <input
-                        [disabled]="mode === 'locked'"
-                        autocomplete="chrome-off"
-                        name="address"
-                        type="text"
-                        class="form-control"
-                        placeholder="Address"
-                        id="address"
-                        [(ngModel)]="user.address"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-lg-4">
-                      <span class="label">State</span>
-                      <select
-                        [disabled]="mode === 'locked'"
-                        [(ngModel)]="user.state"
-                        class="form-control"
-                        id="state"
-                        name="state"
-                      >
-                        <option>Select State</option>
-                        <option>Abuja FCT</option>
-                        <option>Abia</option>
-                        <option>Adamawa</option>
-                        <option>Akwa Ibom</option>
-                        <option>Anambra</option>
-                        <option>Bauchi</option>
-                        <option>Bayesla</option>
-                        <option>Benue</option>
-                        <option>Borno</option>
-                        <option>Cross River</option>
-                        <option>Delta</option>
-                        <option>Ebonyi</option>
-                        <option>Edo</option>
-                        <option>Ekiti</option>
-                        <option>Enugu</option>
-                        <option>Gombe</option>
-                        <option>Imo</option>
-                        <option>Jigawa</option>
-                        <option>Kaduna</option>
-                        <option>Kano</option>
-                        <option>Katsina</option>
-                        <option>Kebbi</option>
-                        <option>Kogi</option>
-                        <option>Kwara</option>
-                        <option>Lagos</option>
-                        <option>Nassarawa</option>
-                        <option>Nigeria</option>
-                        <option>Ogun</option>
-                        <option>Ondo</option>
-                        <option>Osun</option>
-                        <option>Oyo</option>
-                        <option>Plateau</option>
-                        <option>Rivers</option>
-                        <option>Sokoto</option>
-                        <option>Taraba</option>
-                        <option>Yobe</option>
-                        <option>Zamfara</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                      <!-- <span class="label">Country</span>
-                  <input [disabled]="mode === 'locked'"
-                    autocomplete="chrome-off"
-                    type="text"
-                    class="form-control"
-                    placeholder="Country"
-                    name="country"
-                    id="country"
-                    [(ngModel)]="user.country"
-                  /> -->
-                      <span class="label">Country</span>
-                      <select
-                        [disabled]="mode === 'locked'"
-                        [(ngModel)]="user.country"
-                        class="form-control"
-                        id="country"
-                        name="country"
-                      >
-                        <option>Select Country</option>
-                        <option value="Nigeria">Nigeria</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-lg-9">
-                      <div class="col-12 p-0">
-                        <button
-                          type="submit"
-                          (click)="changeMode(mode)"
-                          class="btn btn-success w-100"
-                        >
-                          {{ buttonText }}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="col-lg-2"></div>
-            </div>
-          </div>
-        </div>
+        ></div>
       </div>
     </main>
   </div>
 </div>
-
-
-
-
-

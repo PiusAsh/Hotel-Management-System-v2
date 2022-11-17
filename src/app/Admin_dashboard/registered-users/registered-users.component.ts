@@ -33,10 +33,13 @@ export class RegisteredUsersComponent implements OnInit {
   };
 
   users: User[] = [];
+  p: number = 1;
+  collection!: any[];
   constructor(
     private http: UserService,
     private route: Router,
-    private formBuilder: FormBuilder, private toast: NgToastService
+    private formBuilder: FormBuilder,
+    private toast: NgToastService
   ) {}
 
   ngOnInit(): void {

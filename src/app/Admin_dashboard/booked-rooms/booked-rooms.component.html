@@ -71,7 +71,7 @@
               <!-- TABLE BODY STARTS -->
               <tbody>
                 <!-- <tr *ngFor="let order of orders"> -->
-                <tr *ngFor="let order of orders | paginate: {itemsPerPage: 7, currentPage: p};">
+                <tr *ngFor="let order of orders | paginate: {itemsPerPage: 5, currentPage: p};">
                   <td>
                     <a class="text-heading font-semibold" href="#">
                       {{ order.payment_Id }}
